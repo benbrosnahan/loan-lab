@@ -28,4 +28,4 @@ reason the successor project traces every number to a citation in code.
 - `src/data/plans.ts` for plan rules, `src/lib/calculator.ts` for the comparison math
 - Client side only, shareable by URL, nothing stored
 
-Built with Claude Code. Part of [Cense](https://cense.beehiiv.com).
+Part of [Cense](https://cense.beehiiv.com).
