@@ -184,7 +184,22 @@ function QuizContent() {
               }
               dispatch({ type: "SET_ANSWER", field: "loanType", value: v });
             }}
-            onNext={handleNext}
+            onNext={(v) => {
+              // Every plan Loan Lab compares is federal, so private-only
+              // borrowers skip the rest of the quiz and go straight to the
+              // explanation on the results page.
+              if (v === "private") {
+                const result = calculatePlans({
+                  ...INITIAL_ANSWERS,
+                  loanType: "private",
+                });
+                storage.set("loan-lab-result", JSON.stringify(result));
+                storage.remove("loan-lab-progress");
+                router.push("/results");
+                return;
+              }
+              handleNext();
+            }}
           />
         );
       case 2:

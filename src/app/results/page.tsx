@@ -63,6 +63,77 @@ function ResultsContent() {
     );
   }
 
+  // Every plan this tool compares is federal, so a private-only borrower
+  // gets an explanation instead of an empty comparison.
+  if (result && result.quizAnswers.loanType === "private") {
+    return (
+      <>
+        <Nav />
+        <div className="max-w-xl mx-auto px-4 sm:px-6 py-8 pb-16">
+          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
+            Federal repayment plans don&apos;t apply to private loans
+          </h1>
+          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
+            Loan Lab compares federal repayment plans: Standard, Graduated,
+            IBR, RAP, Tiered Standard, and Public Service Loan Forgiveness
+            (PSLF). Those plans only cover federal student loans, so none of
+            them apply to loans from a bank, credit union, or private lender.
+          </p>
+
+          <div className="mt-6 p-5 rounded-2xl border border-slate-200 bg-white">
+            <h2 className="text-sm font-bold text-slate-900">
+              What to do instead
+            </h2>
+            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              Contact your lender and ask what repayment options they offer.
+              Your terms come from your loan agreement, so your lender is the
+              one who can tell you what&apos;s available, especially if your
+              payment is hard to keep up with.
+            </p>
+          </div>
+
+          <div className="mt-4 p-5 rounded-2xl border border-slate-200 bg-white">
+            <h2 className="text-sm font-bold text-slate-900">
+              Not sure every loan is private?
+            </h2>
+            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              Log in to studentaid.gov with your FSA ID. Any loan listed there
+              is federal. If you find one, retake the quiz and choose &quot;I
+              have both&quot; to see the plans you qualify for.
+            </p>
+            <a
+              href="https://studentaid.gov"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 text-sm font-semibold text-navy hover:text-navy-hover transition-colors"
+            >
+              Check studentaid.gov →
+            </a>
+          </div>
+
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => {
+                storage.remove("loan-lab-result");
+                storage.remove("loan-lab-progress");
+                router.push("/");
+              }}
+              className="px-6 py-2.5 rounded-xl bg-navy text-white text-sm font-semibold hover:bg-navy-hover transition-colors"
+            >
+              Retake the quiz
+            </button>
+          </div>
+
+          <div className="mt-12 pt-6 border-t border-slate-100">
+            <p className="text-[11px] text-slate-400 leading-relaxed text-center max-w-2xl mx-auto">
+              {LEGAL_DISCLAIMER}
+            </p>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   if (!result || result.plans.length === 0) {
     return (
       <>
@@ -181,11 +252,12 @@ function ResultsContent() {
         {/* Footer CTA */}
         <div className="mt-10 p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
           <h3 className="text-base font-bold text-slate-900">
-            Want to see all your debt in one place?
+            Want to see all your loans in one place?
           </h3>
           <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
-            The Cense Debt Dashboard tracks every balance, compares payoff
-            strategies, and tells you exactly what to pay and when.
+            Cense Loan Desk puts every federal loan on one screen, shows which
+            repayment plans you actually qualify for, and ranks which loan to
+            pay down first.
           </p>
           <a
             href={DECIMAL_CTA_URL}
@@ -193,7 +265,7 @@ function ResultsContent() {
             rel="noopener noreferrer"
             className="inline-block mt-4 px-6 py-3 rounded-xl bg-navy text-white text-sm font-semibold hover:bg-navy-hover transition-colors"
           >
-            Open Debt Dashboard →
+            Open Loan Desk →
           </a>
         </div>
 

@@ -7,7 +7,7 @@ import { useRef } from "react";
 interface Props {
   value: LoanType | null;
   onChange: (v: LoanType) => void;
-  onNext: () => void;
+  onNext: (v: LoanType) => void;
 }
 
 const OPTIONS: { value: LoanType; label: string; description: string }[] = [
@@ -41,7 +41,7 @@ export default function StepLoanType({ value, onChange, onNext }: Props) {
   const handleSelect = (v: LoanType) => {
     onChange(v);
     if (advanceTimer.current) clearTimeout(advanceTimer.current);
-    advanceTimer.current = setTimeout(onNext, 400);
+    advanceTimer.current = setTimeout(() => onNext(v), 400);
   };
 
   return (

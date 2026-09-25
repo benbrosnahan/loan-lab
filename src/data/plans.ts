@@ -168,7 +168,7 @@ export const SAVE_ENDED_WARNING =
   "The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.";
 
 export const TIERED_STANDARD_PSLF_WARNING =
-  "Payments under the Tiered Standard Plan do not count toward Public Service Loan Forgiveness, and that is true for every tier including the 10-year one. Since you work in public service, choosing this plan means making on-time payments that move you zero months closer to forgiveness. RAP is the fixed alternative that keeps PSLF on the table.";
+  "Payments under the Tiered Standard Plan do not count toward Public Service Loan Forgiveness, and that is true for every tier including the 10-year one. Since you work in public service, choosing this plan means making on-time payments that move you zero months closer to forgiveness. RAP, which is income-driven, is the alternative that keeps PSLF on the table.";
 
 export const TIERED_STANDARD_DEFAULT_WARNING =
   "This is the plan you are enrolled in automatically if you never choose one. It has no forgiveness at the end and does not count toward Public Service Loan Forgiveness.";
@@ -189,4 +189,4 @@ export const LEGAL_DISCLAIMER =
   "These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation.";
 
 export const DECIMAL_CTA_URL =
-  "https://app-one-rosy-18.vercel.app/?utm_source=loan-lab&utm_medium=tool&utm_campaign=loan-lab-footer";
+  "https://cense-loan-desk.vercel.app/?utm_source=loan-lab&utm_medium=tool&utm_campaign=loan-lab-footer";
