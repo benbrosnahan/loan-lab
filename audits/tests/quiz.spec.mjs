@@ -1,5 +1,4 @@
 // The quiz itself: inputs read the way a student types them, and the questions ask for what the rules use.
-// Created with Claude Code.
 import { test, expect, PHONE } from './helpers.mjs';
 
 async function toLoanDetails(page) {

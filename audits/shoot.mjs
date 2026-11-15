@@ -1,4 +1,4 @@
-// Screenshots for the design review loop. Created with Claude Code.
+// Screenshots for the design review loop.
 // Usage: node shoot.mjs <base url> <label> [--refs]
 // Writes screenshots/<label>-<screen>-<width>.png at 375x812 and 1440x900.
 import { chromium } from '@playwright/test';

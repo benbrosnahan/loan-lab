@@ -1,4 +1,4 @@
-// Shared helpers for the Loan Lab suite. Created with Claude Code.
+// Shared helpers for the Loan Lab suite.
 // Each test gets a fresh browser context, so session storage starts empty.
 import { test, expect } from '@playwright/test';
 

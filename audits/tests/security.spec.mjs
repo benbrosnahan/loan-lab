@@ -1,4 +1,4 @@
-// Security and privacy. Created with Claude Code.
+// Security and privacy.
 import { test, expect, answers } from './helpers.mjs';
 
 test('SEC-01 responses carry a CSP that forbids framing, plus nosniff, referrer and permissions policies', async ({ request }) => {

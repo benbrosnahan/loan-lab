@@ -1,4 +1,4 @@
-// SEO and findability: a crawler that runs no JavaScript gets the page. Created with Claude Code.
+// SEO and findability: a crawler that runs no JavaScript gets the page.
 import { test, expect } from './helpers.mjs';
 
 test('SEO-01 the server HTML carries the first question, an h1 and the plan names', async ({ request }) => {

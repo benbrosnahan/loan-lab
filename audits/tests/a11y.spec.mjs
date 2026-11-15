@@ -1,4 +1,4 @@
-// Accessibility: axe on every screen a student sees, plus the Cense floors axe cannot check. Created with Claude Code.
+// Accessibility: axe on every screen a student sees, plus the Cense floors axe cannot check.
 import AxeBuilder from '@axe-core/playwright';
 import { test, expect, openResults, settle, PHONE, DESKTOP } from './helpers.mjs';
 

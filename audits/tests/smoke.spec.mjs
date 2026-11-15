@@ -1,4 +1,4 @@
-// Smoke: every route answers, and old share links still open. Created with Claude Code.
+// Smoke: every route answers, and old share links still open.
 import { test, expect, answers } from './helpers.mjs';
 
 test('the quiz opens on its first question', async ({ page }) => {

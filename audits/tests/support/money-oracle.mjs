@@ -1,4 +1,4 @@
-// Independent money oracle for Loan Lab. Created with Claude Code.
+// Independent money oracle for Loan Lab.
 //
 // Every rule here is written from the primary source named beside it, never from the app's code, so a test can
 // say what a figure should be without asking the app. Sources (checked 2026-11-15):

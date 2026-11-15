@@ -1,4 +1,4 @@
-// Design-system and copy rules. Created with Claude Code.
+// Design-system and copy rules.
 import { readFileSync } from 'node:fs';
 import { test, expect, openResults, pageText } from './helpers.mjs';
 

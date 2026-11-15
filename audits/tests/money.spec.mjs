@@ -1,6 +1,5 @@
 // Money and claims: every figure checked against the independent oracle in support/money-oracle.mjs, which is
 // written from 34 CFR 685, the HHS 2026 poverty guidelines and the IRS 2026 brackets, never from the app's code.
-// Created with Claude Code.
 import { test, expect, openResults, cardLines, figure, taxFigure, pageText, pickName } from './helpers.mjs';
 import {
   standard, tiered, graduated, ibrPayment, rapPayment, ibrPath, rapPath, forgivenessTax,

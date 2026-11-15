@@ -1,4 +1,4 @@
-// Playwright suite for Cense Loan Lab. Created with Claude Code.
+// Playwright suite for Cense Loan Lab.
 // Runs against a production build on port 3206, started from the repo root unless AUDIT_URL points somewhere
 // else (the live site, a preview deployment). Build first: npm --prefix .. run build
 import { defineConfig } from '@playwright/test';
