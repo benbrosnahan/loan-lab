@@ -1,0 +1,1074 @@
+{
+ "state": "empty",
+ "formFactor": "mobile",
+ "pageContext": {
+  "indexable": true,
+  "siteType": "saas"
+ },
+ "report": {
+  "uxScore": null,
+  "typographyScore": null,
+  "contrastScore": null,
+  "layoutScore": null,
+  "responsiveScore": null,
+  "navigationScore": null,
+  "contentScore": null,
+  "totalIssues": 4,
+  "p1Count": 0,
+  "p2Count": 4,
+  "p3Count": 0,
+  "findings": [
+   {
+    "id": "f0d09a1f-635d-4fb3-94d4-9d7378b4540e",
+    "severity": "P2",
+    "category": "Accessibility",
+    "device": "mobile",
+    "title": "3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide",
+    "description": "3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception). Examples: a.font-semibold.text-navy \"Cense\" (42×18px); a.inline-flex.min-h-[40px] \"Cense\" (54×40px); a.inline-flex.min-h-[40px] \"Loan Lab\" (77×40px). Measured at the 375×812px mobile viewport.",
+    "recommendation": "Enlarge the control or add padding so its hit area is at least 48×48px.",
+    "source": "engine",
+    "themeId": "eng:tap-target-comfort",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 375,
+     "height": 812,
+     "dpr": 1,
+     "isMobile": true
+    },
+    "wcagCriterion": "2.5.8",
+    "evidence": {
+     "measured": "42×18px",
+     "required": "≥48×48px",
+     "selector": "a.font-semibold.text-navy",
+     "sample": "Cense",
+     "count": 3
+    }
+   },
+   {
+    "id": "8475e4de-cafb-4256-89dc-638f2579bf8f",
+    "severity": "P2",
+    "category": "Typography",
+    "device": "mobile",
+    "title": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+    "description": "3 reading-copy text node(s) below 16px (or any text below 11px). Examples: p.mb-3.mt-6 \"Choosing an answer moves you on.\" (14px); p.mt-6.max-w-prose \"This prices Direct Loans you borrowed fo\" (14px); p.border-t.border-line \"Estimates for learning, not financial ad\" (14px). Measured at the 375×812px mobile viewport.",
+    "recommendation": "Raise reading copy to at least 16px (12px absolute minimum for any text).",
+    "source": "engine",
+    "themeId": "eng:small-body-text",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 375,
+     "height": 812,
+     "dpr": 1,
+     "isMobile": true
+    },
+    "evidence": {
+     "measured": "14px",
+     "required": "≥16px (≥11px absolute)",
+     "selector": "p.mb-3.mt-6",
+     "sample": "Choosing an answer moves you on.",
+     "count": 3
+    }
+   },
+   {
+    "id": "3744d202-61e9-412f-bdb2-5380811ba9ff",
+    "severity": "P2",
+    "category": "Design Consistency",
+    "device": "mobile",
+    "title": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+    "description": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full). Measured at the 375×812px mobile viewport.",
+    "recommendation": "Consolidate to a small token set: define CSS variables for the sanctioned values and replace ad-hoc ones.",
+    "source": "engine",
+    "themeId": "eng:radius-off-scale",
+    "scope": "page",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 375,
+     "height": 812,
+     "dpr": 1,
+     "isMobile": true
+    },
+    "evidence": {
+     "measured": "0 matches for button.flex.min-h-[56px]",
+     "contributors": [
+      {
+       "selector": "button.flex.min-h-[56px]",
+       "value": "24px · 4 node(s)"
+      }
+     ]
+    }
+   },
+   {
+    "id": "0e0b8884-e781-48e9-b52f-00d920ce50c3",
+    "severity": "P2",
+    "category": "Motion",
+    "device": "mobile",
+    "title": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+    "description": "1 animation/transition(s) under 50ms (non-instant but too fast to read). Examples: *, ::after, ::before.",
+    "recommendation": "Keep animation durations within the 50–1000ms scale — long enough to read, short enough to feel responsive.",
+    "source": "engine",
+    "themeId": "eng:duration-too-short",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 375,
+     "height": 812,
+     "dpr": 1,
+     "isMobile": true
+    },
+    "evidence": {
+     "measured": "1 occurrence(s)",
+     "required": "50–1000ms",
+     "selector": "*, ::after, ::before",
+     "count": 1
+    }
+   }
+  ],
+  "pageContext": {
+   "indexable": true,
+   "siteType": "saas"
+  },
+  "scanData": {
+   "domContext": {
+    "textElements": [
+     {
+      "tag": "a",
+      "text": "Cense",
+      "fontSize": "18px",
+      "fontWeight": "700",
+      "lineHeight": "28px",
+      "color": "rgb(168, 83, 31)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.92,
+      "x": 16,
+      "y": 12,
+      "width": 54,
+      "height": 40
+     },
+     {
+      "tag": "a",
+      "text": "Loan Lab",
+      "fontSize": "18px",
+      "fontWeight": "700",
+      "lineHeight": "28px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 76,
+      "y": 12,
+      "width": 77,
+      "height": 40
+     },
+     {
+      "tag": "p",
+      "text": "Stays on this device",
+      "fontSize": "13px",
+      "fontWeight": "600",
+      "lineHeight": "19.2px",
+      "color": "rgb(47, 97, 51)",
+      "backgroundColor": "rgb(234, 243, 231)",
+      "contrastRatio": 6.42,
+      "x": 195,
+      "y": 16,
+      "width": 164,
+      "height": 31
+     },
+     {
+      "tag": "p",
+      "text": "Question 1 of 6",
+      "fontSize": "13px",
+      "fontWeight": "600",
+      "lineHeight": "19.2px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 16,
+      "y": 88,
+      "width": 343,
+      "height": 19
+     },
+     {
+      "tag": "h1",
+      "text": "What kind of student loans do you have?",
+      "fontSize": "36px",
+      "fontWeight": "800",
+      "lineHeight": "37.8px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 16,
+      "y": 153,
+      "width": 343,
+      "height": 113
+     },
+     {
+      "tag": "p",
+      "text": "Federal loans come with income-based plans and for",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "26px",
+      "color": "rgb(58, 107, 62)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.35,
+      "x": 16,
+      "y": 279,
+      "width": 343,
+      "height": 52
+     },
+     {
+      "tag": "p",
+      "text": "Choosing an answer moves you on.",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 16,
+      "y": 355,
+      "width": 343,
+      "height": 20
+     },
+     {
+      "tag": "button",
+      "text": "Federal loans onlyFrom the U.S. Department of Educ",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 16,
+      "y": 387,
+      "width": 343,
+      "height": 75
+     },
+     {
+      "tag": "span",
+      "text": "Federal loans onlyFrom the U.S. Department of Educ",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 403,
+      "width": 263,
+      "height": 43
+     },
+     {
+      "tag": "span",
+      "text": "Federal loans only",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "22px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 403,
+      "width": 263,
+      "height": 22
+     },
+     {
+      "tag": "span",
+      "text": "From the U.S. Department of Education",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "19.25px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 38,
+      "y": 427,
+      "width": 263,
+      "height": 19
+     },
+     {
+      "tag": "button",
+      "text": "Private loans onlyFrom a bank, credit union or len",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 16,
+      "y": 474,
+      "width": 343,
+      "height": 95
+     },
+     {
+      "tag": "span",
+      "text": "Private loans onlyFrom a bank, credit union or len",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 490,
+      "width": 263,
+      "height": 63
+     },
+     {
+      "tag": "span",
+      "text": "Private loans only",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "22px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 490,
+      "width": 263,
+      "height": 22
+     },
+     {
+      "tag": "span",
+      "text": "From a bank, credit union or lender like Sallie Ma",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "19.25px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 38,
+      "y": 514,
+      "width": 263,
+      "height": 39
+     },
+     {
+      "tag": "button",
+      "text": "I have bothSome federal, some private",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 16,
+      "y": 580,
+      "width": 343,
+      "height": 75
+     },
+     {
+      "tag": "span",
+      "text": "I have bothSome federal, some private",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 596,
+      "width": 263,
+      "height": 43
+     },
+     {
+      "tag": "span",
+      "text": "I have both",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "22px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 596,
+      "width": 263,
+      "height": 22
+     },
+     {
+      "tag": "span",
+      "text": "Some federal, some private",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "19.25px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 38,
+      "y": 620,
+      "width": 263,
+      "height": 19
+     },
+     {
+      "tag": "button",
+      "text": "Not sureAny loan listed on studentaid.gov is feder",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 16,
+      "y": 668,
+      "width": 343,
+      "height": 95
+     },
+     {
+      "tag": "span",
+      "text": "Not sureAny loan listed on studentaid.gov is feder",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 684,
+      "width": 263,
+      "height": 63
+     },
+     {
+      "tag": "span",
+      "text": "Not sure",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "22px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 38,
+      "y": 684,
+      "width": 263,
+      "height": 22
+     },
+     {
+      "tag": "span",
+      "text": "Any loan listed on studentaid.gov is federal",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "19.25px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 38,
+      "y": 708,
+      "width": 263,
+      "height": 39
+     },
+     {
+      "tag": "p",
+      "text": "This prices Direct Loans you borrowed for your own",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "22.75px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 16,
+      "y": 786,
+      "width": 343,
+      "height": 91
+     },
+     {
+      "tag": "p",
+      "text": "Estimates for learning, not financial advice. Your",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "22.75px",
+      "color": "rgb(74, 110, 77)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 3.63,
+      "x": 16,
+      "y": 941,
+      "width": 343,
+      "height": 116
+     },
+     {
+      "tag": "a",
+      "text": "Cense",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "22.75px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 101,
+      "y": 1036,
+      "width": 42,
+      "height": 18
+     }
+    ],
+    "interactiveElements": [
+     {
+      "tag": "a",
+      "text": "Cense",
+      "width": 54,
+      "height": 40,
+      "x": 16,
+      "y": 12
+     },
+     {
+      "tag": "a",
+      "text": "Loan Lab",
+      "width": 77,
+      "height": 40,
+      "x": 76,
+      "y": 12
+     },
+     {
+      "tag": "button",
+      "text": "Federal loans onlyFrom the U.S. Department of Educ",
+      "width": 343,
+      "height": 75,
+      "x": 16,
+      "y": 387
+     },
+     {
+      "tag": "button",
+      "text": "Private loans onlyFrom a bank, credit union or len",
+      "width": 343,
+      "height": 95,
+      "x": 16,
+      "y": 474
+     },
+     {
+      "tag": "button",
+      "text": "I have bothSome federal, some private",
+      "width": 343,
+      "height": 75,
+      "x": 16,
+      "y": 580
+     },
+     {
+      "tag": "button",
+      "text": "Not sureAny loan listed on studentaid.gov is feder",
+      "width": 343,
+      "height": 95,
+      "x": 16,
+      "y": 668
+     },
+     {
+      "tag": "a",
+      "text": "Cense",
+      "width": 42,
+      "height": 18,
+      "x": 101,
+      "y": 1036
+     }
+    ],
+    "images": [],
+    "headings": [
+     {
+      "tag": "h1",
+      "text": "What kind of student loans do you have?",
+      "fontSize": "36px",
+      "x": 16,
+      "y": 153,
+      "width": 343,
+      "height": 113
+     }
+    ],
+    "overflowElements": [],
+    "stickyElements": [],
+    "documentDimensions": {
+     "scrollHeight": 1097,
+     "clientHeight": 812,
+     "scrollWidth": 375,
+     "clientWidth": 375
+    }
+   }
+  }
+ },
+ "design": {
+  "report": {
+   "score": 88.6,
+   "grade": "B",
+   "buckets": {
+    "accessibility": {
+     "score": 26.4,
+     "max": 30,
+     "findings": [
+      {
+       "severity": "warn",
+       "ruleId": "tap-target-comfort",
+       "message": "3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception).",
+       "count": 3,
+       "examples": [
+        {
+         "sig": "a.font-semibold.text-navy",
+         "tag": "a",
+         "w": 42,
+         "h": 18,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "exception": "inline"
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 54,
+         "h": 40,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 77,
+         "h": 40,
+         "sample": "Loan Lab",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        }
+       ],
+       "scope": "element",
+       "required": "≥48×48px",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       },
+       "wcagCriterion": "2.5.8"
+      }
+     ]
+    },
+    "consistency": {
+     "score": 15.2,
+     "max": 20,
+     "findings": [
+      {
+       "severity": "warn",
+       "ruleId": "small-body-text",
+       "message": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+       "count": 3,
+       "examples": [
+        {
+         "sig": "p.mb-3.mt-6",
+         "px": 14,
+         "sample": "Choosing an answer moves you on."
+        },
+        {
+         "sig": "p.mt-6.max-w-prose",
+         "px": 14,
+         "sample": "This prices Direct Loans you borrowed fo"
+        },
+        {
+         "sig": "p.border-t.border-line",
+         "px": 14,
+         "sample": "Estimates for learning, not financial ad"
+        }
+       ],
+       "scope": "element",
+       "renderContext": "dom",
+       "required": "≥16px (≥11px absolute)",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       }
+      },
+      {
+       "severity": "info",
+       "ruleId": "small-ui-labels",
+       "message": "7 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+       "count": 7,
+       "examples": [
+        {
+         "sig": "p.inline-flex.items-center",
+         "px": 13,
+         "sample": "Stays on this device"
+        },
+        {
+         "sig": "p.text-xs.font-semibold",
+         "px": 13,
+         "sample": "Question 1 of 6"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From the U.S. Department of Education"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From a bank, credit union or lender like"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Some federal, some private"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Any loan listed on studentaid.gov is fed"
+        }
+       ],
+       "scope": "element",
+       "renderContext": "dom",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       }
+      },
+      {
+       "severity": "warn",
+       "ruleId": "radius-off-scale",
+       "message": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+       "values": [
+        24
+       ],
+       "scope": "page",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       },
+       "contributors": [
+        {
+         "selector": "button.flex.min-h-[56px]",
+         "value": "24px · 4 node(s)"
+        }
+       ]
+      }
+     ]
+    },
+    "motion": {
+     "score": 22,
+     "max": 25,
+     "findings": [
+      {
+       "severity": "warn",
+       "ruleId": "duration-too-short",
+       "message": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+       "examples": [
+        {
+         "selector": "*, ::after, ::before",
+         "sig": "*, ::after, ::before",
+         "ms": 0
+        }
+       ],
+       "scope": "element",
+       "required": "50–1000ms"
+      }
+     ]
+    },
+    "performance": {
+     "score": 25,
+     "max": 25,
+     "findings": []
+    }
+   },
+   "sections": {
+    "color": {
+     "sampled": 18,
+     "skippedUnknownBg": 0,
+     "skippedUnparseable": 0,
+     "skippedRenderContext": 0,
+     "distinctTextColors": 5,
+     "failureCount": 0,
+     "failures": []
+    },
+    "typography": {
+     "distinctFamilies": 2,
+     "families": [
+      "__Bricolage_Grotesque_1243c3, __Bricolage_Grotesque_Fallback_1243c3, __Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif",
+      "__Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif"
+     ],
+     "distinctSizes": 5,
+     "sizes": [
+      13,
+      14,
+      16,
+      18,
+      36
+     ],
+     "distinctLineHeights": 6,
+     "smallBodyCount": 3,
+     "smallBody": [
+      {
+       "sig": "p.mb-3.mt-6",
+       "px": 14,
+       "sample": "Choosing an answer moves you on."
+      },
+      {
+       "sig": "p.mt-6.max-w-prose",
+       "px": 14,
+       "sample": "This prices Direct Loans you borrowed fo"
+      },
+      {
+       "sig": "p.border-t.border-line",
+       "px": 14,
+       "sample": "Estimates for learning, not financial ad"
+      }
+     ],
+     "smallLabelCount": 7,
+     "smallLabels": [
+      {
+       "sig": "p.inline-flex.items-center",
+       "px": 13,
+       "sample": "Stays on this device"
+      },
+      {
+       "sig": "p.text-xs.font-semibold",
+       "px": 13,
+       "sample": "Question 1 of 6"
+      },
+      {
+       "sig": "span.mt-0.5.block",
+       "px": 14,
+       "sample": "From the U.S. Department of Education"
+      },
+      {
+       "sig": "span.mt-0.5.block",
+       "px": 14,
+       "sample": "From a bank, credit union or lender like"
+      },
+      {
+       "sig": "span.mt-0.5.block",
+       "px": 14,
+       "sample": "Some federal, some private"
+      },
+      {
+       "sig": "span.mt-0.5.block",
+       "px": 14,
+       "sample": "Any loan listed on studentaid.gov is fed"
+      },
+      {
+       "sig": "a.font-semibold.text-navy",
+       "px": 14,
+       "sample": "Cense"
+      }
+     ],
+     "tightLeadingCount": 0,
+     "tightLeading": [],
+     "displayLeadingRelaxed": 0,
+     "formattedBlocksSkipped": 0,
+     "distinctHeadingSizes": 1,
+     "headingCount": 1,
+     "skippedRenderContext": 0
+    },
+    "shape": {
+     "distinctRadii": 2,
+     "radii": [
+      24,
+      9999
+     ],
+     "scale": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      28,
+      9999
+     ],
+     "offScaleValues": [
+      24
+     ]
+    },
+    "elevation": {
+     "distinctShadows": 0,
+     "levels": 6,
+     "recipes": []
+    },
+    "states": {
+     "interactiveCount": 7,
+     "hasHoverRules": true,
+     "hasFocusVisibleRules": true,
+     "stylesheetsReachable": true,
+     "sheetsSkipped": 0,
+     "noVisibleFocusCount": 0,
+     "noVisibleFocusExamples": []
+    },
+    "motion": {
+     "hasReducedMotionQuery": true,
+     "reducedMotionStatus": "present",
+     "activeAnimations": 1,
+     "tooShort": [
+      {
+       "selector": "*, ::after, ::before",
+       "sig": "*, ::after, ::before",
+       "ms": 0
+      }
+     ],
+     "tooLong": [],
+     "linearMovement": [],
+     "easeInEntrance": [],
+     "layoutAnimated": [],
+     "infiniteLoops": [],
+     "sheetsSkipped": 0
+    },
+    "a11yLayout": {
+     "smallTargetCount": 3,
+     "smallTargets": [
+      {
+       "sig": "a.font-semibold.text-navy",
+       "tag": "a",
+       "w": 42,
+       "h": 18,
+       "sample": "Cense",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       },
+       "exception": "inline"
+      },
+      {
+       "sig": "a.inline-flex.min-h-[40px]",
+       "tag": "a",
+       "w": 54,
+       "h": 40,
+       "sample": "Cense",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       }
+      },
+      {
+       "sig": "a.inline-flex.min-h-[40px]",
+       "tag": "a",
+       "w": 77,
+       "h": 40,
+       "sample": "Loan Lab",
+       "viewport": {
+        "width": 375,
+        "height": 812,
+        "dpr": 1,
+        "isMobile": true,
+        "w": 375,
+        "h": 812
+       }
+      }
+     ],
+     "undersizedCount": 0,
+     "belowComfortCount": 3,
+     "spacingExceptionChecked": true,
+     "spacingExceptionSkipReason": null,
+     "targetCount": 7,
+     "missingAltCount": 0,
+     "missingAlt": [],
+     "headingJumpCount": 0,
+     "headingJumps": [],
+     "h1Count": 1,
+     "missingLandmarks": []
+    }
+   },
+   "notAutoDetectable": [
+    "Spatial coherence — whether elements enter/exit from where they logically belong (a menu growing from its anchor, a sheet rising from the edge it docks to). The audit sees durations and easings, not spatial origin.",
+    "Clean fades — whether opacity transitions are free of mid-fade color shifts, banding, or double-compositing. Only a human eye (or pixel diff) can judge fade quality.",
+    "Jump cuts — abrupt state changes with no transition where one is expected (content swaps, route changes). Absence of animation is not itself in the DOM.",
+    "Unified direction — whether a group of elements animates along a consistent axis/choreography rather than each doing its own thing.",
+    "Perceived hierarchy / emphasis — whether motion draws the eye to the right thing at the right time.",
+    "Content-appropriate personality — expressive vs. standard scheme being the right call for the brand and context.",
+    "Interruptibility & continuity — whether in-flight animations respond gracefully to new input rather than snapping.",
+    "Real contrast under imagery/gradients — text over photos or gradient backgrounds (the audit samples solid computed backgrounds only).",
+    "Closed shadow roots — their internals are structurally unreachable from script and are not scanned."
+   ],
+   "meta": {
+    "url": "http://localhost:3206/",
+    "title": "Loan Lab by Cense: student loan repayment quiz",
+    "timestamp": "2026-11-15T19:07:57.438Z",
+    "contentFingerprint": "m5mzxd",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+     "width": 375,
+     "height": 812,
+     "dpr": 1,
+     "isMobile": true,
+     "w": 375,
+     "h": 812
+    },
+    "siteType": "saas",
+    "elementsScanned": 39,
+    "elementsTotal": 61,
+    "sampleCap": 1500,
+    "sampleCapped": false,
+    "sheetsSkipped": 0,
+    "openShadowRoots": 1,
+    "notes": [
+     "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+    ],
+    "durationMs": 9.7
+   }
+  },
+  "probes": {
+   "animationsAtLoad": {
+    "count": 1,
+    "running": 0,
+    "anims": [
+     {
+      "target": "div.rise",
+      "name": "rise",
+      "dur": 240,
+      "infinite": false,
+      "state": "finished"
+     }
+    ]
+   },
+   "animationsAfterScroll": {
+    "count": 1,
+    "running": 0,
+    "anims": [
+     {
+      "target": "div.rise",
+      "name": "rise",
+      "dur": 240,
+      "infinite": false,
+      "state": "finished"
+     }
+    ]
+   }
+  },
+  "durationMs": 2273
+ },
+ "extras": []
+}

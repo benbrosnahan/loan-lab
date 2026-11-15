@@ -1,0 +1,2088 @@
+{
+ "url": "http://localhost:3206/",
+ "engineVersion": "1.3.0",
+ "siteType": "saas",
+ "viewports": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "dpr": 1,
+   "isMobile": false
+  },
+  "mobile": {
+   "width": 375,
+   "height": 812,
+   "dpr": 1,
+   "isMobile": true
+  }
+ },
+ "states": {
+  "empty": {
+   "engineVersion": "1.3.0",
+   "desktop": {
+    "report": {
+     "score": 88.6,
+     "grade": "B",
+     "buckets": {
+      "accessibility": {
+       "score": 26.4,
+       "max": 30,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "tap-target-comfort",
+         "message": "3 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "a.font-semibold.text-navy",
+           "tag": "a",
+           "w": 42,
+           "h": 18,
+           "sample": "Cense",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           },
+           "exception": "inline"
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 54,
+           "h": 40,
+           "sample": "Cense",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           }
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 77,
+           "h": 40,
+           "sample": "Loan Lab",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           }
+          }
+         ],
+         "scope": "element",
+         "required": "≥48×48px",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "wcagCriterion": "2.5.8"
+        }
+       ]
+      },
+      "consistency": {
+       "score": 15.2,
+       "max": 20,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "small-body-text",
+         "message": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "p.mb-3.mt-6",
+           "px": 14,
+           "sample": "Choosing an answer moves you on."
+          },
+          {
+           "sig": "p.mt-6.max-w-prose",
+           "px": 14,
+           "sample": "This prices Direct Loans you borrowed fo"
+          },
+          {
+           "sig": "p.border-t.border-line",
+           "px": 14,
+           "sample": "Estimates for learning, not financial ad"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "required": "≥16px (≥11px absolute)",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "severity": "info",
+         "ruleId": "small-ui-labels",
+         "message": "7 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+         "count": 7,
+         "examples": [
+          {
+           "sig": "p.inline-flex.items-center",
+           "px": 13,
+           "sample": "Stays on this device"
+          },
+          {
+           "sig": "p.text-xs.font-semibold",
+           "px": 13,
+           "sample": "Question 1 of 6"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From the U.S. Department of Education"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From a bank, credit union or lender like"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Some federal, some private"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Any loan listed on studentaid.gov is fed"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "severity": "warn",
+         "ruleId": "radius-off-scale",
+         "message": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+         "values": [
+          24
+         ],
+         "scope": "page",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "contributors": [
+          {
+           "selector": "button.flex.min-h-[56px]",
+           "value": "24px · 4 node(s)"
+          }
+         ]
+        }
+       ]
+      },
+      "motion": {
+       "score": 22,
+       "max": 25,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "duration-too-short",
+         "message": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+         "examples": [
+          {
+           "selector": "*, ::after, ::before",
+           "sig": "*, ::after, ::before",
+           "ms": 0
+          }
+         ],
+         "scope": "element",
+         "required": "50–1000ms"
+        }
+       ]
+      },
+      "performance": {
+       "score": 25,
+       "max": 25,
+       "findings": []
+      }
+     },
+     "sections": {
+      "color": {
+       "sampled": 18,
+       "skippedUnknownBg": 0,
+       "skippedUnparseable": 0,
+       "skippedRenderContext": 0,
+       "distinctTextColors": 5,
+       "failureCount": 0,
+       "failures": []
+      },
+      "typography": {
+       "distinctFamilies": 2,
+       "families": [
+        "__Bricolage_Grotesque_1243c3, __Bricolage_Grotesque_Fallback_1243c3, __Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif",
+        "__Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif"
+       ],
+       "distinctSizes": 5,
+       "sizes": [
+        13,
+        14,
+        16,
+        18,
+        44
+       ],
+       "distinctLineHeights": 6,
+       "smallBodyCount": 3,
+       "smallBody": [
+        {
+         "sig": "p.mb-3.mt-6",
+         "px": 14,
+         "sample": "Choosing an answer moves you on."
+        },
+        {
+         "sig": "p.mt-6.max-w-prose",
+         "px": 14,
+         "sample": "This prices Direct Loans you borrowed fo"
+        },
+        {
+         "sig": "p.border-t.border-line",
+         "px": 14,
+         "sample": "Estimates for learning, not financial ad"
+        }
+       ],
+       "smallLabelCount": 7,
+       "smallLabels": [
+        {
+         "sig": "p.inline-flex.items-center",
+         "px": 13,
+         "sample": "Stays on this device"
+        },
+        {
+         "sig": "p.text-xs.font-semibold",
+         "px": 13,
+         "sample": "Question 1 of 6"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From the U.S. Department of Education"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From a bank, credit union or lender like"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Some federal, some private"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Any loan listed on studentaid.gov is fed"
+        },
+        {
+         "sig": "a.font-semibold.text-navy",
+         "px": 14,
+         "sample": "Cense"
+        }
+       ],
+       "tightLeadingCount": 0,
+       "tightLeading": [],
+       "displayLeadingRelaxed": 0,
+       "formattedBlocksSkipped": 0,
+       "distinctHeadingSizes": 1,
+       "headingCount": 1,
+       "skippedRenderContext": 0
+      },
+      "shape": {
+       "distinctRadii": 2,
+       "radii": [
+        24,
+        9999
+       ],
+       "scale": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        28,
+        9999
+       ],
+       "offScaleValues": [
+        24
+       ]
+      },
+      "elevation": {
+       "distinctShadows": 0,
+       "levels": 6,
+       "recipes": []
+      },
+      "states": {
+       "interactiveCount": 7,
+       "hasHoverRules": true,
+       "hasFocusVisibleRules": true,
+       "stylesheetsReachable": true,
+       "sheetsSkipped": 0,
+       "noVisibleFocusCount": 0,
+       "noVisibleFocusExamples": []
+      },
+      "motion": {
+       "hasReducedMotionQuery": true,
+       "reducedMotionStatus": "present",
+       "activeAnimations": 1,
+       "tooShort": [
+        {
+         "selector": "*, ::after, ::before",
+         "sig": "*, ::after, ::before",
+         "ms": 0
+        }
+       ],
+       "tooLong": [],
+       "linearMovement": [],
+       "easeInEntrance": [],
+       "layoutAnimated": [],
+       "infiniteLoops": [],
+       "sheetsSkipped": 0
+      },
+      "a11yLayout": {
+       "smallTargetCount": 3,
+       "smallTargets": [
+        {
+         "sig": "a.font-semibold.text-navy",
+         "tag": "a",
+         "w": 42,
+         "h": 18,
+         "sample": "Cense",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "exception": "inline"
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 54,
+         "h": 40,
+         "sample": "Cense",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 77,
+         "h": 40,
+         "sample": "Loan Lab",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        }
+       ],
+       "undersizedCount": 0,
+       "belowComfortCount": 3,
+       "spacingExceptionChecked": true,
+       "spacingExceptionSkipReason": null,
+       "targetCount": 7,
+       "missingAltCount": 0,
+       "missingAlt": [],
+       "headingJumpCount": 0,
+       "headingJumps": [],
+       "h1Count": 1,
+       "missingLandmarks": []
+      }
+     },
+     "meta": {
+      "url": "http://localhost:3206/",
+      "title": "Loan Lab by Cense: student loan repayment quiz",
+      "timestamp": "2026-11-15T19:07:47.520Z",
+      "contentFingerprint": "m5mzxd",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "viewport": {
+       "width": 1440,
+       "height": 900,
+       "dpr": 1,
+       "isMobile": false,
+       "w": 1440,
+       "h": 900
+      },
+      "siteType": "saas",
+      "elementsScanned": 39,
+      "elementsTotal": 61,
+      "sampleCap": 1500,
+      "sampleCapped": false,
+      "sheetsSkipped": 0,
+      "openShadowRoots": 1,
+      "notes": [
+       "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+      ],
+      "durationMs": 4.9
+     }
+    },
+    "probes": {
+     "animationsAtLoad": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "animationsAfterScroll": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "hoverProbe": [
+      {
+       "label": "Cense",
+       "selector": "a.inline-flex",
+       "changes": false
+      },
+      {
+       "label": "Loan Lab",
+       "selector": "a.inline-flex",
+       "changes": false
+      },
+      {
+       "label": "Federal loans onlyFrom the U.S",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "Private loans onlyFrom a bank,",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "I have bothSome federal, some ",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "Not sureAny loan listed on stu",
+       "selector": "button.flex",
+       "changes": false
+      }
+     ],
+     "reducedMotion": {
+      "emulated": true,
+      "snapshot": {
+       "count": 1,
+       "running": 0,
+       "anims": [
+        {
+         "target": "div.rise",
+         "name": "rise",
+         "dur": 0,
+         "infinite": false,
+         "state": "finished"
+        }
+       ]
+      },
+      "ungatedCount": 0
+     }
+    },
+    "durationMs": 2237
+   },
+   "mobile": {
+    "report": {
+     "score": 88.6,
+     "grade": "B",
+     "buckets": {
+      "accessibility": {
+       "score": 26.4,
+       "max": 30,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "tap-target-comfort",
+         "message": "3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "a.font-semibold.text-navy",
+           "tag": "a",
+           "w": 42,
+           "h": 18,
+           "sample": "Cense",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           },
+           "exception": "inline"
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 54,
+           "h": 40,
+           "sample": "Cense",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           }
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 77,
+           "h": 40,
+           "sample": "Loan Lab",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           }
+          }
+         ],
+         "scope": "element",
+         "required": "≥48×48px",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "wcagCriterion": "2.5.8"
+        }
+       ]
+      },
+      "consistency": {
+       "score": 15.2,
+       "max": 20,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "small-body-text",
+         "message": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "p.mb-3.mt-6",
+           "px": 14,
+           "sample": "Choosing an answer moves you on."
+          },
+          {
+           "sig": "p.mt-6.max-w-prose",
+           "px": 14,
+           "sample": "This prices Direct Loans you borrowed fo"
+          },
+          {
+           "sig": "p.border-t.border-line",
+           "px": 14,
+           "sample": "Estimates for learning, not financial ad"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "required": "≥16px (≥11px absolute)",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "severity": "info",
+         "ruleId": "small-ui-labels",
+         "message": "7 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+         "count": 7,
+         "examples": [
+          {
+           "sig": "p.inline-flex.items-center",
+           "px": 13,
+           "sample": "Stays on this device"
+          },
+          {
+           "sig": "p.text-xs.font-semibold",
+           "px": 13,
+           "sample": "Question 1 of 6"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From the U.S. Department of Education"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From a bank, credit union or lender like"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Some federal, some private"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Any loan listed on studentaid.gov is fed"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "severity": "warn",
+         "ruleId": "radius-off-scale",
+         "message": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+         "values": [
+          24
+         ],
+         "scope": "page",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "contributors": [
+          {
+           "selector": "button.flex.min-h-[56px]",
+           "value": "24px · 4 node(s)"
+          }
+         ]
+        }
+       ]
+      },
+      "motion": {
+       "score": 22,
+       "max": 25,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "duration-too-short",
+         "message": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+         "examples": [
+          {
+           "selector": "*, ::after, ::before",
+           "sig": "*, ::after, ::before",
+           "ms": 0
+          }
+         ],
+         "scope": "element",
+         "required": "50–1000ms"
+        }
+       ]
+      },
+      "performance": {
+       "score": 25,
+       "max": 25,
+       "findings": []
+      }
+     },
+     "sections": {
+      "color": {
+       "sampled": 18,
+       "skippedUnknownBg": 0,
+       "skippedUnparseable": 0,
+       "skippedRenderContext": 0,
+       "distinctTextColors": 5,
+       "failureCount": 0,
+       "failures": []
+      },
+      "typography": {
+       "distinctFamilies": 2,
+       "families": [
+        "__Bricolage_Grotesque_1243c3, __Bricolage_Grotesque_Fallback_1243c3, __Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif",
+        "__Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif"
+       ],
+       "distinctSizes": 5,
+       "sizes": [
+        13,
+        14,
+        16,
+        18,
+        36
+       ],
+       "distinctLineHeights": 6,
+       "smallBodyCount": 3,
+       "smallBody": [
+        {
+         "sig": "p.mb-3.mt-6",
+         "px": 14,
+         "sample": "Choosing an answer moves you on."
+        },
+        {
+         "sig": "p.mt-6.max-w-prose",
+         "px": 14,
+         "sample": "This prices Direct Loans you borrowed fo"
+        },
+        {
+         "sig": "p.border-t.border-line",
+         "px": 14,
+         "sample": "Estimates for learning, not financial ad"
+        }
+       ],
+       "smallLabelCount": 7,
+       "smallLabels": [
+        {
+         "sig": "p.inline-flex.items-center",
+         "px": 13,
+         "sample": "Stays on this device"
+        },
+        {
+         "sig": "p.text-xs.font-semibold",
+         "px": 13,
+         "sample": "Question 1 of 6"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From the U.S. Department of Education"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From a bank, credit union or lender like"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Some federal, some private"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Any loan listed on studentaid.gov is fed"
+        },
+        {
+         "sig": "a.font-semibold.text-navy",
+         "px": 14,
+         "sample": "Cense"
+        }
+       ],
+       "tightLeadingCount": 0,
+       "tightLeading": [],
+       "displayLeadingRelaxed": 0,
+       "formattedBlocksSkipped": 0,
+       "distinctHeadingSizes": 1,
+       "headingCount": 1,
+       "skippedRenderContext": 0
+      },
+      "shape": {
+       "distinctRadii": 2,
+       "radii": [
+        24,
+        9999
+       ],
+       "scale": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        28,
+        9999
+       ],
+       "offScaleValues": [
+        24
+       ]
+      },
+      "elevation": {
+       "distinctShadows": 0,
+       "levels": 6,
+       "recipes": []
+      },
+      "states": {
+       "interactiveCount": 7,
+       "hasHoverRules": true,
+       "hasFocusVisibleRules": true,
+       "stylesheetsReachable": true,
+       "sheetsSkipped": 0,
+       "noVisibleFocusCount": 0,
+       "noVisibleFocusExamples": []
+      },
+      "motion": {
+       "hasReducedMotionQuery": true,
+       "reducedMotionStatus": "present",
+       "activeAnimations": 1,
+       "tooShort": [
+        {
+         "selector": "*, ::after, ::before",
+         "sig": "*, ::after, ::before",
+         "ms": 0
+        }
+       ],
+       "tooLong": [],
+       "linearMovement": [],
+       "easeInEntrance": [],
+       "layoutAnimated": [],
+       "infiniteLoops": [],
+       "sheetsSkipped": 0
+      },
+      "a11yLayout": {
+       "smallTargetCount": 3,
+       "smallTargets": [
+        {
+         "sig": "a.font-semibold.text-navy",
+         "tag": "a",
+         "w": 42,
+         "h": 18,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "exception": "inline"
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 54,
+         "h": 40,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 77,
+         "h": 40,
+         "sample": "Loan Lab",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        }
+       ],
+       "undersizedCount": 0,
+       "belowComfortCount": 3,
+       "spacingExceptionChecked": true,
+       "spacingExceptionSkipReason": null,
+       "targetCount": 7,
+       "missingAltCount": 0,
+       "missingAlt": [],
+       "headingJumpCount": 0,
+       "headingJumps": [],
+       "h1Count": 1,
+       "missingLandmarks": []
+      }
+     },
+     "meta": {
+      "url": "http://localhost:3206/",
+      "title": "Loan Lab by Cense: student loan repayment quiz",
+      "timestamp": "2026-11-15T19:07:57.438Z",
+      "contentFingerprint": "m5mzxd",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "viewport": {
+       "width": 375,
+       "height": 812,
+       "dpr": 1,
+       "isMobile": true,
+       "w": 375,
+       "h": 812
+      },
+      "siteType": "saas",
+      "elementsScanned": 39,
+      "elementsTotal": 61,
+      "sampleCap": 1500,
+      "sampleCapped": false,
+      "sheetsSkipped": 0,
+      "openShadowRoots": 1,
+      "notes": [
+       "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+      ],
+      "durationMs": 9.7
+     }
+    },
+    "probes": {
+     "animationsAtLoad": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "animationsAfterScroll": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     }
+    },
+    "durationMs": 2273
+   },
+   "designScore": 89,
+   "designGrade": "B",
+   "measuredViewports": [
+    "desktop",
+    "mobile"
+   ],
+   "buckets": {
+    "accessibility": 88,
+    "consistency": 76,
+    "motion": 88,
+    "performance": 100
+   }
+  },
+  "form-errors": {
+   "engineVersion": "1.3.0",
+   "desktop": null,
+   "mobile": null,
+   "designScore": null,
+   "designGrade": null,
+   "measuredViewports": [],
+   "buckets": null
+  },
+  "loans": {
+   "engineVersion": "1.3.0",
+   "desktop": {
+    "report": {
+     "score": 88.6,
+     "grade": "B",
+     "buckets": {
+      "accessibility": {
+       "score": 26.4,
+       "max": 30,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "tap-target-comfort",
+         "message": "3 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "a.font-semibold.text-navy",
+           "tag": "a",
+           "w": 42,
+           "h": 18,
+           "sample": "Cense",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           },
+           "exception": "inline"
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 54,
+           "h": 40,
+           "sample": "Cense",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           }
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 77,
+           "h": 40,
+           "sample": "Loan Lab",
+           "viewport": {
+            "width": 1440,
+            "height": 900,
+            "dpr": 1,
+            "isMobile": false,
+            "w": 1440,
+            "h": 900
+           }
+          }
+         ],
+         "scope": "element",
+         "required": "≥48×48px",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "wcagCriterion": "2.5.8"
+        }
+       ]
+      },
+      "consistency": {
+       "score": 15.2,
+       "max": 20,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "small-body-text",
+         "message": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "p.mb-3.mt-6",
+           "px": 14,
+           "sample": "Choosing an answer moves you on."
+          },
+          {
+           "sig": "p.mt-6.max-w-prose",
+           "px": 14,
+           "sample": "This prices Direct Loans you borrowed fo"
+          },
+          {
+           "sig": "p.border-t.border-line",
+           "px": 14,
+           "sample": "Estimates for learning, not financial ad"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "required": "≥16px (≥11px absolute)",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "severity": "info",
+         "ruleId": "small-ui-labels",
+         "message": "7 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+         "count": 7,
+         "examples": [
+          {
+           "sig": "p.inline-flex.items-center",
+           "px": 13,
+           "sample": "Stays on this device"
+          },
+          {
+           "sig": "p.text-xs.font-semibold",
+           "px": 13,
+           "sample": "Question 1 of 6"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From the U.S. Department of Education"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From a bank, credit union or lender like"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Some federal, some private"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Any loan listed on studentaid.gov is fed"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "severity": "warn",
+         "ruleId": "radius-off-scale",
+         "message": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+         "values": [
+          24
+         ],
+         "scope": "page",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "contributors": [
+          {
+           "selector": "button.flex.min-h-[56px]",
+           "value": "24px · 4 node(s)"
+          }
+         ]
+        }
+       ]
+      },
+      "motion": {
+       "score": 22,
+       "max": 25,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "duration-too-short",
+         "message": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+         "examples": [
+          {
+           "selector": "*, ::after, ::before",
+           "sig": "*, ::after, ::before",
+           "ms": 0
+          }
+         ],
+         "scope": "element",
+         "required": "50–1000ms"
+        }
+       ]
+      },
+      "performance": {
+       "score": 25,
+       "max": 25,
+       "findings": []
+      }
+     },
+     "sections": {
+      "color": {
+       "sampled": 18,
+       "skippedUnknownBg": 0,
+       "skippedUnparseable": 0,
+       "skippedRenderContext": 0,
+       "distinctTextColors": 5,
+       "failureCount": 0,
+       "failures": []
+      },
+      "typography": {
+       "distinctFamilies": 2,
+       "families": [
+        "__Bricolage_Grotesque_1243c3, __Bricolage_Grotesque_Fallback_1243c3, __Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif",
+        "__Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif"
+       ],
+       "distinctSizes": 5,
+       "sizes": [
+        13,
+        14,
+        16,
+        18,
+        44
+       ],
+       "distinctLineHeights": 6,
+       "smallBodyCount": 3,
+       "smallBody": [
+        {
+         "sig": "p.mb-3.mt-6",
+         "px": 14,
+         "sample": "Choosing an answer moves you on."
+        },
+        {
+         "sig": "p.mt-6.max-w-prose",
+         "px": 14,
+         "sample": "This prices Direct Loans you borrowed fo"
+        },
+        {
+         "sig": "p.border-t.border-line",
+         "px": 14,
+         "sample": "Estimates for learning, not financial ad"
+        }
+       ],
+       "smallLabelCount": 7,
+       "smallLabels": [
+        {
+         "sig": "p.inline-flex.items-center",
+         "px": 13,
+         "sample": "Stays on this device"
+        },
+        {
+         "sig": "p.text-xs.font-semibold",
+         "px": 13,
+         "sample": "Question 1 of 6"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From the U.S. Department of Education"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From a bank, credit union or lender like"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Some federal, some private"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Any loan listed on studentaid.gov is fed"
+        },
+        {
+         "sig": "a.font-semibold.text-navy",
+         "px": 14,
+         "sample": "Cense"
+        }
+       ],
+       "tightLeadingCount": 0,
+       "tightLeading": [],
+       "displayLeadingRelaxed": 0,
+       "formattedBlocksSkipped": 0,
+       "distinctHeadingSizes": 1,
+       "headingCount": 1,
+       "skippedRenderContext": 0
+      },
+      "shape": {
+       "distinctRadii": 2,
+       "radii": [
+        24,
+        9999
+       ],
+       "scale": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        28,
+        9999
+       ],
+       "offScaleValues": [
+        24
+       ]
+      },
+      "elevation": {
+       "distinctShadows": 0,
+       "levels": 6,
+       "recipes": []
+      },
+      "states": {
+       "interactiveCount": 7,
+       "hasHoverRules": true,
+       "hasFocusVisibleRules": true,
+       "stylesheetsReachable": true,
+       "sheetsSkipped": 0,
+       "noVisibleFocusCount": 0,
+       "noVisibleFocusExamples": []
+      },
+      "motion": {
+       "hasReducedMotionQuery": true,
+       "reducedMotionStatus": "present",
+       "activeAnimations": 1,
+       "tooShort": [
+        {
+         "selector": "*, ::after, ::before",
+         "sig": "*, ::after, ::before",
+         "ms": 0
+        }
+       ],
+       "tooLong": [],
+       "linearMovement": [],
+       "easeInEntrance": [],
+       "layoutAnimated": [],
+       "infiniteLoops": [],
+       "sheetsSkipped": 0
+      },
+      "a11yLayout": {
+       "smallTargetCount": 3,
+       "smallTargets": [
+        {
+         "sig": "a.font-semibold.text-navy",
+         "tag": "a",
+         "w": 42,
+         "h": 18,
+         "sample": "Cense",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         },
+         "exception": "inline"
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 54,
+         "h": 40,
+         "sample": "Cense",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 77,
+         "h": 40,
+         "sample": "Loan Lab",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        }
+       ],
+       "undersizedCount": 0,
+       "belowComfortCount": 3,
+       "spacingExceptionChecked": true,
+       "spacingExceptionSkipReason": null,
+       "targetCount": 7,
+       "missingAltCount": 0,
+       "missingAlt": [],
+       "headingJumpCount": 0,
+       "headingJumps": [],
+       "h1Count": 1,
+       "missingLandmarks": []
+      }
+     },
+     "meta": {
+      "url": "http://localhost:3206/",
+      "title": "Loan Lab by Cense: student loan repayment quiz",
+      "timestamp": "2026-11-15T19:08:08.326Z",
+      "contentFingerprint": "m5mzxd",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "viewport": {
+       "width": 1440,
+       "height": 900,
+       "dpr": 1,
+       "isMobile": false,
+       "w": 1440,
+       "h": 900
+      },
+      "siteType": "saas",
+      "elementsScanned": 39,
+      "elementsTotal": 61,
+      "sampleCap": 1500,
+      "sampleCapped": false,
+      "sheetsSkipped": 0,
+      "openShadowRoots": 1,
+      "notes": [
+       "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+      ],
+      "durationMs": 12.2
+     }
+    },
+    "probes": {
+     "animationsAtLoad": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "animationsAfterScroll": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "hoverProbe": [
+      {
+       "label": "Cense",
+       "selector": "a.inline-flex",
+       "changes": false
+      },
+      {
+       "label": "Loan Lab",
+       "selector": "a.inline-flex",
+       "changes": false
+      },
+      {
+       "label": "Federal loans onlyFrom the U.S",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "Private loans onlyFrom a bank,",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "I have bothSome federal, some ",
+       "selector": "button.flex",
+       "changes": false
+      },
+      {
+       "label": "Not sureAny loan listed on stu",
+       "selector": "button.flex",
+       "changes": false
+      }
+     ],
+     "reducedMotion": {
+      "emulated": true,
+      "snapshot": {
+       "count": 1,
+       "running": 0,
+       "anims": [
+        {
+         "target": "div.rise",
+         "name": "rise",
+         "dur": 0,
+         "infinite": false,
+         "state": "finished"
+        }
+       ]
+      },
+      "ungatedCount": 0
+     }
+    },
+    "durationMs": 2258
+   },
+   "mobile": {
+    "report": {
+     "score": 88.6,
+     "grade": "B",
+     "buckets": {
+      "accessibility": {
+       "score": 26.4,
+       "max": 30,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "tap-target-comfort",
+         "message": "3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide — they clear the WCAG 2.5.8 24px minimum (1 via the inline exception).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "a.font-semibold.text-navy",
+           "tag": "a",
+           "w": 42,
+           "h": 18,
+           "sample": "Cense",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           },
+           "exception": "inline"
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 54,
+           "h": 40,
+           "sample": "Cense",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           }
+          },
+          {
+           "sig": "a.inline-flex.min-h-[40px]",
+           "tag": "a",
+           "w": 77,
+           "h": 40,
+           "sample": "Loan Lab",
+           "viewport": {
+            "width": 375,
+            "height": 812,
+            "dpr": 1,
+            "isMobile": true,
+            "w": 375,
+            "h": 812
+           }
+          }
+         ],
+         "scope": "element",
+         "required": "≥48×48px",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "wcagCriterion": "2.5.8"
+        }
+       ]
+      },
+      "consistency": {
+       "score": 15.2,
+       "max": 20,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "small-body-text",
+         "message": "3 reading-copy text node(s) below 16px (or any text below 11px).",
+         "count": 3,
+         "examples": [
+          {
+           "sig": "p.mb-3.mt-6",
+           "px": 14,
+           "sample": "Choosing an answer moves you on."
+          },
+          {
+           "sig": "p.mt-6.max-w-prose",
+           "px": 14,
+           "sample": "This prices Direct Loans you borrowed fo"
+          },
+          {
+           "sig": "p.border-t.border-line",
+           "px": 14,
+           "sample": "Estimates for learning, not financial ad"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "required": "≥16px (≥11px absolute)",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "severity": "info",
+         "ruleId": "small-ui-labels",
+         "message": "7 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+         "count": 7,
+         "examples": [
+          {
+           "sig": "p.inline-flex.items-center",
+           "px": 13,
+           "sample": "Stays on this device"
+          },
+          {
+           "sig": "p.text-xs.font-semibold",
+           "px": 13,
+           "sample": "Question 1 of 6"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From the U.S. Department of Education"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "From a bank, credit union or lender like"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Some federal, some private"
+          },
+          {
+           "sig": "span.mt-0.5.block",
+           "px": 14,
+           "sample": "Any loan listed on studentaid.gov is fed"
+          }
+         ],
+         "scope": "element",
+         "renderContext": "dom",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "severity": "warn",
+         "ruleId": "radius-off-scale",
+         "message": "1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+         "values": [
+          24
+         ],
+         "scope": "page",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "contributors": [
+          {
+           "selector": "button.flex.min-h-[56px]",
+           "value": "24px · 4 node(s)"
+          }
+         ]
+        }
+       ]
+      },
+      "motion": {
+       "score": 22,
+       "max": 25,
+       "findings": [
+        {
+         "severity": "warn",
+         "ruleId": "duration-too-short",
+         "message": "1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+         "examples": [
+          {
+           "selector": "*, ::after, ::before",
+           "sig": "*, ::after, ::before",
+           "ms": 0
+          }
+         ],
+         "scope": "element",
+         "required": "50–1000ms"
+        }
+       ]
+      },
+      "performance": {
+       "score": 25,
+       "max": 25,
+       "findings": []
+      }
+     },
+     "sections": {
+      "color": {
+       "sampled": 18,
+       "skippedUnknownBg": 0,
+       "skippedUnparseable": 0,
+       "skippedRenderContext": 0,
+       "distinctTextColors": 5,
+       "failureCount": 0,
+       "failures": []
+      },
+      "typography": {
+       "distinctFamilies": 2,
+       "families": [
+        "__Bricolage_Grotesque_1243c3, __Bricolage_Grotesque_Fallback_1243c3, __Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif",
+        "__Instrument_Sans_3f4a4b, __Instrument_Sans_Fallback_3f4a4b, system-ui, sans-serif"
+       ],
+       "distinctSizes": 5,
+       "sizes": [
+        13,
+        14,
+        16,
+        18,
+        36
+       ],
+       "distinctLineHeights": 6,
+       "smallBodyCount": 3,
+       "smallBody": [
+        {
+         "sig": "p.mb-3.mt-6",
+         "px": 14,
+         "sample": "Choosing an answer moves you on."
+        },
+        {
+         "sig": "p.mt-6.max-w-prose",
+         "px": 14,
+         "sample": "This prices Direct Loans you borrowed fo"
+        },
+        {
+         "sig": "p.border-t.border-line",
+         "px": 14,
+         "sample": "Estimates for learning, not financial ad"
+        }
+       ],
+       "smallLabelCount": 7,
+       "smallLabels": [
+        {
+         "sig": "p.inline-flex.items-center",
+         "px": 13,
+         "sample": "Stays on this device"
+        },
+        {
+         "sig": "p.text-xs.font-semibold",
+         "px": 13,
+         "sample": "Question 1 of 6"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From the U.S. Department of Education"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "From a bank, credit union or lender like"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Some federal, some private"
+        },
+        {
+         "sig": "span.mt-0.5.block",
+         "px": 14,
+         "sample": "Any loan listed on studentaid.gov is fed"
+        },
+        {
+         "sig": "a.font-semibold.text-navy",
+         "px": 14,
+         "sample": "Cense"
+        }
+       ],
+       "tightLeadingCount": 0,
+       "tightLeading": [],
+       "displayLeadingRelaxed": 0,
+       "formattedBlocksSkipped": 0,
+       "distinctHeadingSizes": 1,
+       "headingCount": 1,
+       "skippedRenderContext": 0
+      },
+      "shape": {
+       "distinctRadii": 2,
+       "radii": [
+        24,
+        9999
+       ],
+       "scale": [
+        0,
+        4,
+        8,
+        12,
+        16,
+        28,
+        9999
+       ],
+       "offScaleValues": [
+        24
+       ]
+      },
+      "elevation": {
+       "distinctShadows": 0,
+       "levels": 6,
+       "recipes": []
+      },
+      "states": {
+       "interactiveCount": 7,
+       "hasHoverRules": true,
+       "hasFocusVisibleRules": true,
+       "stylesheetsReachable": true,
+       "sheetsSkipped": 0,
+       "noVisibleFocusCount": 0,
+       "noVisibleFocusExamples": []
+      },
+      "motion": {
+       "hasReducedMotionQuery": true,
+       "reducedMotionStatus": "present",
+       "activeAnimations": 1,
+       "tooShort": [
+        {
+         "selector": "*, ::after, ::before",
+         "sig": "*, ::after, ::before",
+         "ms": 0
+        }
+       ],
+       "tooLong": [],
+       "linearMovement": [],
+       "easeInEntrance": [],
+       "layoutAnimated": [],
+       "infiniteLoops": [],
+       "sheetsSkipped": 0
+      },
+      "a11yLayout": {
+       "smallTargetCount": 3,
+       "smallTargets": [
+        {
+         "sig": "a.font-semibold.text-navy",
+         "tag": "a",
+         "w": 42,
+         "h": 18,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         },
+         "exception": "inline"
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 54,
+         "h": 40,
+         "sample": "Cense",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        },
+        {
+         "sig": "a.inline-flex.min-h-[40px]",
+         "tag": "a",
+         "w": 77,
+         "h": 40,
+         "sample": "Loan Lab",
+         "viewport": {
+          "width": 375,
+          "height": 812,
+          "dpr": 1,
+          "isMobile": true,
+          "w": 375,
+          "h": 812
+         }
+        }
+       ],
+       "undersizedCount": 0,
+       "belowComfortCount": 3,
+       "spacingExceptionChecked": true,
+       "spacingExceptionSkipReason": null,
+       "targetCount": 7,
+       "missingAltCount": 0,
+       "missingAlt": [],
+       "headingJumpCount": 0,
+       "headingJumps": [],
+       "h1Count": 1,
+       "missingLandmarks": []
+      }
+     },
+     "meta": {
+      "url": "http://localhost:3206/",
+      "title": "Loan Lab by Cense: student loan repayment quiz",
+      "timestamp": "2026-11-15T19:08:17.515Z",
+      "contentFingerprint": "m5mzxd",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+      "viewport": {
+       "width": 375,
+       "height": 812,
+       "dpr": 1,
+       "isMobile": true,
+       "w": 375,
+       "h": 812
+      },
+      "siteType": "saas",
+      "elementsScanned": 39,
+      "elementsTotal": 61,
+      "sampleCap": 1500,
+      "sampleCapped": false,
+      "sheetsSkipped": 0,
+      "openShadowRoots": 1,
+      "notes": [
+       "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+      ],
+      "durationMs": 5.4
+     }
+    },
+    "probes": {
+     "animationsAtLoad": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     },
+     "animationsAfterScroll": {
+      "count": 1,
+      "running": 0,
+      "anims": [
+       {
+        "target": "div.rise",
+        "name": "rise",
+        "dur": 240,
+        "infinite": false,
+        "state": "finished"
+       }
+      ]
+     }
+    },
+    "durationMs": 2232
+   },
+   "designScore": 89,
+   "designGrade": "B",
+   "measuredViewports": [
+    "desktop",
+    "mobile"
+   ],
+   "buckets": {
+    "accessibility": 88,
+    "consistency": 76,
+    "motion": 88,
+    "performance": 100
+   }
+  },
+  "plans": {
+   "engineVersion": "1.3.0",
+   "desktop": null,
+   "mobile": null,
+   "designScore": null,
+   "designGrade": null,
+   "measuredViewports": [],
+   "buckets": null
+  },
+  "payoff": {
+   "engineVersion": "1.3.0",
+   "desktop": null,
+   "mobile": null,
+   "designScore": null,
+   "designGrade": null,
+   "measuredViewports": [],
+   "buckets": null
+  },
+  "records": {
+   "engineVersion": "1.3.0",
+   "desktop": null,
+   "mobile": null,
+   "designScore": null,
+   "designGrade": null,
+   "measuredViewports": [],
+   "buckets": null
+  }
+ },
+ "notAutoDetectable": [
+  "Spatial coherence — whether elements enter/exit from where they logically belong (a menu growing from its anchor, a sheet rising from the edge it docks to). The audit sees durations and easings, not spatial origin.",
+  "Clean fades — whether opacity transitions are free of mid-fade color shifts, banding, or double-compositing. Only a human eye (or pixel diff) can judge fade quality.",
+  "Jump cuts — abrupt state changes with no transition where one is expected (content swaps, route changes). Absence of animation is not itself in the DOM.",
+  "Unified direction — whether a group of elements animates along a consistent axis/choreography rather than each doing its own thing.",
+  "Perceived hierarchy / emphasis — whether motion draws the eye to the right thing at the right time.",
+  "Content-appropriate personality — expressive vs. standard scheme being the right call for the brand and context.",
+  "Interruptibility & continuity — whether in-flight animations respond gracefully to new input rather than snapping.",
+  "Real contrast under imagery/gradients — text over photos or gradient backgrounds (the audit samples solid computed backgrounds only).",
+  "Closed shadow roots — their internals are structurally unreachable from script and are not scanned."
+ ]
+}

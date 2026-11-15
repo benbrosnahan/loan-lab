@@ -1,0 +1,143 @@
+{
+ "url": "http://localhost:3206/",
+ "siteType": "saas",
+ "viewports": {
+  "desktop": {
+   "width": 1440,
+   "height": 900,
+   "dpr": 1,
+   "isMobile": false
+  },
+  "mobile": {
+   "width": 375,
+   "height": 812,
+   "dpr": 1,
+   "isMobile": true
+  }
+ },
+ "note": "Deterministic findings only. UX scores come from the AI review: it writes ux/ai/<tag>.json, then node lib/merge-ux.mjs <this folder>/ux scores and merges them.",
+ "screens": [
+  {
+   "tag": "empty-desktop",
+   "state": "empty",
+   "formFactor": "desktop",
+   "findings": 4,
+   "p1": 0,
+   "p2": 4,
+   "p3": 0,
+   "extras": 1,
+   "designScore": 88.6,
+   "designGrade": "B",
+   "findingTitles": [
+    "P2 3 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide",
+    "P2 3 reading-copy text node(s) below 16px (or any text below 11px).",
+    "P2 1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+    "P2 1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+    "P3 Primary controls show no hover feedback"
+   ]
+  },
+  {
+   "tag": "empty-mobile",
+   "state": "empty",
+   "formFactor": "mobile",
+   "findings": 4,
+   "p1": 0,
+   "p2": 4,
+   "p3": 0,
+   "extras": 0,
+   "designScore": 88.6,
+   "designGrade": "B",
+   "findingTitles": [
+    "P2 3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide",
+    "P2 3 reading-copy text node(s) below 16px (or any text below 11px).",
+    "P2 1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+    "P2 1 animation/transition(s) under 50ms (non-instant but too fast to read)."
+   ]
+  },
+  {
+   "tag": "form-errors-desktop",
+   "state": "form-errors",
+   "formFactor": "desktop",
+   "error": "clickText: no visible control \"Add my first loan\""
+  },
+  {
+   "tag": "form-errors-mobile",
+   "state": "form-errors",
+   "formFactor": "mobile",
+   "error": "clickText: no visible control \"Add my first loan\""
+  },
+  {
+   "tag": "loans-desktop",
+   "state": "loans",
+   "formFactor": "desktop",
+   "findings": 4,
+   "p1": 0,
+   "p2": 4,
+   "p3": 0,
+   "extras": 1,
+   "designScore": 88.6,
+   "designGrade": "B",
+   "findingTitles": [
+    "P2 3 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide",
+    "P2 3 reading-copy text node(s) below 16px (or any text below 11px).",
+    "P2 1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+    "P2 1 animation/transition(s) under 50ms (non-instant but too fast to read).",
+    "P3 Primary controls show no hover feedback"
+   ]
+  },
+  {
+   "tag": "loans-mobile",
+   "state": "loans",
+   "formFactor": "mobile",
+   "findings": 4,
+   "p1": 0,
+   "p2": 4,
+   "p3": 0,
+   "extras": 0,
+   "designScore": 88.6,
+   "designGrade": "B",
+   "findingTitles": [
+    "P2 3 tap target(s) smaller than M3's comfortable 48×48px at 375px wide",
+    "P2 3 reading-copy text node(s) below 16px (or any text below 11px).",
+    "P2 1 border-radius value(s) off the 7-step scale (0/4/8/12/16/28/full).",
+    "P2 1 animation/transition(s) under 50ms (non-instant but too fast to read)."
+   ]
+  },
+  {
+   "tag": "plans-desktop",
+   "state": "plans",
+   "formFactor": "desktop",
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "tag": "plans-mobile",
+   "state": "plans",
+   "formFactor": "mobile",
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "tag": "payoff-desktop",
+   "state": "payoff",
+   "formFactor": "desktop",
+   "error": "clickTab: no section button for payoff"
+  },
+  {
+   "tag": "payoff-mobile",
+   "state": "payoff",
+   "formFactor": "mobile",
+   "error": "clickTab: no section button for payoff"
+  },
+  {
+   "tag": "records-desktop",
+   "state": "records",
+   "formFactor": "desktop",
+   "error": "clickTab: no section button for records"
+  },
+  {
+   "tag": "records-mobile",
+   "state": "records",
+   "formFactor": "mobile",
+   "error": "clickTab: no section button for records"
+  }
+ ]
+}

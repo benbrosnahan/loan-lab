@@ -1,0 +1,607 @@
+{
+ "url": "http://localhost:3206/",
+ "results": {
+  "header-check": {
+   "url": "http://localhost:3206/",
+   "statusCode": 200,
+   "allHeaders": {
+    "cache-control": "s-maxage=31536000, stale-while-revalidate",
+    "connection": "close",
+    "content-length": "17325",
+    "content-security-policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Sun, 15 Nov 2026 19:08:31 GMT",
+    "etag": "\"oioem3z11cdbc\"",
+    "permissions-policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+    "referrer-policy": "strict-origin-when-cross-origin",
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
+    "x-content-type-options": "nosniff",
+    "x-frame-options": "DENY",
+    "x-nextjs-cache": "HIT"
+   },
+   "analysis": [
+    {
+     "name": "Cache-Control",
+     "value": "s-maxage=31536000, stale-while-revalidate",
+     "status": "good",
+     "recommendation": "Cache-Control is configured."
+    },
+    {
+     "name": "Content-Encoding",
+     "value": null,
+     "status": "warning",
+     "recommendation": "Enable gzip or Brotli compression to reduce transfer sizes by 60-80%."
+    },
+    {
+     "name": "Strict-Transport-Security",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add HSTS header: \"max-age=63072000; includeSubDomains; preload\""
+    },
+    {
+     "name": "X-Content-Type-Options",
+     "value": "nosniff",
+     "status": "good",
+     "recommendation": "X-Content-Type-Options is set."
+    },
+    {
+     "name": "X-Frame-Options",
+     "value": "DENY",
+     "status": "good",
+     "recommendation": "X-Frame-Options is set."
+    },
+    {
+     "name": "Content-Security-Policy",
+     "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'",
+     "status": "good",
+     "recommendation": "Content-Security-Policy is set."
+    },
+    {
+     "name": "Referrer-Policy",
+     "value": "strict-origin-when-cross-origin",
+     "status": "good",
+     "recommendation": "Referrer-Policy is set."
+    },
+    {
+     "name": "Permissions-Policy",
+     "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+     "status": "good",
+     "recommendation": "Permissions-Policy is set."
+    },
+    {
+     "name": "ETag",
+     "value": "\"oioem3z11cdbc\"",
+     "status": "good",
+     "recommendation": "ETag is set for conditional requests."
+    },
+    {
+     "name": "Vary",
+     "value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
+     "status": "good",
+     "recommendation": "Vary header set: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding"
+    }
+   ],
+   "summary": {
+    "good": 8,
+    "warnings": 1,
+    "missing": 1,
+    "total": 10
+   },
+   "score": 80
+  },
+  "meta-validate": {
+   "url": "http://localhost:3206/",
+   "tags": [
+    {
+     "name": "title",
+     "content": "Loan Lab by Cense: student loan repayment quiz",
+     "status": "good",
+     "recommendation": "Title is 46 chars. Good length."
+    },
+    {
+     "name": "meta description",
+     "content": "Six quick questions, then a student loan repayment plan that fits you, with Standard, Graduated, IBR, RAP, Tiered Standard and PSLF compared on one screen under the July 2026 rules. Free, and nothing leaves your browser.",
+     "status": "warning",
+     "recommendation": "Description is 220 chars. Keep under 160."
+    },
+    {
+     "name": "viewport",
+     "content": "width=device-width, initial-scale=1",
+     "status": "good",
+     "recommendation": "Viewport is set."
+    },
+    {
+     "name": "canonical",
+     "content": "https://loan-lab.vercel.app",
+     "status": "good",
+     "recommendation": "Canonical URL: https://loan-lab.vercel.app"
+    },
+    {
+     "name": "og:title",
+     "content": "Loan Lab by Cense",
+     "status": "good",
+     "recommendation": "Set to: Loan Lab by Cense"
+    },
+    {
+     "name": "og:description",
+     "content": "Find the federal student loan repayment plan that fits you, in about three minutes.",
+     "status": "good",
+     "recommendation": "Set to: Find the federal student loan repayment plan that fits you, in about three minut..."
+    },
+    {
+     "name": "og:image",
+     "content": "https://loan-lab.vercel.app/opengraph-image?8b5384ebb1effa5b",
+     "status": "good",
+     "recommendation": "Set to: https://loan-lab.vercel.app/opengraph-image?8b5384ebb1effa5b"
+    },
+    {
+     "name": "og:url",
+     "content": "https://loan-lab.vercel.app",
+     "status": "good",
+     "recommendation": "Set to: https://loan-lab.vercel.app"
+    },
+    {
+     "name": "og:type",
+     "content": "website",
+     "status": "good",
+     "recommendation": "Set to: website"
+    },
+    {
+     "name": "twitter:card",
+     "content": "summary_large_image",
+     "status": "good",
+     "recommendation": "Set to: summary_large_image"
+    },
+    {
+     "name": "twitter:title",
+     "content": "Loan Lab by Cense",
+     "status": "good",
+     "recommendation": "Set to: Loan Lab by Cense"
+    },
+    {
+     "name": "twitter:description",
+     "content": "Find the federal student loan repayment plan that fits you, in about three minutes.",
+     "status": "good",
+     "recommendation": "Set to: Find the federal student loan repayment plan that fits you, in about three minut..."
+    },
+    {
+     "name": "twitter:image",
+     "content": "https://loan-lab.vercel.app/twitter-image?fac65c47b6ecdb89",
+     "status": "good",
+     "recommendation": "Set to: https://loan-lab.vercel.app/twitter-image?fac65c47b6ecdb89"
+    },
+    {
+     "name": "lang attribute",
+     "content": "en",
+     "status": "good",
+     "recommendation": "Language: en"
+    },
+    {
+     "name": "favicon",
+     "content": "/favicon.ico",
+     "status": "good",
+     "recommendation": "Favicon found: /favicon.ico"
+    }
+   ],
+   "preview": {
+    "title": "Loan Lab by Cense",
+    "description": "Find the federal student loan repayment plan that fits you, in about three minutes.",
+    "image": "https://loan-lab.vercel.app/opengraph-image?8b5384ebb1effa5b",
+    "url": "https://loan-lab.vercel.app",
+    "siteName": "Cense"
+   },
+   "summary": {
+    "good": 14,
+    "warnings": 1,
+    "missing": 0,
+    "total": 15
+   },
+   "score": 93
+  },
+  "structured-data": {
+   "url": "http://localhost:3206/",
+   "totalSchemas": 1,
+   "items": [
+    {
+     "type": "WebApplication",
+     "source": "json-ld",
+     "raw": "{\"@context\":\"https://schema.org\",\"@type\":\"WebApplication\",\"name\":\"Loan Lab by Cense\",\"url\":\"https://loan-lab.vercel.app\",\"applicationCategory\":\"FinanceApplication\",\"operatingSystem\":\"Any\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"description\":\"Six quick questions, then a student loan repayment plan that fits you, with Standard, Graduated, IBR, RAP, Tiered Standard and PSLF compared on one screen under the July 2026 rules. Free, and nothing leaves your browser.\",\"publisher\":{\"@type\":\"Organization\",\"name\":\"Cense\",\"url\":\"https://cense.beehiiv.com\"}}",
+     "parsed": {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Loan Lab by Cense",
+      "url": "https://loan-lab.vercel.app",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "isAccessibleForFree": true,
+      "offers": {
+       "@type": "Offer",
+       "price": "0",
+       "priceCurrency": "USD"
+      },
+      "description": "Six quick questions, then a student loan repayment plan that fits you, with Standard, Graduated, IBR, RAP, Tiered Standard and PSLF compared on one screen under the July 2026 rules. Free, and nothing leaves your browser.",
+      "publisher": {
+       "@type": "Organization",
+       "name": "Cense",
+       "url": "https://cense.beehiiv.com"
+      }
+     },
+     "errors": [],
+     "warnings": [
+      "Schema type \"WebApplication\" is valid but not in our validation database. Basic checks only."
+     ],
+     "properties": [
+      {
+       "name": "name",
+       "value": "Loan Lab by Cense",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "url",
+       "value": "https://loan-lab.vercel.app",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "applicationCategory",
+       "value": "FinanceApplication",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "operatingSystem",
+       "value": "Any",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "isAccessibleForFree",
+       "value": "true",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "offers",
+       "value": "{Offer}",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "description",
+       "value": "Six quick questions, then a student loan repayment plan that fits you, with Stan...",
+       "required": false,
+       "present": true
+      },
+      {
+       "name": "publisher",
+       "value": "{Organization}",
+       "required": false,
+       "present": true
+      }
+     ]
+    }
+   ],
+   "summary": {
+    "total": 1,
+    "valid": 1,
+    "withErrors": 0,
+    "totalErrors": 0,
+    "totalWarnings": 1,
+    "jsonLd": 1,
+    "microdata": 0
+   },
+   "richResultEligibility": {
+    "eligible": false,
+    "types": []
+   }
+  },
+  "sitemap-validate": {
+   "sitemapUrl": "http://localhost:3206/sitemap.xml",
+   "found": true,
+   "isSitemapIndex": false,
+   "totalUrls": 1,
+   "checkedUrls": 1,
+   "urls": [
+    {
+     "loc": "https://loan-lab.vercel.app/",
+     "lastmod": null,
+     "status": 200,
+     "statusText": "ok",
+     "responseTimeMs": 142,
+     "issues": [
+      "Missing lastmod. Add last modification date for better crawling."
+     ]
+    }
+   ],
+   "uncheckedUrls": [],
+   "missingCommonPages": [
+    "http://localhost:3206/"
+   ],
+   "duplicates": [],
+   "issues": [
+    "1 common page(s) exist but are missing from sitemap: http://localhost:3206/"
+   ],
+   "summary": {
+    "total": 1,
+    "checked": 1,
+    "ok": 1,
+    "redirects": 0,
+    "errors": 0,
+    "dead": 0,
+    "slow": 0,
+    "duplicates": 0,
+    "missingCommon": 1
+   }
+  },
+  "redirect-check": {
+   "url": "http://localhost:3206/",
+   "finalUrl": "http://localhost:3206/",
+   "finalStatus": 200,
+   "hops": [
+    {
+     "url": "http://localhost:3206/",
+     "statusCode": 200,
+     "location": null,
+     "timeMs": 4
+    }
+   ],
+   "redirectCount": 0,
+   "totalTimeMs": 4,
+   "status": "good",
+   "message": "No redirects detected. URL resolves directly."
+  },
+  "broken-links": {
+   "url": "http://localhost:3206/",
+   "depth": "page",
+   "pagesScanned": 1,
+   "pagesScannedList": [
+    "http://localhost:3206/"
+   ],
+   "totalLinks": 15,
+   "totalDiscoveredLinks": 15,
+   "links": [
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "https://cense.beehiiv.com/",
+     "anchorText": "Cense",
+     "linkType": "a",
+     "isInternal": false,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 635,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/",
+     "anchorText": "Loan Lab",
+     "linkType": "a",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 5,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/fd9d1056-7d1bbc76429df44e.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/117-03fb425b07b9ff2b.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 5,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/main-app-b870c57ff7076d25.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 5,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/265-85deb21fdda0b0fd.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/936-9db884ecaf74a0c4.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/app/page-6b92870f094384c8.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/polyfills-42372ed130431b0a.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/chunks/webpack-e8fc8401c13fc652.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/media/26d0ba92e140f0dc-s.p.woff2",
+     "anchorText": "preload",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/media/9d5a263311222317-s.p.woff2",
+     "anchorText": "preload",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/_next/static/css/b5c0ecb0411c3794.css",
+     "anchorText": "stylesheet",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "https://loan-lab.vercel.app/",
+     "anchorText": "canonical",
+     "linkType": "link",
+     "isInternal": false,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 81,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    },
+    {
+     "sourceUrl": "http://localhost:3206/",
+     "targetUrl": "http://localhost:3206/favicon.ico",
+     "anchorText": "icon",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 6,
+     "sources": [
+      "http://localhost:3206/"
+     ]
+    }
+   ],
+   "summary": {
+    "total": 15,
+    "ok": 15,
+    "broken": 0,
+    "redirects": 0,
+    "errors": 0,
+    "timeouts": 0
+   }
+  },
+  "webmcp-check": {
+   "url": "http://localhost:3206/",
+   "aiReadinessScore": 0,
+   "mcpDiscovery": {
+    "score": 0,
+    "found": false,
+    "valid": false,
+    "hasAuth": false,
+    "data": null,
+    "errors": [
+     "HTTP 404 response from http://localhost:3206/.well-known/mcp.json."
+    ]
+   },
+   "webmcpDeclarative": {
+    "score": 0,
+    "toolCount": 0,
+    "tools": [],
+    "findings": [
+     "No declarative WebMCP tools found (no toolname attributes in HTML)."
+    ]
+   },
+   "webmcpImperative": {
+    "score": 0,
+    "detected": false,
+    "registerToolCalls": 0,
+    "findings": [
+     "No imperative WebMCP tool registration detected in inline scripts.",
+     "Note: This check cannot detect tools registered via external JavaScript files."
+    ]
+   },
+   "recommendations": [
+    "Add a .well-known/mcp.json file to enable MCP server discovery. This lets AI agents find and connect to your API endpoints automatically.",
+    "Add WebMCP declarative tools to your HTML using toolname attributes on <form> elements. Example: <form toolname=\"search\" tooldescription=\"Search products\"> to expose functionality to AI agents.",
+    "Consider implementing imperative WebMCP tools using navigator.modelContext.registerTool() for dynamic tool registration that depends on runtime state.",
+    "This page has no AI/MCP integration. Start with .well-known/mcp.json for server discovery or add toolname attributes to existing forms for quick wins."
+   ]
+  }
+ }
+}

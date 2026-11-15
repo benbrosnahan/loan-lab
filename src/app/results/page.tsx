@@ -206,9 +206,14 @@ export default function ResultsPage() {
 
         <section aria-labelledby="plans-title" className="mt-14">
           <h2 id="plans-title" className="font-display text-2xl font-bold tracking-[-0.01em] text-slate-900 sm:text-[1.75rem]">
-            Every plan open to you
+            Each plan, side by side
           </h2>
-          <p className="mt-2 max-w-2xl text-base text-slate-700">{LOAN_SCOPE_NOTE}</p>
+          <p className="mt-2 max-w-2xl text-base text-slate-700">
+            {LOAN_SCOPE_NOTE}
+            {result.isLegacyBorrower && result.quizAnswers.federalBalance > 30000
+              ? " Extended (up to 25 years, for balances over $30,000) is open to you but not priced here; Loan Desk prices it."
+              : ""}
+          </p>
           <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
             {sortedPlans.map((plan) => (
               <PlanCard

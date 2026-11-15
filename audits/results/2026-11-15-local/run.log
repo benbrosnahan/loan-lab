@@ -1,0 +1,168 @@
+Auditing http://localhost:3206/: lighthouse, flow, security, geo, design, ux, tools, responsive, inp, readable. Results go to /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/results/2026-11-15-local
+
+== lighthouse
+  empty-mobile run 1/1: perf 100 a11y 100 bp 100 seo 100 lcp 764.628 fcp 764.628 cls 0 tbt 0
+  empty-desktop run 1/1: perf 100 a11y 100 bp 100 seo 100 lcp 206.791 fcp 206.791 cls 0 tbt 0
+  seeded-mobile run 1/1: perf 100 a11y 100 bp 100 seo 100 lcp 777.206 fcp 777.206 cls 0 tbt 4
+  seeded-desktop run 1/1: perf 100 a11y 100 bp 100 seo 100 lcp 208.672 fcp 208.672 cls 0 tbt 0
+  lighthouse: ok in 30.3 s
+
+== flow
+  mobile: FAILED clickText: no visible control "Look around with example loans"
+  desktop: FAILED clickText: no visible control "Look around with example loans"
+  flow: failed in 16.2 s
+
+== security
+  score 35 {"https":0,"headers":0,"cookies":100,"content":100,"deps":null}
+  security: ok in under 0.1 s
+
+== geo
+  score 84 parity 100% raw words 114 rendered words 114
+  geo: ok in 10.7 s
+
+== design
+  empty: desktop 88.6 B, mobile 88.6 B, merged 89 B
+  form-errors: desktop failed, mobile failed, merged – 
+  loans: desktop 88.6 B, mobile 88.6 B, merged 89 B
+  plans: desktop failed, mobile failed, merged – 
+  payoff: desktop failed, mobile failed, merged – 
+  records: desktop failed, mobile failed, merged – 
+  design: partial in 48.8 s
+
+== ux
+  empty-desktop: 4 rule findings (P1 0, P2 4, P3 0), 1 probe findings, design 88.6
+  empty-mobile: 4 rule findings (P1 0, P2 4, P3 0), 0 probe findings, design 88.6
+  form-errors-desktop: FAILED clickText: no visible control "Add my first loan"
+  form-errors-mobile: FAILED clickText: no visible control "Add my first loan"
+  loans-desktop: 4 rule findings (P1 0, P2 4, P3 0), 1 probe findings, design 88.6
+  loans-mobile: 4 rule findings (P1 0, P2 4, P3 0), 0 probe findings, design 88.6
+  plans-desktop: FAILED clickTab: no section button for plans
+  plans-mobile: FAILED clickTab: no section button for plans
+  payoff-desktop: FAILED clickTab: no section button for payoff
+  payoff-mobile: FAILED clickTab: no section button for payoff
+  records-desktop: FAILED clickTab: no section button for records
+  records-mobile: FAILED clickTab: no section button for records
+  ux: partial in under 0.1 s
+
+== tools
+  header-check: score 80: 8 good, 1 warnings, 1 missing
+  meta-validate: score 93: 14 good, 1 warnings, 0 missing
+  structured-data: 1 schemas, 0 errors, 1 warnings
+  sitemap-validate: found, 1 URLs, 1 issues
+  redirect-check: 0 redirects, final status 200: No redirects detected. URL resolves directly.
+  broken-links: 15 links, 0 broken, 0 redirects, 0 errors, 0 timeouts
+  webmcp-check: AI readiness 0
+  tools: ok in 0.9 s
+
+== responsive
+  empty@320: scrollWidth=320 clientWidth=320 height=1165
+  empty@375: scrollWidth=375 clientWidth=375 height=1097
+  empty@768: scrollWidth=768 clientWidth=768 height=1024
+  empty@1024: scrollWidth=1024 clientWidth=1024 height=985
+  empty@1440: scrollWidth=1440 clientWidth=1440 height=985
+  form-errors@320: FAILED clickText: no visible control "Add my first loan"
+  form-errors@375: FAILED clickText: no visible control "Add my first loan"
+  form-errors@768: FAILED clickText: no visible control "Add my first loan"
+  form-errors@1024: FAILED clickText: no visible control "Add my first loan"
+  form-errors@1440: FAILED clickText: no visible control "Add my first loan"
+  loans@320: scrollWidth=320 clientWidth=320 height=1165
+  loans@375: scrollWidth=375 clientWidth=375 height=1097
+  loans@768: scrollWidth=768 clientWidth=768 height=1024
+  loans@1024: scrollWidth=1024 clientWidth=1024 height=985
+  loans@1440: scrollWidth=1440 clientWidth=1440 height=985
+  plans@320: FAILED clickTab: no section button for plans
+  plans@375: FAILED clickTab: no section button for plans
+  plans@768: FAILED clickTab: no section button for plans
+  plans@1024: FAILED clickTab: no section button for plans
+  plans@1440: FAILED clickTab: no section button for plans
+  payoff@320: FAILED clickTab: no section button for payoff
+  payoff@375: FAILED clickTab: no section button for payoff
+  payoff@768: FAILED clickTab: no section button for payoff
+  payoff@1024: FAILED clickTab: no section button for payoff
+  payoff@1440: FAILED clickTab: no section button for payoff
+  records@320: FAILED clickTab: no section button for records
+  records@375: FAILED clickTab: no section button for records
+  records@768: FAILED clickTab: no section button for records
+  records@1024: FAILED clickTab: no section button for records
+  records@1440: FAILED clickTab: no section button for records
+  responsive: partial in 51.9 s
+
+== inp
+  cpu1x loans=8 run1 FAILED clickTab: no section button for plans
+  cpu1x loans=8 run2 FAILED clickTab: no section button for plans
+  cpu1x loans=25 run1 FAILED clickTab: no section button for plans
+  cpu1x loans=25 run2 FAILED clickTab: no section button for plans
+  cpu1x loans=60 run1 FAILED clickTab: no section button for plans
+  cpu1x loans=60 run2 FAILED clickTab: no section button for plans
+  cpu4x loans=8 run1 FAILED clickTab: no section button for plans
+  cpu4x loans=8 run2 FAILED clickTab: no section button for plans
+  cpu4x loans=25 run1 FAILED clickTab: no section button for plans
+  cpu4x loans=25 run2 FAILED clickTab: no section button for plans
+  cpu4x loans=60 run1 FAILED clickTab: no section button for plans
+  cpu4x loans=60 run2 FAILED clickTab: no section button for plans
+  inp: failed in 18.9 s
+
+== readable
+  first run1 fp 1472 fcp 1472 skeleton – real 1459 readable 1703 lcp 1876 (lcp on p "This prices Direct Loans you borrowed fo")
+  returning run1 fp 1480 fcp 1480 skeleton – real 1462 readable 1696 lcp 1880 (lcp on p "This prices Direct Loans you borrowed fo")
+  readable: ok in 8.2 s
+
+Scoreboard for http://localhost:3206/, median of 1 run
+
+| Page | Perf | A11y | BP | SEO | LCP | FCP | CLS |
+|---|---|---|---|---|---|---|---|
+| Empty, mobile | 100 | 100 | 100 | 100 | 765 ms | 765 ms | 0 |
+| Empty, desktop | 100 | 100 | 100 | 100 | 207 ms | 207 ms | 0 |
+| Seeded, mobile | 100 | 100 | 100 | 100 | 777 ms | 777 ms | 0 |
+| Seeded, desktop | 100 | 100 | 100 | 100 | 209 ms | 209 ms | 0 |
+
+Security 35 · GEO 84 · Design 88.6-88.6 · INP probe worst – · Overflow 0 of 30 · Readable first visit 1703 ms, returning 1696 ms · First-load JS 107.2 kB
+Budgets PASS: 27 passed, 0 failed, 2 not measured
+Steps not fully measured: flow (failed), design (partial), ux (partial), responsive (partial), inp (failed)
+Changes since results/2026-11-15-live:
+  WORSE  security.headers: 27 -> 0
+  WORSE  security.https: 100 -> 0
+  WORSE  security.score: 71 -> 35
+  better design.empty.desktop: 42.1 -> 88.6
+  better design.empty.merged: 42 -> 89
+  better design.empty.mobile: 42.1 -> 88.6
+  better design.loans.desktop: 42.1 -> 88.6
+  better design.loans.merged: 42 -> 89
+  better design.loans.mobile: 42.1 -> 88.6
+  better geo.contentParity: 0 -> 100
+  better geo.score: 44 -> 84
+  better geo.serverContent: 12 -> 28
+  better geo.socialMeta: 7 -> 15
+  better geo.structuredData: 0 -> 16
+  better lighthouse.empty-desktop.accessibility: 93 -> 100
+  better lighthouse.empty-desktop.lcp: 445.813 -> 206.791
+  better lighthouse.empty-desktop.tti: 445.813 -> 206.791
+  better lighthouse.empty-mobile.accessibility: 93 -> 100
+  better lighthouse.empty-mobile.lcp: 1832.318 -> 764.628
+  better lighthouse.empty-mobile.tti: 1832.318 -> 764.628
+  better lighthouse.seeded-desktop.accessibility: 93 -> 100
+  better lighthouse.seeded-desktop.fcp: 305.51 -> 208.672
+  better lighthouse.seeded-desktop.lcp: 505.51 -> 208.672
+  better lighthouse.seeded-desktop.si: 394.555 -> 208.672
+  better lighthouse.seeded-desktop.tti: 505.51 -> 208.672
+  better lighthouse.seeded-mobile.accessibility: 93 -> 100
+  better lighthouse.seeded-mobile.lcp: 1835.199 -> 777.206
+  better security.content: 80 -> 100
+  better tools.header-check.score: 40 -> 80
+  better tools.meta-validate.score: 67 -> 93
+  better tools.sitemap-validate.found: 0 -> 1
+  better tools.structured-data.totalSchemas: 0 -> 1
+  better ux.empty-desktop.findings: 9 -> 4
+  better ux.empty-desktop.p1: 3 -> 0
+  better ux.empty-desktop.p2: 6 -> 4
+  better ux.empty-mobile.findings: 9 -> 4
+  better ux.empty-mobile.p1: 3 -> 0
+  better ux.empty-mobile.p2: 6 -> 4
+  better ux.loans-desktop.findings: 9 -> 4
+  better ux.loans-desktop.p1: 3 -> 0
+  better ux.loans-desktop.p2: 6 -> 4
+  better ux.loans-mobile.findings: 9 -> 4
+  better ux.loans-mobile.p1: 3 -> 0
+  better ux.loans-mobile.p2: 6 -> 4
+Summary: /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/results/2026-11-15-local/SUMMARY.md
+exit 2

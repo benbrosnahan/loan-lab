@@ -24,8 +24,15 @@ reason the successor project traces every number to a citation in code.
 
 ## How it is built
 
-- Next.js App Router, TypeScript, Tailwind, Framer Motion
-- `src/data/plans.ts` for plan rules, `src/lib/calculator.ts` for the comparison math
-- Client side only, shareable by URL, nothing stored
+- Next.js App Router, TypeScript, Tailwind, on the Cense design system shared with Loan Desk and Decode
+- `src/data/plans.ts` for plan rules and figures, each traced to its source; `src/lib/calculator.ts` for the math
+- Client side only, shareable by URL (the answers ride in the `#` fragment, so they never reach a server), nothing stored beyond the browser tab
+
+## Checking the numbers
+
+`audits/` holds the audit kit. `audits/tests/support/money-oracle.mjs` is an independent oracle written from
+34 CFR 685, the 2026 HHS poverty guidelines and the 2026 IRS brackets, never from the app's code, and the
+Playwright suite compares every figure the app shows against it. From `audits/`: `npm ci && npm run setup`,
+build the app (`npm --prefix .. run build`), then `npx playwright test`.
 
 Part of [Cense](https://cense.beehiiv.com).
