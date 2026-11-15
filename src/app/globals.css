@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cense design system, 2026-09-27. Tokens match Loan Desk and Decode.
+   Contrast on the cream page (#FFFCEC): brand green #275B2D 7.4:1,
+   slate-600 #4A6E4D 5.9:1, slate-500 #5C7F5F 4.6:1, orange text #A8531F 4.9:1.
+   slate-400 and lighter are for marks and borders only, never text. */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   color: #275b2d;
   background: #fffcec;
@@ -12,5 +21,89 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Money must not jitter between rows. */
+  .tnum {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  /* Headline figures in the display face, proportional digits. */
+  .figure {
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+    font-variant-numeric: proportional-nums;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Entrances are CSS, never JavaScript. A script-driven fade starts content at
+   opacity 0 and needs animation frames to bring it back, so a background tab
+   or a slow phone can leave the page blank. A CSS animation always ends in its
+   final state. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.rise {
+  animation: rise 0.24s ease-out both;
+}
+@keyframes unfold {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.unfold {
+  animation: unfold 0.2s ease-out both;
+}
+
+/* Fade only, for marks positioned with transforms that a rise would reset. */
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.appear {
+  animation: appear 0.3s ease-out both;
+}
+
+/* The years ruler: each lane grows from today to its end year, once. */
+@keyframes lane {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.lane {
+  transform-origin: left center;
+  animation: lane 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

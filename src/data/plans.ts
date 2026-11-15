@@ -1,27 +1,31 @@
+// Loan Lab plan data. Every number here is traced to the primary source named
+// beside it. Re-check the citation before changing a value.
+
 import { PlanId, PlanStatus } from "@/types";
 
-// 2025 Federal Poverty Guidelines (48 contiguous states + DC)
-export const POVERTY_LINE: Record<number, number> = {
-  1: 15650,
-  2: 21150,
-  3: 26650,
-  4: 32150,
-  5: 37650,
-};
-
-const POVERTY_INCREMENT = 5500;
+/**
+ * 2026 HHS poverty guidelines, 48 contiguous states and DC (aspe.hhs.gov,
+ * published January 2026): $15,960 for one person, $5,680 for each extra.
+ * IBR uses 150% of the guideline for the borrower's family size
+ * (34 CFR 685.209(b)(4)(ii), (b)(14)).
+ */
+export const POVERTY_BASE_2026 = 15960;
+export const POVERTY_INCREMENT_2026 = 5680;
 
 export function getPovertyLine(familySize: number): number {
-  if (familySize <= 1) return POVERTY_LINE[1];
-  if (familySize <= 5) return POVERTY_LINE[familySize];
-  return POVERTY_LINE[5] + (familySize - 5) * POVERTY_INCREMENT;
+  const n = Math.max(1, Math.floor(familySize || 1));
+  return POVERTY_BASE_2026 + (n - 1) * POVERTY_INCREMENT_2026;
 }
 
-// Direct Subsidized/Unsubsidized undergraduate rate for loans first disbursed
-// July 1, 2026 through June 30, 2027.
-export const AVERAGE_FEDERAL_RATE = 6.52;
+/**
+ * Direct Subsidized and Unsubsidized undergraduate rate for loans first
+ * disbursed July 1, 2026 through June 30, 2027 (studentaid.gov interest rates
+ * page). It is a new-loan rate, not an average: older loans carry their own
+ * year's rate. Update it each June for the next award year.
+ */
+export const UNDERGRAD_RATE_2026_27 = 6.52;
 
-// Tiered Standard Plan repayment term, set by total Direct Loan balance.
+/** Tiered Standard term by total Direct Loan balance, 34 CFR 685.208(c)(1)(iii). */
 export const TIERED_STANDARD_TERMS: { maxBalance: number; years: number }[] = [
   { maxBalance: 25000, years: 10 },
   { maxBalance: 50000, years: 15 },
@@ -29,13 +33,72 @@ export const TIERED_STANDARD_TERMS: { maxBalance: number; years: number }[] = [
   { maxBalance: Infinity, years: 25 },
 ];
 
-export const TIERED_STANDARD_MIN_PAYMENT = 50;
+/** Standard (685.208(b)(1)(ii)) and Tiered Standard ((c)(1)(ii)) are at least $50 a month. */
+export const FIXED_PLAN_MIN_PAYMENT = 50;
 
 export function getTieredStandardYears(balance: number): number {
   return (
     TIERED_STANDARD_TERMS.find((t) => balance < t.maxBalance)?.years ?? 25
   );
 }
+
+/** RAP: $10 floor (685.209(g)(3)(ii)) and $50 off per dependent ((f)(5)). */
+export const RAP_MIN_MONTHLY = 10;
+export const RAP_DEPENDENT_CREDIT = 50;
+
+/** RAP annual base payment by AGI, 34 CFR 685.209(b)(2)(i)-(xi), verbatim. */
+export function rapAnnualBasePayment(agi: number): number {
+  if (agi <= 10000) return 120;
+  if (agi <= 20000) return agi * 0.01;
+  if (agi <= 30000) return agi * 0.02;
+  if (agi <= 40000) return agi * 0.03;
+  if (agi <= 50000) return agi * 0.04;
+  if (agi <= 60000) return agi * 0.05;
+  if (agi <= 70000) return agi * 0.06;
+  if (agi <= 80000) return agi * 0.07;
+  if (agi <= 90000) return agi * 0.08;
+  if (agi <= 100000) return agi * 0.09;
+  return agi * 0.1;
+}
+
+/**
+ * 2026 federal income tax (IRS, Rev. Proc. 2025-32). Used to estimate the tax
+ * on a balance forgiven at the end of IBR or RAP: Pub. L. 119-21 sec. 70119
+ * kept the IRC 108(f)(5) exclusion after 2025 only for death and disability
+ * discharges, so that balance is taxable income in the year it is forgiven.
+ * PSLF forgiveness stays excluded under 108(f)(1) and is never taxed here.
+ */
+export const FEDERAL_TAX_2026 = {
+  single: {
+    standardDeduction: 16100,
+    brackets: [
+      { upTo: 12400, rate: 0.1 },
+      { upTo: 50400, rate: 0.12 },
+      { upTo: 105700, rate: 0.22 },
+      { upTo: 201775, rate: 0.24 },
+      { upTo: 256225, rate: 0.32 },
+      { upTo: 640600, rate: 0.35 },
+      { upTo: Infinity, rate: 0.37 },
+    ],
+  },
+  joint: {
+    standardDeduction: 32200,
+    brackets: [
+      { upTo: 24800, rate: 0.1 },
+      { upTo: 100800, rate: 0.12 },
+      { upTo: 211400, rate: 0.22 },
+      { upTo: 403550, rate: 0.24 },
+      { upTo: 512450, rate: 0.32 },
+      { upTo: 768700, rate: 0.35 },
+      { upTo: Infinity, rate: 0.37 },
+    ],
+  },
+} as const;
+
+/** Employee Social Security and Medicare tax, 7.65%, for the take-home estimate. */
+export const FICA_RATE = 0.0765;
+/** A stated guess at state and local income tax, for the take-home estimate only. */
+export const STATE_TAX_GUESS = 0.04;
 
 export const PLAN_META: Record<
   PlanId,
@@ -51,142 +114,151 @@ export const PLAN_META: Record<
 > = {
   standard: {
     name: "Standard 10-Year",
-    tagline: "Fixed payments, out in a decade",
+    tagline: "Fixed payments, done in 10 years",
     status: "legacy_only",
-    statusLabel: "Pre-July 2026 loans only",
+    statusLabel: "Loans before July 2026",
     definition:
-      "Fixed payments spread evenly over exactly 10 years. Same payment every month regardless of income. Counts toward Public Service Loan Forgiveness (PSLF). Only available if all of your loans were disbursed before July 1, 2026.",
+      "The same payment every month for 10 years, at least $50. Only open if every loan was paid out before July 1, 2026.",
     pros: [
-      "Lowest total interest of any plan, since the term is the shortest",
-      "Payments count toward Public Service Loan Forgiveness",
-      "Fixed payment that never changes and no annual paperwork",
+      "Least interest of the repayment plans, since the term is short",
+      "Counts toward Public Service Loan Forgiveness (PSLF)",
+      "No yearly income paperwork",
     ],
     cons: [
-      "Highest monthly payment of any plan available to you",
-      "No forgiveness at the end unless you are pursuing PSLF",
-      "The payment does not drop if your income drops",
+      "The highest monthly payment",
+      "The payment does not drop if your income does",
     ],
   },
   graduated: {
     name: "Graduated",
-    tagline: "Start low, payments rise over time",
+    tagline: "Starts low, steps up every 2 years",
     status: "legacy_only",
-    statusLabel: "Pre-July 2026 loans only",
+    statusLabel: "Loans before July 2026",
     definition:
-      "Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026.",
+      "Starts a little over half the Standard payment and steps up every two years, ending in 10. The last payment can be up to three times the first. Only open if every loan was paid out before July 1, 2026.",
     pros: [
-      "Starts at roughly half the Standard payment",
-      "Still finishes in 10 years, and the schedule is predictable",
+      "A lower start while your income grows",
+      "Still done in 10 years",
     ],
     cons: [
-      "Payments do NOT count toward Public Service Loan Forgiveness",
-      "You pay more total interest than Standard",
-      "Payments step up every 2 years whether your income did or not",
+      "More total interest than Standard",
+      "Steps up whether your income does or not",
+      "Early payments are below Standard, so those months earn no PSLF credit",
+      "The steps shown are a model. Your servicer sets the exact schedule",
     ],
   },
   ibr: {
     name: "IBR",
-    tagline: "Payments tied to your income",
+    tagline: "Payment tied to your income",
     status: "legacy_only",
-    statusLabel: "Pre-July 2026 loans only",
+    statusLabel: "Loans before July 2026",
     definition:
-      "Caps your payment at 10% of discretionary income (what you earn above 150% of the poverty line). Payments drop to $0 if income is very low, and $0 still counts as a qualifying payment. Remaining balance forgiven after 20 years. Unpaid interest is added to your balance, so your balance can grow. Only available if all of your loans were disbursed before July 1, 2026.",
+      "10% of your AGI above 150% of the poverty line, never more than the Standard payment. It can be $0, and $0 still counts. What is left after 20 years is forgiven. Only open if every loan was paid out before July 1, 2026.",
     pros: [
-      "Usually the lowest monthly payment, since it only counts income above the poverty floor",
-      "A $0 payment is possible and still counts as a qualifying payment",
-      "Payments count toward Public Service Loan Forgiveness",
-      "Balance forgiven after 20 years, which is 10 years sooner than RAP",
+      "Often the lowest payment, since income below the poverty floor is not counted",
+      "A $0 payment still counts toward forgiveness and PSLF",
+      "Forgiveness at 20 years, 10 sooner than RAP",
     ],
     cons: [
-      "Unpaid interest is added to your balance, so your balance can grow for years",
-      "Forgiveness after 20 years counts as taxable income",
-      "You have to recertify your income every year or the payment jumps",
-      "Closed to you if any loan was disbursed on or after July 1, 2026",
+      "Interest your payment does not cover keeps adding up, so you can owe more over time",
+      "Forgiveness at 20 years is taxed as federal income",
+      "You recertify your income every year",
+      "If you had federal loans before July 2014, it is 15% and 25 years",
     ],
   },
   tiered_standard: {
     name: "Tiered Standard",
     tagline: "Fixed payments, term set by your balance",
     status: "new",
-    statusLabel: "New plan",
+    statusLabel: "New July 2026",
     definition:
-      "A fixed-payment plan launched July 1, 2026, available only if at least one of your loans was disbursed on or after that date. Your term is set by your balance rather than your income: 10 years under $25,000, 15 years to $50,000, 20 years to $100,000, and 25 years above that. There is no forgiveness at the end, and payments do NOT count toward Public Service Loan Forgiveness in any tier. This is the plan you get automatically if you never pick one.",
+      "Fixed payments, at least $50, over a term set by your balance: 10 years under $25,000, 15 under $50,000, 20 under $100,000, 25 above. For anyone with a loan paid out on or after July 1, 2026. No PSLF credit in any tier.",
     pros: [
-      "Predictable fixed payment with no annual income paperwork",
-      "Lower monthly payment than the 10-year Standard plan if your balance is large",
-      "One of only two plans open to you once any loan is disbursed on or after July 1, 2026",
+      "A predictable payment, no income paperwork",
+      "Lower monthly than 10 years when your balance is large",
     ],
     cons: [
-      "Payments do NOT count toward Public Service Loan Forgiveness, in any tier",
-      "No forgiveness at the end, ever",
-      "A longer term means more total interest paid",
-      "This is the plan you are placed in automatically if you ignore your notice",
+      "Earns no PSLF credit, in any tier, including the 10-year one",
+      "Nothing is forgiven at the end",
+      "A longer term means more interest",
+      "Where you land if you never pick a plan",
     ],
   },
   rap: {
     name: "RAP",
-    tagline: "Income-driven, with interest protection",
+    tagline: "Income-driven, and the balance always shrinks",
     status: "new",
-    statusLabel: "New plan",
+    statusLabel: "New July 2026",
     definition:
-      "The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.",
+      "The Repayment Assistance Plan: 1% to 10% of your whole AGI, minus $50 a month per dependent, at least $10. Interest your on-time payment does not cover is waived. What is left after 30 years is forgiven.",
     pros: [
-      "Unpaid interest is waived rather than added to your balance",
-      "The government puts at least $50/month toward your principal, so the balance always shrinks",
-      "Payments count toward Public Service Loan Forgiveness",
-      "Available even if you borrowed on or after July 1, 2026",
+      "Unpaid interest is waived, never added",
+      "ED adds up to $50 a month to principal (the lesser of $50 or your payment), so the balance always falls",
+      "Counts toward PSLF",
+      "Open whenever your loans were paid out",
     ],
     cons: [
-      "Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR",
-      "Forgiveness takes 30 years, 10 longer than IBR",
-      "The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan",
-      "Forgiveness after 30 years counts as taxable income",
+      "Counts all your income, not just income above the poverty line",
+      "30 years to forgiveness, 10 more than IBR",
+      "Forgiveness is taxed as federal income",
+      "No cap, so high earners can pay more than Standard",
     ],
   },
   pslf: {
     name: "PSLF",
-    tagline: "Full forgiveness after 10 years of public service",
+    tagline: "Forgiveness after 120 payments in public service",
     status: "active",
     definition:
-      "Cancels 100% of your remaining federal balance after 10 years of payments while working for the government or a qualifying nonprofit. The forgiven amount is completely tax-free.",
+      "Public Service Loan Forgiveness cancels what is left after 120 qualifying payments while you work full time (30+ hours a week) for a government agency or qualifying nonprofit. The payments do not have to be in a row. The forgiven amount is not taxed.",
     pros: [
-      "Your entire remaining balance is cancelled after 10 years",
-      "The forgiven amount is completely tax-free, unlike IBR or RAP forgiveness",
-      "Your balance size barely matters, since what is left is wiped",
-      "You make small income-driven payments the whole time",
+      "Everything left after 120 payments is cancelled",
+      "Not taxed as federal income, unlike IBR or RAP forgiveness",
+      "You pay a small income-driven amount the whole time",
     ],
     cons: [
-      "Requires full-time work for a government agency or qualifying nonprofit for the entire 10 years",
-      "You must stay on a qualifying plan the whole time, so Tiered Standard, Graduated, and Extended break it",
-      "All or nothing, since leaving public service at year 8 forgives nothing",
-      "Only worth pursuing if you would still owe a balance at year 10",
+      "Needs full-time qualifying work when you make the 120th payment and when you apply",
+      "IBR, RAP and 10-year Standard payments count. Tiered Standard never does",
+      "Leave public service early and the clock pauses until you return",
+      "Only worth it if a balance would be left at payment 120",
     ],
   },
 };
 
 export const SAVE_ENDED_WARNING =
-  "The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.";
+  "A court ended the SAVE plan in March 2026. If you were on it, your servicer's notice gives you 90 days to pick a new plan, then a final 30-day notice. Do nothing and you are put on Standard, or Tiered Standard if a loan from July 2026 or later is in repayment. Months in the SAVE forbearance earn no PSLF credit, but you can buy back those months once you have 120 months of qualifying work. PAYE and ICR end by July 1, 2028.";
 
 export const TIERED_STANDARD_PSLF_WARNING =
-  "Payments under the Tiered Standard Plan do not count toward Public Service Loan Forgiveness, and that is true for every tier including the 10-year one. Since you work in public service, choosing this plan means making on-time payments that move you zero months closer to forgiveness. RAP, which is income-driven, is the alternative that keeps PSLF on the table.";
+  "Tiered Standard payments never count toward PSLF, in any tier, including the 10-year one. Pick RAP to keep PSLF open.";
 
 export const TIERED_STANDARD_DEFAULT_WARNING =
-  "This is the plan you are enrolled in automatically if you never choose one. It has no forgiveness at the end and does not count toward Public Service Loan Forgiveness.";
+  "This is where you land if you never pick a plan. No forgiveness, and no PSLF credit.";
 
 export const POST_2026_LOCKOUT_WARNING =
-  "Because at least one of your loans was disbursed on or after July 1, 2026, Standard, Graduated, Extended, and IBR are closed to you across your entire portfolio, even for the loans you took out earlier. RAP and Tiered Standard are your only two options.";
+  "One loan paid out on or after July 1, 2026 closes Standard, Graduated, Extended and IBR for all your loans, including older ones. RAP and Tiered Standard are left.";
+
+export const DISBURSEMENT_UNKNOWN_WARNING =
+  "You were not sure when your loans were paid out, so this shows every plan. If any loan came on or after July 1, 2026 (true for most students borrowing this school year), only RAP and Tiered Standard are open. Check the dates under My Aid on studentaid.gov.";
 
 export const CONSOLIDATION_WARNING =
-  "Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.";
+  "Think twice before consolidating. A consolidation loan is a new loan, so one made now closes IBR for everything you owe, can lower the payments already counted toward forgiveness, and never lowers your rate (it is the weighted average, rounded up). FFEL and Perkins loans are the exception: they usually need consolidating to use RAP or PSLF.";
 
 export const IDR_TAX_WARNING =
-  "Forgiveness under IBR or RAP counts as taxable income. The temporary rule that shielded it expired on December 31, 2025 and was not renewed, so a balance forgiven in year 20 or 30 lands on your tax return as income that year with nothing withheld. Public Service Loan Forgiveness stays permanently tax-free under its own section of the tax code.";
+  "Forgiveness at the end of IBR or RAP is taxed as federal income under current law. The exclusion that covered it ended December 31, 2025, and was kept only for death and disability. Nothing is withheld, so the bill comes with that year's return. PSLF forgiveness is not taxed.";
 
 export const TEACHER_FORGIVENESS_INFO =
-  "Teacher Loan Forgiveness: If you teach full-time for 5 consecutive years at a low-income school, you may qualify for up to $17,500 in loan forgiveness — separate from PSLF. Unlike PSLF, Teacher Loan Forgiveness applies after just 5 years, but the forgiven amount is capped. Many teachers pursue both: get Teacher Loan Forgiveness at year 5, then continue toward PSLF forgiveness at year 10. Learn more at studentaid.gov/teach-forgiveness.";
+  "Teaching? Teacher Loan Forgiveness cancels up to $17,500 (secondary math, science or special education) or $5,000 (other subjects) after 5 full years at a low-income school. The same years cannot count toward both it and PSLF: take it and PSLF needs 120 more payments after it. If PSLF would forgive more, it usually wins.";
+
+export const LOAN_SCOPE_NOTE =
+  "This prices Direct Loans you borrowed for your own education. Parent PLUS, FFEL and Perkins loans follow different rules: check studentaid.gov, or use Loan Desk, which handles Parent PLUS.";
+
+export const ASSUMPTIONS =
+  "Estimates. Income is held flat for the whole term, so if it rises, IBR and RAP cost more and forgive less. Payments start this month. Tax on forgiveness is federal only, at 2026 brackets. Poverty lines are the 2026 figures for the 48 states and DC.";
 
 export const LEGAL_DISCLAIMER =
-  "These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation.";
+  "Estimates for learning, not financial advice. Your servicer sets your actual payment, and studentaid.gov is the authority on your loans.";
 
-export const DECIMAL_CTA_URL =
+/** Autopay rate cut: 1 point through June 30, 2028 for Direct Loans paid out on or after July 1, 2012, if enrolled by Dec. 31, 2026 (studentaid.gov SAVE FAQ, Oct. 2026). */
+export const AUTOPAY_DEADLINE = "2027-01-01T05:00:00Z";
+
+export const LOAN_DESK_URL =
   "https://cense-loan-desk.vercel.app/?utm_source=loan-lab&utm_medium=tool&utm_campaign=loan-lab-footer";

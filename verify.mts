@@ -96,7 +96,7 @@ const ts27k = run({ ...base, disbursement: "on_or_after_july_2026" }).plans.find
 )!;
 check("$27k lands in the 15-year tier", ts27k.payoffYears === 15, `got ${ts27k.payoffYears}`);
 check("Tiered Standard forgives nothing", ts27k.forgivenAmount === 0);
-check("Tiered Standard has no tax bomb", ts27k.taxBombEstimate === 0);
+check("Tiered Standard has no tax bomb", ts27k.forgivenessTax === 0);
 
 console.log("\n5. PSLF-eligible borrower is never steered to Tiered Standard");
 for (const priority of ["low_payment", "least_total", "fastest", "forgiveness"] as const) {
@@ -132,14 +132,14 @@ const forg = run({
   disbursement: "before_july_2026",
 });
 const pslfPlan = forg.plans.find((p) => p.id === "pslf")!;
-check("PSLF forgiveness is tax-free", pslfPlan.taxBombEstimate === 0);
+check("PSLF forgiveness is tax-free", pslfPlan.forgivenessTax === 0);
 const idrForgiven = forg.plans.filter(
   (p) => p.forgivenAmount > 0 && p.id !== "pslf"
 );
 check(
   "every IDR plan with forgiveness carries a tax estimate",
-  idrForgiven.length > 0 && idrForgiven.every((p) => p.taxBombEstimate > 0),
-  `${idrForgiven.map((p) => `${p.id}:${Math.round(p.taxBombEstimate)}`).join(" ")}`
+  idrForgiven.length > 0 && idrForgiven.every((p) => p.forgivenessTax > 0),
+  `${idrForgiven.map((p) => `${p.id}:${Math.round(p.forgivenessTax)}`).join(" ")}`
 );
 
 console.log("\n8. Standard 10-year amortization sanity");

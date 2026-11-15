@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 
 interface NumberInputProps {
@@ -12,10 +10,7 @@ interface NumberInputProps {
   prefix?: string;
   suffix?: string;
   className?: string;
-  quickFill?: {
-    label: string;
-    value: string;
-  };
+  quickFill?: { label: string; value: string };
 }
 
 export default function NumberInput({
@@ -32,34 +27,17 @@ export default function NumberInput({
 }: NumberInputProps) {
   return (
     <div className={cn("w-full", className)}>
-      <div className="flex items-baseline justify-between gap-2">
-        <label
-          htmlFor={id}
-          className="block text-sm font-semibold text-slate-900"
-        >
-          {label}
-        </label>
-        {quickFill && (
-          <button
-            type="button"
-            onClick={() => onChange(quickFill.value)}
-            className="text-xs text-navy hover:underline font-medium"
-          >
-            {quickFill.label}
-          </button>
-        )}
-      </div>
+      <label htmlFor={id} className="block text-base font-semibold text-slate-900">
+        {label}
+      </label>
       {helperText && (
-        <p
-          id={`${id}-help`}
-          className="text-xs text-slate-400 mt-0.5 leading-snug"
-        >
+        <p id={`${id}-help`} className="mt-1 text-sm leading-snug text-slate-600">
           {helperText}
         </p>
       )}
-      <div className="relative mt-1.5">
+      <div className="relative mt-2">
         {prefix && (
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-slate-400 pointer-events-none">
+          <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-base text-slate-500">
             {prefix}
           </span>
         )}
@@ -67,25 +45,33 @@ export default function NumberInput({
           id={id}
           type="text"
           inputMode="decimal"
+          autoComplete="off"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           aria-describedby={helperText ? `${id}-help` : undefined}
           className={cn(
-            "w-full min-h-[44px] rounded-xl border border-slate-200 bg-white text-sm text-slate-900",
-            "placeholder:text-slate-300",
-            "focus:outline-none focus:ring-2 focus:ring-navy focus:border-navy",
-            "transition-colors",
-            prefix ? "pl-8 pr-3" : "px-3",
-            suffix ? "pr-8" : ""
+            "tnum min-h-[52px] w-full rounded-2xl border-2 border-line bg-white text-base text-slate-900",
+            "placeholder:text-slate-500/70 focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/20",
+            prefix ? "pl-9 pr-4" : "px-4",
+            suffix ? "pr-10" : ""
           )}
         />
         {suffix && (
-          <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-slate-400 pointer-events-none">
+          <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-base text-slate-500">
             {suffix}
           </span>
         )}
       </div>
+      {quickFill && (
+        <button
+          type="button"
+          onClick={() => onChange(quickFill.value)}
+          className="mt-1 min-h-[40px] rounded-full text-sm font-semibold text-navy underline decoration-slate-300 underline-offset-4 hover:decoration-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-navy"
+        >
+          {quickFill.label}
+        </button>
+      )}
     </div>
   );
 }

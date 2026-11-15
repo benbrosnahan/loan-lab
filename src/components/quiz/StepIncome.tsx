@@ -1,107 +1,126 @@
 "use client";
 
 import NumberInput from "@/components/shared/NumberInput";
-import SelectionCard from "@/components/shared/SelectionCard";
-import { formatDollarInput, parseDollarInput } from "@/lib/utils";
+import StepHeader, { ContinueButton, Notice } from "./StepHeader";
+import { formatDollarInput, parseDollarInput, hasDigit, cn } from "@/lib/utils";
 
 interface Props {
   income: string;
-  familySize: number;
-  onFieldChange: (field: string, value: string | number) => void;
+  dependents: number;
+  filesJointly: boolean;
+  onIncomeChange: (display: string) => void;
+  onDependentsChange: (n: number) => void;
+  onJointChange: (joint: boolean) => void;
   onNext: () => void;
 }
 
-const FAMILY_OPTIONS: { value: number; label: string; description: string }[] =
-  [
-    { value: 1, label: "1", description: "Just me" },
-    { value: 2, label: "2", description: "Me + partner or dependent" },
-    { value: 3, label: "3", description: "Family of 3" },
-    { value: 4, label: "4", description: "Family of 4" },
-    { value: 5, label: "5+", description: "Family of 5 or more" },
-  ];
+const MAX_DEPENDENTS = 10;
+
+function StepButton({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled: boolean; children: React.ReactNode }) {
+  return (
+    <button
+      type="button"
+      aria-label={label}
+      onClick={onClick}
+      disabled={disabled}
+      className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-line bg-white text-xl font-semibold text-slate-900 hover:border-slate-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page disabled:opacity-40"
+    >
+      <span aria-hidden="true">{children}</span>
+    </button>
+  );
+}
 
 export default function StepIncome({
   income,
-  familySize,
-  onFieldChange,
+  dependents,
+  filesJointly,
+  onIncomeChange,
+  onDependentsChange,
+  onJointChange,
   onNext,
 }: Props) {
+  const typed = hasDigit(income);
   const incomeNum = parseDollarInput(income);
-  const canContinue = incomeNum >= 0 && income.length > 0 && familySize > 0;
 
   return (
     <div>
-      <h2
-        className="text-2xl sm:text-3xl font-bold text-slate-900"
-        tabIndex={-1}
-      >
-        What&apos;s your annual income?
-      </h2>
-      <p className="text-sm text-slate-500 mt-2">
-        Income-based repayment plans tie your monthly payment to what you
-        earn. Use your expected salary if you haven&apos;t started working
-        yet — you can re-run this anytime.
-      </p>
+      <StepHeader
+        title="What do you earn?"
+        hint="IBR and RAP set your payment from your income. Not working yet? Use your best guess for your first job."
+      />
 
-      <div className="mt-6 space-y-6">
+      <div className="mt-8 space-y-8">
         <NumberInput
           id="income"
-          label="Annual income before taxes"
-          helperText="Not working yet? Enter your best guess for your first job — that'll give you the most useful results. You can enter $0, but income-driven payments will all show as $0 since they're based on what you earn."
+          label={filesJointly ? "Combined adjusted gross income (AGI)" : "Adjusted gross income (AGI), per year"}
+          helperText="Line 11 of your tax return: pay minus pre-tax 401(k) and health premiums. $0 works too: IBR can be $0, and RAP is at least $10."
           value={income}
-          onChange={(v) =>
-            onFieldChange("income", formatDollarInput(v))
-          }
-          placeholder="e.g. 52,000"
+          onChange={(v) => onIncomeChange(formatDollarInput(v))}
+          placeholder="52,000"
           prefix="$"
         />
 
-        {incomeNum <= 5000 && income.length > 0 && (
-          <div className="p-3 rounded-lg bg-blue-50 border border-blue-100">
-            <p className="text-xs text-blue-700 leading-relaxed">
-              Still in school? Federal loans have a 6-month grace period
-              after graduation before payments begin. Enter $0 or your
-              expected starting salary to see what your payments will look
-              like when repayment starts.
-            </p>
-          </div>
+        {typed && incomeNum < 5000 && (
+          <Notice>
+            Still in school? Payments start after a six-month grace period. Try
+            your expected starting salary to see what repayment will look like.
+          </Notice>
         )}
 
-        <div>
-          <p className="text-sm font-semibold text-slate-900">
-            How many people are in your household?
+        <fieldset>
+          <legend className="text-base font-semibold text-slate-900">Dependents you claim on your taxes</legend>
+          <p id="dependents-help" className="mt-1 text-sm leading-snug text-slate-600">
+            Children or others you support. Each one lowers RAP by $50 a month.
           </p>
-          <p className="text-xs text-slate-400 mt-0.5 leading-snug">
-            This affects how &quot;discretionary income&quot; is calculated
-            under income-based plans — larger households get a bigger
-            exemption.
-          </p>
-          <div
-            className="grid grid-cols-2 gap-2.5 mt-3"
-            role="radiogroup"
-            aria-label="Household size"
-          >
-            {FAMILY_OPTIONS.map((opt) => (
-              <SelectionCard
-                key={opt.value}
-                label={opt.label}
-                description={opt.description}
-                selected={familySize === opt.value}
-                onClick={() => onFieldChange("familySize", opt.value)}
-              />
-            ))}
+          <div className="mt-3 flex items-center gap-4">
+            <StepButton label="One fewer dependent" onClick={() => onDependentsChange(dependents - 1)} disabled={dependents <= 0}>
+              &minus;
+            </StepButton>
+            <output aria-live="polite" aria-describedby="dependents-help" className="figure min-w-[3ch] text-center text-3xl font-bold text-slate-900">
+              {dependents}
+            </output>
+            <StepButton label="One more dependent" onClick={() => onDependentsChange(dependents + 1)} disabled={dependents >= MAX_DEPENDENTS}>
+              +
+            </StepButton>
           </div>
-        </div>
+        </fieldset>
+
+        <label className="flex min-h-[56px] cursor-pointer items-center gap-4 rounded-3xl border-2 border-line bg-white px-5 py-3.5 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-navy">
+          <input
+            type="checkbox"
+            checked={filesJointly}
+            onChange={(e) => onJointChange(e.target.checked)}
+            className="peer sr-only"
+          />
+          <span
+            aria-hidden="true"
+            className={cn(
+              "relative h-7 w-12 flex-shrink-0 rounded-full border-2 transition-colors",
+              filesJointly ? "border-navy bg-navy" : "border-slate-500 bg-white"
+            )}
+          >
+            <span
+              className={cn(
+                "absolute top-[2px] h-[18px] w-[18px] rounded-full transition-transform",
+                filesJointly ? "translate-x-[22px] bg-white" : "translate-x-[2px] bg-slate-500"
+              )}
+            />
+          </span>
+          <span>
+            <span className="block text-base font-semibold text-slate-900">Married, filing taxes jointly</span>
+            <span className="block text-sm text-slate-600">Counts your spouse in IBR, never as a RAP dependent</span>
+          </span>
+        </label>
+
+        {filesJointly && (
+          <Notice>
+            Enter your combined AGI above. If your spouse has federal loans too,
+            your payment is split by balance, which Loan Desk can work out.
+          </Notice>
+        )}
       </div>
 
-      <button
-        type="button"
-        disabled={!canContinue}
-        onClick={onNext}
-        className="mt-8 w-full py-3.5 rounded-xl bg-navy text-white text-sm font-semibold transition-colors hover:bg-navy-hover disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        Continue
-      </button>
+      <ContinueButton disabled={!typed} onClick={onNext} />
     </div>
   );
 }

@@ -1,73 +1,59 @@
-"use client";
-
-import { motion } from "framer-motion";
+import { AUTOPAY_DEADLINE } from "@/data/plans";
 
 const STEPS = [
   {
     label: "See your exact loans",
     url: "https://studentaid.gov",
-    description:
-      "Log in with your FSA ID to see every federal loan, balance, rate, and servicer",
+    description: "Log in to see every federal loan, balance, rate and servicer.",
   },
   {
-    label: "Enroll in an income-driven plan",
+    label: "Apply for an income-driven plan",
     url: "https://studentaid.gov/idr",
-    description:
-      "Official IDR application — takes about 10 minutes",
+    description: "The official IBR and RAP application. About 10 minutes.",
   },
   {
-    label: "Check PSLF eligibility",
+    label: "Check PSLF",
     url: "https://studentaid.gov/pslf",
-    description:
-      "If you work in public service, submit an Employment Certification Form now — don't wait",
+    description: "In public service? Certify your employer now, and each year.",
   },
 ];
 
-export default function NextSteps() {
+const AUTOPAY = {
+  label: "Turn on autopay by Dec. 31, 2026",
+  url: "https://studentaid.gov/manage-loans/repayment/servicers",
+  description: "Direct Loans on autopay get 1 point off the rate through June 2028. Your servicer sets it up.",
+};
+
+export default function NextSteps({ now }: { now: number }) {
+  const steps = now < Date.parse(AUTOPAY_DEADLINE) ? [...STEPS, AUTOPAY] : STEPS;
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.7 }}
-    >
-      <h3 className="text-sm font-bold text-slate-900 mb-3">
-        Ready to act on this?
-      </h3>
-      <div className="space-y-2.5">
-        {STEPS.map((step, i) => (
-          <a
-            key={i}
-            href={step.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block p-4 rounded-xl border border-slate-200 bg-white hover:border-navy hover:shadow-sm transition-all group"
-          >
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-semibold text-slate-900 group-hover:text-navy transition-colors">
-                  {i + 1}. {step.label}
-                </p>
-                <p className="text-xs text-slate-500 mt-0.5">
-                  {step.description}
-                </p>
-              </div>
-              <svg
-                className="w-4 h-4 text-slate-300 group-hover:text-navy transition-colors flex-shrink-0"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                />
+    <section aria-labelledby="next-title">
+      <h2 id="next-title" className="font-display text-2xl font-bold tracking-[-0.01em] text-slate-900 sm:text-[1.75rem]">
+        Ready to act on it?
+      </h2>
+      <ol className="mt-4 grid gap-3 sm:grid-cols-2">
+        {steps.map((step) => (
+          <li key={step.label}>
+            <a
+              href={step.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex h-full min-h-[48px] items-start justify-between gap-3 rounded-3xl border border-line bg-white px-5 py-4 transition-colors hover:border-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+            >
+              <span>
+                <span className="block text-base font-semibold text-slate-900 group-hover:underline group-hover:underline-offset-4">
+                  {step.label}
+                </span>
+                <span className="mt-0.5 block text-sm leading-snug text-slate-700">{step.description}</span>
+              </span>
+              <svg aria-hidden="true" className="mt-1 h-4 w-4 flex-shrink-0 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
-            </div>
-          </a>
+              <span className="sr-only">(opens in a new tab)</span>
+            </a>
+          </li>
         ))}
-      </div>
-    </motion.div>
+      </ol>
+    </section>
   );
 }

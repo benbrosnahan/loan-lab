@@ -3,12 +3,12 @@ export type LoanType = "federal" | "private" | "both" | "unsure";
 /**
  * The single most consequential input in the tool.
  *
- * Under the July 2025 reconciliation law (OBBBA), any federal Direct Loan
- * disbursed on or after July 1, 2026 reclassifies the borrower's ENTIRE
- * portfolio under the new rules. That closes Standard, Graduated, Extended,
- * and IBR and leaves only RAP and the Tiered Standard Plan.
- *
- * A Direct Consolidation Loan counts as a new disbursement for this test.
+ * A borrower who receives any Direct Loan on or after July 1, 2026 can repay
+ * only under Tiered Standard or RAP (34 CFR 685.210(a)(1)(ii)), and because
+ * all of a borrower's Direct Loans are repaid on one plan (685.210(a)(3)),
+ * that closes Standard, Graduated, Extended and IBR for the older loans too
+ * (685.208(b), 685.209(d)(5)). A Direct Consolidation Loan made on or after
+ * that date counts as a new loan.
  */
 export type Disbursement =
   | "before_july_2026"
@@ -36,8 +36,17 @@ export interface QuizAnswers {
   federalRate: number;
   privateBalance: number;
   privateRate: number;
+  /** Adjusted gross income (AGI), the couple's combined AGI for a joint filer. */
   income: number;
+  /**
+   * Kept for share links made before dependents and filesJointly existed:
+   * 1 + dependents + 1 if filing jointly. 0 means the question is unanswered.
+   */
   familySize: number;
+  /** People claimed as dependents on the borrower's tax return. */
+  dependents: number;
+  /** Married and filing a joint federal return. */
+  filesJointly: boolean;
   employment: Employment | null;
   priority: Priority | null;
 }
@@ -56,14 +65,24 @@ export interface PlanResult {
   id: PlanId;
   name: string;
   tagline: string;
+  /** The first month's payment. */
   monthlyPayment: number;
+  /** Graduated only: the payment in its last two years. */
+  finalPayment?: number;
+  /** PSLF only: the income-driven plan its payments are made on. */
+  via?: "ibr" | "rap";
+  /** What the borrower pays, never counting a forgiven balance. */
   totalPaid: number;
+  /** The part of what the borrower pays that goes to interest. */
   totalInterest: number;
   payoffYears: number;
+  /** True when the balance is gone before forgiveness would apply. */
+  paidOff: boolean;
   forgivenAmount: number;
   isEligible: boolean;
   status: PlanStatus;
-  taxBombEstimate: number;
+  /** Estimated federal income tax on the forgiven balance. 0 for PSLF. */
+  forgivenessTax: number;
   monthlyPaymentAsPercentOfTakeHome: number;
 }
 
@@ -98,6 +117,8 @@ export const INITIAL_ANSWERS: QuizAnswers = {
   privateRate: 0,
   income: 0,
   familySize: 0,
+  dependents: 0,
+  filesJointly: false,
   employment: null,
   priority: null,
 };

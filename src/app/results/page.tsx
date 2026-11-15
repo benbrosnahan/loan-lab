@@ -1,64 +1,84 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Nav from "@/components/shared/Nav";
-import RecommendationBanner from "@/components/results/RecommendationBanner";
+import SiteFooter from "@/components/shared/SiteFooter";
+import Verdict from "@/components/results/Verdict";
 import PlanCard from "@/components/results/PlanCard";
-import ComparisonChart from "@/components/results/ComparisonChart";
-import WarningFlags from "@/components/results/WarningFlags";
+import YearsRuler from "@/components/results/YearsRuler";
+import ThingsToKnow from "@/components/results/ThingsToKnow";
 import NextSteps from "@/components/results/NextSteps";
-import ShareButton from "@/components/results/ShareButton";
-import { CalculationResult } from "@/types";
-import { calculatePlans } from "@/lib/calculator";
+import { CalculationResult, INITIAL_ANSWERS, QuizAnswers } from "@/types";
+import { calculatePlans, costOf } from "@/lib/calculator";
 import {
   storage,
+  KEYS,
   decodeQuizAnswers,
   formatCurrencyFull,
+  sharedAnswersFromLocation,
+  householdOf,
 } from "@/lib/utils";
-import { PLAN_META, DECIMAL_CTA_URL, LEGAL_DISCLAIMER } from "@/data/plans";
+import {
+  LOAN_DESK_URL,
+  LEGAL_DISCLAIMER,
+  ASSUMPTIONS,
+  DISBURSEMENT_UNKNOWN_WARNING,
+  LOAN_SCOPE_NOTE,
+} from "@/data/plans";
 
-function ResultsContent() {
+function loadAnswers(): QuizAnswers | null {
+  const shared = sharedAnswersFromLocation();
+  if (shared) {
+    const answers = decodeQuizAnswers(shared);
+    if (answers) return answers;
+  }
+  const saved = storage.get(KEYS.answers);
+  if (saved) {
+    try {
+      return { ...INITIAL_ANSWERS, ...(JSON.parse(saved) as QuizAnswers) };
+    } catch {
+      // corrupt data
+    }
+  }
+  return null;
+}
+
+const linkClass =
+  "font-semibold text-navy underline decoration-slate-300 underline-offset-4 hover:decoration-navy focus:outline-none focus-visible:ring-2 focus-visible:ring-navy rounded";
+
+export default function ResultsPage() {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const [result, setResult] = useState<CalculationResult | null>(null);
   const [loading, setLoading] = useState(true);
+  const [now, setNow] = useState(0);
 
   useEffect(() => {
-    const encoded = searchParams.get("q");
-    if (encoded) {
-      const answers = decodeQuizAnswers(encoded);
-      if (answers) {
-        const calc = calculatePlans(answers);
-        setResult(calc);
-        setLoading(false);
-        return;
-      }
+    setNow(Date.now());
+    const answers = loadAnswers();
+    if (answers) {
+      setResult(calculatePlans(answers));
+      setLoading(false);
+      return;
     }
-
-    const raw = storage.get("loan-lab-result");
-    if (raw) {
-      try {
-        const parsed = JSON.parse(raw) as CalculationResult;
-        setResult(parsed);
-        setLoading(false);
-        return;
-      } catch {
-        // corrupt data
-      }
-    }
-
     setLoading(false);
+    router.replace("/");
+  }, [router]);
+
+  const retake = () => {
+    storage.remove(KEYS.answers);
+    storage.remove(KEYS.progress);
     router.push("/");
-  }, [searchParams, router]);
+  };
 
   if (loading) {
     return (
       <>
         <Nav />
-        <div className="min-h-[50vh] flex items-center justify-center">
-          <div className="w-6 h-6 border-2 border-navy border-t-transparent rounded-full animate-spin" />
-        </div>
+        <main id="main" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
+          <h1 className="sr-only">Your repayment options</h1>
+          <p className="text-base text-slate-700">Pricing your plans&hellip;</p>
+        </main>
       </>
     );
   }
@@ -69,67 +89,43 @@ function ResultsContent() {
     return (
       <>
         <Nav />
-        <div className="max-w-xl mx-auto px-4 sm:px-6 py-8 pb-16">
-          <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
+        <main id="main" className="rise mx-auto max-w-xl px-4 pb-16 pt-8 sm:px-6 sm:pt-12">
+          <h1 className="font-display text-[2.25rem] font-bold leading-[1.05] tracking-[-0.025em] text-slate-900 text-balance">
             Federal repayment plans don&apos;t apply to private loans
           </h1>
-          <p className="text-sm text-slate-600 mt-3 leading-relaxed">
-            Loan Lab compares federal repayment plans: Standard, Graduated,
-            IBR, RAP, Tiered Standard, and Public Service Loan Forgiveness
-            (PSLF). Those plans only cover federal student loans, so none of
-            them apply to loans from a bank, credit union, or private lender.
+          <p className="mt-4 text-base leading-relaxed text-slate-700">
+            Loan Lab compares federal plans: Standard, Graduated, IBR, RAP, Tiered
+            Standard and Public Service Loan Forgiveness (PSLF). None of them
+            cover loans from a bank, credit union or private lender.
           </p>
-
-          <div className="mt-6 p-5 rounded-2xl border border-slate-200 bg-white">
-            <h2 className="text-sm font-bold text-slate-900">
-              What to do instead
-            </h2>
-            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-              Contact your lender and ask what repayment options they offer.
-              Your terms come from your loan agreement, so your lender is the
-              one who can tell you what&apos;s available, especially if your
-              payment is hard to keep up with.
-            </p>
+          <div className="mt-8 space-y-4">
+            <div className="rounded-3xl border border-line bg-white p-5">
+              <h2 className="text-base font-semibold text-slate-900">What to do instead</h2>
+              <p className="mt-2 text-base leading-relaxed text-slate-700">
+                Ask your lender what repayment options they offer. Your terms come
+                from your loan agreement, so they are the ones who can say,
+                especially if a payment is getting hard to make.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-line bg-white p-5">
+              <h2 className="text-base font-semibold text-slate-900">Not sure every loan is private?</h2>
+              <p className="mt-2 text-base leading-relaxed text-slate-700">
+                Log in to studentaid.gov. Any loan listed there is federal. Found
+                one? Retake the quiz and choose &ldquo;I have both&rdquo;.
+              </p>
+              <a href="https://studentaid.gov" target="_blank" rel="noopener noreferrer" className={`mt-3 inline-block ${linkClass}`}>
+                Check studentaid.gov
+              </a>
+            </div>
           </div>
-
-          <div className="mt-4 p-5 rounded-2xl border border-slate-200 bg-white">
-            <h2 className="text-sm font-bold text-slate-900">
-              Not sure every loan is private?
-            </h2>
-            <p className="text-sm text-slate-600 mt-2 leading-relaxed">
-              Log in to studentaid.gov with your FSA ID. Any loan listed there
-              is federal. If you find one, retake the quiz and choose &quot;I
-              have both&quot; to see the plans you qualify for.
-            </p>
-            <a
-              href="https://studentaid.gov"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 text-sm font-semibold text-navy hover:text-navy-hover transition-colors"
-            >
-              Check studentaid.gov →
-            </a>
-          </div>
-
-          <div className="mt-8 text-center">
-            <button
-              onClick={() => {
-                storage.remove("loan-lab-result");
-                storage.remove("loan-lab-progress");
-                router.push("/");
-              }}
-              className="px-6 py-2.5 rounded-xl bg-navy text-white text-sm font-semibold hover:bg-navy-hover transition-colors"
-            >
-              Retake the quiz
-            </button>
-          </div>
-
-          <div className="mt-12 pt-6 border-t border-slate-100">
-            <p className="text-[11px] text-slate-400 leading-relaxed text-center max-w-2xl mx-auto">
-              {LEGAL_DISCLAIMER}
-            </p>
-          </div>
-        </div>
+          <button
+            onClick={retake}
+            className="mt-8 min-h-[48px] rounded-full bg-navy px-6 text-base font-semibold text-white hover:bg-navy-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+          >
+            Retake the quiz
+          </button>
+          <p className="mt-12 border-t border-line pt-6 text-sm leading-relaxed text-slate-600">{LEGAL_DISCLAIMER}</p>
+        </main>
       </>
     );
   }
@@ -138,166 +134,127 @@ function ResultsContent() {
     return (
       <>
         <Nav />
-        <div className="min-h-[50vh] flex flex-col items-center justify-center gap-4 px-4">
-          <p className="text-slate-500 text-sm">
-            No results found. Take the quiz first.
-          </p>
+        <main id="main" className="mx-auto max-w-xl px-4 py-16 sm:px-6">
+          <h1 className="font-display text-3xl font-bold text-slate-900">No results yet</h1>
+          <p className="mt-3 text-base text-slate-700">Answer six questions and your plans show up here.</p>
           <button
             onClick={() => router.push("/")}
-            className="px-6 py-2.5 rounded-xl bg-navy text-white text-sm font-semibold hover:bg-navy-hover transition-colors"
+            className="mt-6 min-h-[48px] rounded-full bg-navy px-6 text-base font-semibold text-white hover:bg-navy-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
           >
             Take the quiz
           </button>
-        </div>
+        </main>
       </>
     );
   }
 
-  const recommendedPlan = result.plans.find(
-    (p) => p.id === result.recommendedId
-  );
+  const recommended = result.plans.find((p) => p.id === result.recommendedId);
   const answers = result.quizAnswers;
-
-  // Sort: top pick first, then by total paid (lowest first)
+  const household = householdOf(answers);
   const sortedPlans = [...result.plans].sort((a, b) => {
     if (a.id === result.recommendedId) return -1;
     if (b.id === result.recommendedId) return 1;
-    return a.totalPaid - b.totalPaid;
+    return costOf(a) - costOf(b);
   });
 
   return (
     <>
       <Nav />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 pb-16">
-        {/* Header */}
-        <div className="flex items-start justify-between gap-4 mb-6">
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">
-              Your repayment options
-            </h1>
-            <p className="text-sm text-slate-500 mt-1">
-              Based on a {formatCurrencyFull(answers.federalBalance)} federal
-              balance at {answers.federalRate}% interest on a{" "}
-              {formatCurrencyFull(answers.income)} income.
-            </p>
-          </div>
-          <ShareButton answers={answers} />
-        </div>
+      <main id="main" className="mx-auto max-w-3xl px-4 pb-20 pt-4 sm:px-6 sm:pt-8">
+        <p className="text-sm text-slate-700 tnum">
+          For {formatCurrencyFull(answers.federalBalance)} at {answers.federalRate}% and{" "}
+          {formatCurrencyFull(answers.income)} AGI
+          {household.dependents > 0 ? `, ${household.dependents} dependent${household.dependents === 1 ? "" : "s"}` : ""}
+          {household.filesJointly ? ", filing jointly" : ""}.{" "}
+          <button type="button" onClick={retake} className={`inline-flex min-h-[40px] items-center ${linkClass}`}>
+            Change answers
+          </button>
+        </p>
 
-        {/* Low income context banner */}
+        {result.disbursementUnknown && result.hasFederal && (
+          <p className="unfold mt-4 max-w-2xl rounded-3xl border border-accent/30 bg-accent-light/60 px-5 py-4 text-base leading-relaxed text-slate-900">
+            {DISBURSEMENT_UNKNOWN_WARNING}
+          </p>
+        )}
+
         {answers.income < 5000 && result.hasFederal && (
-          <div className="mb-6 p-4 rounded-xl bg-blue-50 border border-blue-100">
-            <p className="text-sm font-semibold text-blue-900">
-              These results reflect a {answers.income === 0 ? "$0" : formatCurrencyFull(answers.income)} income
-            </p>
-            <p className="text-xs text-blue-700 mt-1 leading-relaxed">
-              With little or no income, income-driven plans show $0 monthly
-              payments — which is accurate for right now. But once you start
-              earning, your payments will adjust based on your salary. For a
-              more realistic picture of what you&apos;ll actually pay, try
-              re-running with your expected starting salary.
-            </p>
-            <button
-              onClick={() => {
-                storage.remove("loan-lab-result");
-                router.push("/");
-              }}
-              className="mt-2 text-xs font-semibold text-blue-700 hover:text-blue-900 transition-colors"
-            >
-              ← Re-run with expected salary
+          <p className="unfold mt-4 max-w-2xl rounded-3xl border border-line bg-white px-5 py-4 text-base leading-relaxed text-slate-800">
+            At this income IBR can be $0 and RAP is $10, which is right for now.
+            Payments rise once you earn more, so try your expected starting
+            salary for the fuller picture.{" "}
+            <button type="button" onClick={retake} className={linkClass}>
+              Re-run with a salary
             </button>
+          </p>
+        )}
+
+        {recommended && (
+          <div className="mt-6">
+            <Verdict
+              plan={recommended}
+              reasons={result.recommendationReasons}
+              tradeoff={result.recommendationTradeoff}
+              answers={answers}
+            />
           </div>
         )}
 
-        {/* Top Pick */}
-        {recommendedPlan && (
-          <RecommendationBanner
-            planName={PLAN_META[recommendedPlan.id].name}
-            reasons={result.recommendationReasons}
-            tradeoff={result.recommendationTradeoff}
-          />
-        )}
-
-        {/* Plan Cards Grid — top pick first */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {sortedPlans.map((plan, i) => (
-            <PlanCard
-              key={plan.id}
-              plan={plan}
-              isRecommended={plan.id === result.recommendedId}
-              index={i}
-              pslfEligible={result.pslfEligible}
-            />
-          ))}
+        <div className="mt-14 border-t border-line pt-10">
+          <YearsRuler plans={result.plans} recommendedId={result.recommendedId} />
+          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600">{ASSUMPTIONS}</p>
         </div>
 
-        {/* Comparison Chart */}
-        <div className="mt-10 p-5 rounded-2xl border border-slate-200 bg-white">
-          <ComparisonChart
-            plans={result.plans}
-            recommendedId={result.recommendedId}
-          />
+        <section aria-labelledby="plans-title" className="mt-14">
+          <h2 id="plans-title" className="font-display text-2xl font-bold tracking-[-0.01em] text-slate-900 sm:text-[1.75rem]">
+            Every plan open to you
+          </h2>
+          <p className="mt-2 max-w-2xl text-base text-slate-700">{LOAN_SCOPE_NOTE}</p>
+          <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+            {sortedPlans.map((plan) => (
+              <PlanCard
+                key={plan.id}
+                plan={plan}
+                isRecommended={plan.id === result.recommendedId}
+                pslfEligible={result.pslfEligible}
+              />
+            ))}
+          </div>
+        </section>
+
+        <div className="mt-14">
+          <ThingsToKnow result={result} />
         </div>
 
-        {/* Warning Flags */}
-        <div className="mt-10">
-          <WarningFlags result={result} />
+        <div className="mt-14">
+          <NextSteps now={now} />
         </div>
 
-        {/* Next Steps */}
-        <div className="mt-10">
-          <NextSteps />
-        </div>
-
-        {/* Footer CTA */}
-        <div className="mt-10 p-6 rounded-2xl bg-slate-50 border border-slate-200 text-center">
-          <h3 className="text-base font-bold text-slate-900">
-            Want to see all your loans in one place?
-          </h3>
-          <p className="text-sm text-slate-500 mt-1 max-w-md mx-auto">
-            Cense Loan Desk puts every federal loan on one screen, shows which
-            repayment plans you actually qualify for, and ranks which loan to
-            pay down first.
+        <section aria-labelledby="desk-title" className="mt-14 rounded-3xl bg-navy px-6 py-8 text-white sm:px-10">
+          <h2 id="desk-title" className="font-display text-2xl font-bold tracking-[-0.01em] sm:text-[1.75rem]">
+            Want every loan on one screen?
+          </h2>
+          <p className="mt-2 max-w-xl text-base leading-relaxed text-white/90">
+            Loan Desk takes each loan at its own rate, shows which plans you
+            actually qualify for, and ranks which loan to pay down first.
           </p>
           <a
-            href={DECIMAL_CTA_URL}
+            href={LOAN_DESK_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block mt-4 px-6 py-3 rounded-xl bg-navy text-white text-sm font-semibold hover:bg-navy-hover transition-colors"
+            className="mt-5 inline-flex min-h-[48px] items-center rounded-full bg-white px-6 text-base font-semibold text-navy hover:bg-selected focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
           >
-            Open Loan Desk →
+            Open Loan Desk
+            <span className="sr-only"> (opens in a new tab)</span>
           </a>
-        </div>
+        </section>
 
-        {/* Retake */}
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => {
-              storage.remove("loan-lab-result");
-              storage.remove("loan-lab-progress");
-              router.push("/");
-            }}
-            className="text-sm text-slate-400 hover:text-navy transition-colors"
-          >
-            ← Retake the quiz
+        <p className="mt-10">
+          <button type="button" onClick={retake} className={`inline-flex min-h-[40px] items-center text-base ${linkClass}`}>
+            Retake the quiz
           </button>
-        </div>
-
-        {/* Legal Disclaimer */}
-        <div className="mt-12 pt-6 border-t border-slate-100">
-          <p className="text-[11px] text-slate-400 leading-relaxed text-center max-w-2xl mx-auto">
-            {LEGAL_DISCLAIMER}
-          </p>
-        </div>
-      </div>
+        </p>
+      </main>
+      <SiteFooter />
     </>
-  );
-}
-
-export default function ResultsPage() {
-  return (
-    <Suspense>
-      <ResultsContent />
-    </Suspense>
   );
 }

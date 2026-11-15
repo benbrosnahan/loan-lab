@@ -1,26 +1,30 @@
-"use client";
-
+// Header shared in form with Loan Desk and Decode: Cense in orange, the tool
+// in green, and a plain statement of where the data lives.
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-50 bg-page/95 backdrop-blur border-b border-slate-200">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+    <header className="bg-page">
+      <div className="mx-auto flex h-16 max-w-3xl items-center justify-between gap-3 px-4 sm:px-6">
+        <nav aria-label="Cense" className="flex items-center gap-1.5 font-display text-lg font-bold">
           <a
             href="https://cense.beehiiv.com"
-            className="flex items-center gap-2 rounded-lg hover:opacity-75 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2"
-            aria-label="Cense newsletter home"
+            className="inline-flex min-h-[40px] items-center rounded-full text-accent-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
           >
-            <div className="w-7 h-7 rounded-lg bg-navy flex items-center justify-center">
-              <span className="text-white text-xs font-bold">C</span>
-            </div>
-            <span className="font-semibold text-slate-900">Cense</span>
+            Cense
           </a>
-          <span className="text-slate-300">/</span>
-          <span className="text-slate-500 text-sm">Loan Lab</span>
-        </div>
-        <span className="text-xs text-slate-400 hidden sm:block">
-          No data stored. All calculations run locally.
-        </span>
+          <a
+            href="/"
+            className="inline-flex min-h-[40px] items-center rounded-full text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
+          >
+            Loan Lab
+          </a>
+        </nav>
+        <p className="inline-flex items-center gap-1.5 rounded-full bg-selected px-3 py-1.5 text-xs font-semibold text-slate-800">
+          <svg aria-hidden="true" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+            <rect x="5" y="11" width="14" height="10" rx="2" />
+            <path d="M8 11V7a4 4 0 118 0v4" strokeLinecap="round" />
+          </svg>
+          Stays on this device
+        </p>
       </div>
     </header>
   );

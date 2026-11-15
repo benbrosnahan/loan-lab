@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface SelectionCardProps {
@@ -12,6 +9,7 @@ interface SelectionCardProps {
   className?: string;
 }
 
+/** One answer. A toggle button: choosing it records the answer and moves on. */
 export default function SelectionCard({
   label,
   description,
@@ -21,50 +19,40 @@ export default function SelectionCard({
   className,
 }: SelectionCardProps) {
   return (
-    <motion.button
+    <button
       type="button"
-      role="radio"
-      aria-checked={selected}
+      aria-pressed={selected}
       disabled={disabled}
-      whileTap={disabled ? undefined : { scale: 0.97 }}
       onClick={onClick}
       className={cn(
-        "w-full text-left rounded-xl border-2 px-4 py-3.5 transition-colors",
-        "focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2",
+        "flex min-h-[56px] w-full items-center gap-3 rounded-3xl border-2 px-5 py-3.5 text-left transition-[border-color,background-color,transform] duration-150 active:scale-[0.99]",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page",
         selected
           ? "border-navy bg-selected"
-          : "border-slate-200 bg-white hover:border-slate-400",
-        disabled && "opacity-40 cursor-not-allowed",
+          : "border-line bg-white hover:border-slate-400",
+        disabled && "cursor-not-allowed opacity-40",
         className
       )}
     >
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-slate-900">{label}</p>
-          {description && (
-            <p className="text-xs text-slate-500 mt-0.5 leading-snug">
-              {description}
-            </p>
-          )}
-        </div>
-        {selected && (
-          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-navy flex items-center justify-center">
-            <svg
-              className="w-3 h-3 text-white"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={3}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
+      <span className="min-w-0 flex-1">
+        <span className="block text-base font-semibold leading-snug text-slate-900">{label}</span>
+        {description && (
+          <span className="mt-0.5 block text-sm leading-snug text-slate-600">{description}</span>
         )}
-      </div>
-    </motion.button>
+      </span>
+      <span
+        aria-hidden="true"
+        className={cn(
+          "flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full border-2",
+          selected ? "border-navy bg-navy" : "border-slate-300 bg-white"
+        )}
+      >
+        {selected && (
+          <svg className="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        )}
+      </span>
+    </button>
   );
 }
