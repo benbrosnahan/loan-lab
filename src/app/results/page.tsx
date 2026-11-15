@@ -53,7 +53,10 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [now, setNow] = useState(0);
 
+  // The answers live in sessionStorage or the share link's fragment, and "now" gates a dated next step. Neither
+  // exists on the server, and the page is prerendered (SEO-01), so both are read once after hydration.
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setNow(Date.now());
     const answers = loadAnswers();
     if (answers) {

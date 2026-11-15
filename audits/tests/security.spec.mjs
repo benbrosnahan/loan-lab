@@ -48,10 +48,13 @@ test('links to other sites open without a handle back to this page', async ({ pa
   expect(bad).toEqual([]);
 });
 
+// SEC-03: Ben approved the move off Next 14 (unsupported) to Next 16 on 2026-11-15. The installed copy is checked,
+// not just package.json, so a stale lockfile cannot pass.
 test('SEC-03 the site runs on a supported Next.js release line', async () => {
-  test.info().annotations.push({ type: 'issue', description: 'SEC-03' });
-  test.fail(!process.env.AUDIT_SHOW_KNOWN, 'Known issue SEC-03: Next 14 is unsupported; upgrading is a decision for Ben');
   const { readFileSync } = await import('node:fs');
-  const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
-  expect(Number(String(pkg.dependencies.next).replace(/[^\d.]/g, '').split('.')[0])).toBeGreaterThanOrEqual(15);
+  const read = rel => JSON.parse(readFileSync(new URL(rel, import.meta.url), 'utf8'));
+  const major = v => Number(String(v).replace(/[^\d.]/g, '').split('.')[0]);
+  expect(major(read('../../package.json').dependencies.next)).toBeGreaterThanOrEqual(16);
+  expect(major(read('../../node_modules/next/package.json').version)).toBeGreaterThanOrEqual(16);
+  expect(major(read('../../node_modules/react/package.json').version)).toBeGreaterThanOrEqual(19);
 });

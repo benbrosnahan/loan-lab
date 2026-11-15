@@ -113,6 +113,9 @@ export default function Home() {
         if (parsed && parsed.step && parsed.answers) {
           const answers = { ...INITIAL_ANSWERS, ...parsed.answers };
           dispatch({ type: "RESTORE", payload: { ...parsed, answers } });
+          // Restoring progress from sessionStorage has to wait until after hydration: the quiz is prerendered
+          // (SEO-01), and the server has no storage to read, so a lazy initial state would not match.
+          // eslint-disable-next-line react-hooks/set-state-in-effect
           setRaw(rawFrom(answers, parsed.step));
         }
       } catch {

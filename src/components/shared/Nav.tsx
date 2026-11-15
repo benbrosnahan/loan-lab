@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // Header shared in form with Loan Desk and Decode: Cense in orange, the tool
 // in green, and a plain statement of where the data lives.
 export default function Nav() {
@@ -11,12 +13,12 @@ export default function Nav() {
           >
             Cense
           </a>
-          <a
+          <Link
             href="/"
             className="inline-flex min-h-[40px] items-center rounded-full text-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-navy focus-visible:ring-offset-2 focus-visible:ring-offset-page"
           >
             Loan Lab
-          </a>
+          </Link>
         </nav>
         <p className="inline-flex items-center gap-1.5 rounded-full bg-selected px-3 py-1.5 text-xs font-semibold text-slate-800">
           <svg aria-hidden="true" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
