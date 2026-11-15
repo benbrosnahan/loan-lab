@@ -1,0 +1,1663 @@
+
+Running 18 tests using 3 workers
+
+[1/18] [chromium] › tests/money.spec.mjs:21:1 › MONEY-02 IBR keeps unpaid interest owed, so the forgiven balance includes it
+[2/18] [chromium] › tests/money.spec.mjs:11:1 › MONEY-01 RAP at the $10 minimum moves principal by $10 a month, not $50
+[3/18] [chromium] › tests/money.spec.mjs:32:1 › MONEY-03 the tax on a forgiven IBR balance uses 2026 brackets, not a flat 22%
+  1) [chromium] › tests/money.spec.mjs:21:1 › MONEY-02 IBR keeps unpaid interest owed, so the forgiven balance includes it 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      25 |   const pay = ibrPayment(30000, 1, 35000, 6.53);
+      26 |   const path = ibrPath(35000, 6.53, pay);
+    > 27 |   expect(near(figure(ibr, 'Monthly payment'), Math.round(pay))).toBe(true);
+         |                                                                 ^
+      28 |   expect(near(figure(ibr, 'Total paid'), path.paid, 5), `total paid shown ${figure(ibr, 'Total paid')}, rule gives ${Math.round(path.paid)}`).toBe(true);
+      29 |   expect(near(figure(ibr, 'Amount forgiven'), path.left, 5), `forgiven shown ${figure(ibr, 'Amount forgiven')}, rule gives ${Math.round(path.left)}`).toBe(true);
+      30 | });
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:27:65
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-02-IBR-keeps-u-d3ce0-orgiven-balance-includes-it-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-02-IBR-keeps-u-d3ce0-orgiven-balance-includes-it-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-02-IBR-keeps-u-d3ce0-orgiven-balance-includes-it-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-02-IBR-keeps-u-d3ce0-orgiven-balance-includes-it-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  2) [chromium] › tests/money.spec.mjs:11:1 › MONEY-01 RAP at the $10 minimum moves principal by $10 a month, not $50 
+
+    Error: forgiven shown 9000, rule gives 23400
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      15 |   const path = rapPath(27000, 6.52, rapPayment(9000, 0));
+      16 |   expect(figure(rap, 'Monthly payment')).toBe(10);
+    > 17 |   expect(near(figure(rap, 'Amount forgiven'), path.left, 5), `forgiven shown ${figure(rap, 'Amount forgiven')}, rule gives ${Math.round(path.left)}`).toBe(true);
+         |                                                                                                                                                       ^
+      18 |   expect(await pageText(page)).not.toMatch(/at least \$50\/month goes toward your principal/i);
+      19 | });
+      20 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:17:151
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-01-RAP-at-the--6edca-ncipal-by-10-a-month-not-50-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-01-RAP-at-the--6edca-ncipal-by-10-a-month-not-50-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-01-RAP-at-the--6edca-ncipal-by-10-a-month-not-50-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-01-RAP-at-the--6edca-ncipal-by-10-a-month-not-50-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  3) [chromium] › tests/money.spec.mjs:32:1 › MONEY-03 the tax on a forgiven IBR balance uses 2026 brackets, not a flat 22% 
+
+    Error: tax shown 7297, 2026 brackets give 11440
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      36 |   const path = ibrPath(35000, 6.53, ibrPayment(30000, 1, 35000, 6.53));
+      37 |   const tax = forgivenessTax(30000, path.left);
+    > 38 |   expect(near(taxFigure(ibr), tax, 10), `tax shown ${taxFigure(ibr)}, 2026 brackets give ${Math.round(tax)}`).toBe(true);
+         |                                                                                                               ^
+      39 | });
+      40 |
+      41 | test('MONEY-03 "pay the least overall" counts the tax on a forgiven balance', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:38:111
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-03-the-tax-on--8f83e-026-brackets-not-a-flat-22--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-03-the-tax-on--8f83e-026-brackets-not-a-flat-22--chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-03-the-tax-on--8f83e-026-brackets-not-a-flat-22--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-03-the-tax-on--8f83e-026-brackets-not-a-flat-22--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[4/18] [chromium] › tests/money.spec.mjs:41:1 › MONEY-03 "pay the least overall" counts the tax on a forgiven balance
+[5/18] [chromium] › tests/money.spec.mjs:58:1 › MONEY-04 IBR uses the 2026 poverty guideline ($15,960 for one person)
+[6/18] [chromium] › tests/money.spec.mjs:64:1 › MONEY-05 income is held flat, so IBR total paid matches a flat-income path
+  4) [chromium] › tests/money.spec.mjs:41:1 › MONEY-03 "pay the least overall" counts the tax on a forgiven balance 
+
+    Error: with tax: {"Standard 10-Year":40932,"Graduated":43917,"IBR":21023,"RAP":19440}
+
+    expect(received).toContain(expected) // indexOf
+
+    Expected substring: "RAP"
+    Received string:    "Our top pick: IBR"
+
+      53 |   const pick = Object.entries(costs).sort((x, y) => x[1] - y[1])[0][0];
+      54 |   const banner = await page.getByText(/top pick/i).first().innerText();
+    > 55 |   expect(banner, `with tax: ${JSON.stringify(Object.fromEntries(Object.entries(costs).map(([k, v]) => [k, Math.round(v)])))}`).toContain(pick);
+         |                                                                                                                                ^
+      56 | });
+      57 |
+      58 | test('MONEY-04 IBR uses the 2026 poverty guideline ($15,960 for one person)', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:55:128
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-03-pay-the-lea-5ad18-e-tax-on-a-forgiven-balance-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-03-pay-the-lea-5ad18-e-tax-on-a-forgiven-balance-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-03-pay-the-lea-5ad18-e-tax-on-a-forgiven-balance-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-03-pay-the-lea-5ad18-e-tax-on-a-forgiven-balance-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  5) [chromium] › tests/money.spec.mjs:58:1 › MONEY-04 IBR uses the 2026 poverty guideline ($15,960 for one person) 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 176
+    Received: 179
+
+      59 |   await openResults(page, { income: 45000 });
+      60 |   const ibr = await cardLines(page, 'IBR');
+    > 61 |   expect(figure(ibr, 'Monthly payment')).toBe(Math.round(ibrPayment(45000, 1, 27000, 6.52)));
+         |                                          ^
+      62 | });
+      63 |
+      64 | test('MONEY-05 income is held flat, so IBR total paid matches a flat-income path', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:61:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-04-IBR-uses-th-62503-line-15-960-for-one-person--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-04-IBR-uses-th-62503-line-15-960-for-one-person--chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-04-IBR-uses-th-62503-line-15-960-for-one-person--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-04-IBR-uses-th-62503-line-15-960-for-one-person--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  6) [chromium] › tests/money.spec.mjs:64:1 › MONEY-05 income is held flat, so IBR total paid matches a flat-income path 
+
+    Error: shown 39533, flat income gives 42120
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      66 |   const ibr = await cardLines(page, 'IBR');
+      67 |   const path = ibrPath(27000, 5.5, ibrPayment(45000, 1, 27000, 5.5));
+    > 68 |   expect(near(figure(ibr, 'Total paid'), path.paid, 5), `shown ${figure(ibr, 'Total paid')}, flat income gives ${Math.round(path.paid)}`).toBe(true);
+         |                                                                                                                                           ^
+      69 |   expect(await pageText(page)).toMatch(/income (is )?(held )?flat|same income every year|income stays the same/i);
+      70 | });
+      71 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:68:139
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-05-income-is-h-1f7fd--matches-a-flat-income-path-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-05-income-is-h-1f7fd--matches-a-flat-income-path-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-05-income-is-h-1f7fd--matches-a-flat-income-path-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-05-income-is-h-1f7fd--matches-a-flat-income-path-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[7/18] [chromium] › tests/money.spec.mjs:72:1 › MONEY-06 Standard charges at least $50 a month on a small balance
+[8/18] [chromium] › tests/money.spec.mjs:80:1 › MONEY-10 PSLF on RAP counts the matching principal payment
+[9/18] [chromium] › tests/money.spec.mjs:89:1 › MONEY-13 a married joint filer with no children gets no RAP dependent credit, and IBR counts the spouse
+  7) [chromium] › tests/money.spec.mjs:80:1 › MONEY-10 PSLF on RAP counts the matching principal payment 
+
+    Error: shown 31000, rule gives 25000
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+      83 |   const pslf = await cardLines(page, 'PSLF');
+      84 |   const path = rapPath(31000, 6.52, rapPayment(38000, 0), 120);
+    > 85 |   expect(near(figure(pslf, 'Amount forgiven'), path.left, 5), `shown ${figure(pslf, 'Amount forgiven')}, rule gives ${Math.round(path.left)}`).toBe(true);
+         |                                                                                                                                                ^
+      86 |   expect(near(figure(pslf, 'Total paid'), path.paid, 5)).toBe(true);
+      87 | });
+      88 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:85:144
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-10-PSLF-on-RAP-63d26--matching-principal-payment-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-10-PSLF-on-RAP-63d26--matching-principal-payment-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-10-PSLF-on-RAP-63d26--matching-principal-payment-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-10-PSLF-on-RAP-63d26--matching-principal-payment-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  8) [chromium] › tests/money.spec.mjs:89:1 › MONEY-13 a married joint filer with no children gets no RAP dependent credit, and IBR counts the spouse 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 150
+    Received: 100
+
+      91 |   const rap = await cardLines(page, 'RAP');
+      92 |   const ibr = await cardLines(page, 'IBR');
+    > 93 |   expect(figure(rap, 'Monthly payment')).toBe(Math.round(rapPayment(45000, 0)));
+         |                                          ^
+      94 |   expect(figure(ibr, 'Monthly payment')).toBe(Math.round(ibrPayment(45000, 2, 27000, 6.52)));
+      95 | });
+      96 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:93:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-13-a-married-j-db435-t-and-IBR-counts-the-spouse-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-13-a-married-j-db435-t-and-IBR-counts-the-spouse-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-13-a-married-j-db435-t-and-IBR-counts-the-spouse-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-13-a-married-j-db435-t-and-IBR-counts-the-spouse-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  9) [chromium] › tests/money.spec.mjs:72:1 › MONEY-06 Standard charges at least $50 a month on a small balance 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 50
+    Received: 34
+
+      74 |   const std = await cardLines(page, 'Standard 10-Year');
+      75 |   const s = standard(3000, 6.53);
+    > 76 |   expect(figure(std, 'Monthly payment')).toBe(50);
+         |                                          ^
+      77 |   expect(near(figure(std, 'Total paid'), s.paid, 2)).toBe(true);
+      78 | });
+      79 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:76:42
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-06-Standard-ch-58f7c--a-month-on-a-small-balance-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-06-Standard-ch-58f7c--a-month-on-a-small-balance-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-06-Standard-ch-58f7c--a-month-on-a-small-balance-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-06-Standard-ch-58f7c--a-month-on-a-small-balance-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[10/18] [chromium] › tests/money.spec.mjs:104:1 › Graduated starts at the 3x-cap start and Tiered Standard uses its tier (guards)
+[11/18] [chromium] › tests/money.spec.mjs:112:1 › Tiered Standard is never the pick for a public-service borrower and says it earns no PSLF credit (guard)
+[12/18] [chromium] › tests/money.spec.mjs:97:1 › MONEY-15 IBR under $5 is $0 and from $5 to $10 is $10
+  10) [chromium] › tests/money.spec.mjs:97:1 › MONEY-15 IBR under $5 is $0 and from $5 to $10 is $10 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 10
+    Received: 11
+
+       97 | test('MONEY-15 IBR under $5 is $0 and from $5 to $10 is $10', async ({ page }) => {
+       98 |   await openResults(page, { income: 24780 });
+    >  99 |   expect(figure(await cardLines(page, 'IBR'), 'Monthly payment')).toBe(10);
+          |                                                                   ^
+      100 |   await openResults(page, { income: 24300 });
+      101 |   expect(figure(await cardLines(page, 'IBR'), 'Monthly payment')).toBe(0);
+      102 | });
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:99:67
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-15-IBR-under-5-is-0-and-from-5-to-10-is-10-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-15-IBR-under-5-is-0-and-from-5-to-10-is-10-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-15-IBR-under-5-is-0-and-from-5-to-10-is-10-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-15-IBR-under-5-is-0-and-from-5-to-10-is-10-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[13/18] [chromium] › tests/money.spec.mjs:130:1 › MONEY-09 consolidation copy does not claim progress resets to zero
+[14/18] [chromium] › tests/money.spec.mjs:135:1 › MONEY-11 PSLF copy does not require 10 straight or unbroken years
+[15/18] [chromium] › tests/money.spec.mjs:122:1 › MONEY-08 Teacher Loan Forgiveness copy says the same years cannot count toward PSLF
+  11) [chromium] › tests/money.spec.mjs:130:1 › MONEY-09 consolidation copy does not claim progress resets to zero 
+
+    Error: expect(received).not.toMatch(expected)
+
+    Expected pattern: not /resets your forgiveness progress to zero/i
+    Received string:      "C
+    Cense
+    /
+    Loan Lab
+    No data stored. All calculations run locally.
+    Your repayment options
+    
+    Based on a $27,000 federal balance at 6.52% interest on a $45,000 income.
+    
+    Copy shareable link
+    Our top pick: RAP
+    •
+    RAP has the lowest monthly payment available to you at $150
+    •
+    That is $157 a month less than Standard 10-Year
+    •
+    Your payment moves with your income, so it drops if your income drops
+    
+    WHAT YOU GIVE UP
+    
+    A lower payment costs more overall. You would pay $6,762 more in total than on Standard 10-Year, and finish 6 years later.
+    
+    This is a starting point rather than an answer. Read the advantages and disadvantages on each card below, since the right plan depends on what you value most.
+    
+    RAP
+    New plan
+    TOP PICK
+    
+    Income-driven, with interest protection
+    
+    WHAT IS THIS?
+    
+    The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.
+    
+    Monthly payment
+    $150
+    
+    That's 5% of your estimated monthly take-home
+    
+    Total paid
+    $43,585
+    Total interest
+    $16,585
+    Payoff timeline
+    16 years
+    
+    ADVANTAGES
+    
+    +
+    Unpaid interest is waived rather than added to your balance
+    +
+    The government puts at least $50/month toward your principal, so the balance always shrinks
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Available even if you borrowed on or after July 1, 2026
+    
+    DISADVANTAGES
+    
+    −
+    Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR
+    −
+    Forgiveness takes 30 years, 10 longer than IBR
+    −
+    The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan
+    −
+    Forgiveness after 30 years counts as taxable income
+    
+    RAP guarantees at least $50/month goes toward your principal (the government covers the difference). Your balance shrinks every month.
+    
+    Standard 10-Year
+    Pre-July 2026 loans only
+    
+    Fixed payments, out in a decade
+    
+    WHAT IS THIS?
+    
+    Fixed payments spread evenly over exactly 10 years. Same payment every month regardless of income. Counts toward Public Service Loan Forgiveness (PSLF). Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $307
+    
+    That's 10% of your estimated monthly take-home
+    
+    Total paid
+    $36,823
+    Total interest
+    $9,823
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Lowest total interest of any plan, since the term is the shortest
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Fixed payment that never changes and no annual paperwork
+    
+    DISADVANTAGES
+    
+    −
+    Highest monthly payment of any plan available to you
+    −
+    No forgiveness at the end unless you are pursuing PSLF
+    −
+    The payment does not drop if your income drops
+    Graduated
+    Pre-July 2026 loans only
+    
+    Start low, payments rise over time
+    
+    The Graduated Plan is closed to anyone holding a loan disbursed on or after July 1, 2026. Payments on it also do not count toward Public Service Loan Forgiveness.
+    
+    WHAT IS THIS?
+    
+    Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $176
+    
+    That's 6% of your estimated monthly take-home
+    
+    Total paid
+    $39,503
+    Total interest
+    $12,503
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Starts at roughly half the Standard payment
+    +
+    Still finishes in 10 years, and the schedule is predictable
+    
+    DISADVANTAGES
+    
+    −
+    Payments do NOT count toward Public Service Loan Forgiveness
+    −
+    You pay more total interest than Standard
+    −
+    Payments step up every 2 years whether your income did or not
+    IBR
+    Pre-July 2026 loans only
+    
+    Payments tied to your income
+    
+    WHAT IS THIS?
+    
+    Caps your payment at 10% of discretionary income (what you earn above 150% of the poverty line). Payments drop to $0 if income is very low, and $0 still counts as a qualifying payment. Remaining balance forgiven after 20 years. Unpaid interest is added to your balance, so your balance can grow. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $179
+    
+    That's 6% of your estimated monthly take-home
+    
+    Total paid
+    $43,455
+    Total interest
+    $16,455
+    Payoff timeline
+    15 years
+    
+    ADVANTAGES
+    
+    +
+    Usually the lowest monthly payment, since it only counts income above the poverty floor
+    +
+    A $0 payment is possible and still counts as a qualifying payment
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Balance forgiven after 20 years, which is 10 years sooner than RAP
+    
+    DISADVANTAGES
+    
+    −
+    Unpaid interest is added to your balance, so your balance can grow for years
+    −
+    Forgiveness after 20 years counts as taxable income
+    −
+    You have to recertify your income every year or the payment jumps
+    −
+    Closed to you if any loan was disbursed on or after July 1, 2026
+    Total cost comparison
+    Standard 10-Year
+    $36,823
+    Graduated
+    $39,503
+    IBR
+    $43,455
+    RAP
+    $43,585
+    Recommended
+    Total paid
+    Forgiven
+    Things to know
+    
+    ⚠️ Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.
+    
+    💡 Thinking about refinancing federal loans to private? It's worth understanding the trade-off first. Refinancing converts your federal loans to private, which permanently removes access to income-driven plans (IBR, RAP) and Public Service Loan Forgiveness (PSLF). For some borrowers with high incomes and no interest in forgiveness, refinancing to a lower rate can make sense. For most, keeping your federal protections is the safer choice.
+    
+    ⚠️ The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.
+    
+    Ready to act on this?
+    
+    1. See your exact loans
+    
+    Log in with your FSA ID to see every federal loan, balance, rate, and servicer
+    
+    2. Enroll in an income-driven plan
+    
+    Official IDR application — takes about 10 minutes
+    
+    3. Check PSLF eligibility
+    
+    If you work in public service, submit an Employment Certification Form now — don't wait
+    
+    Want to see all your loans in one place?
+    
+    Cense Loan Desk puts every federal loan on one screen, shows which repayment plans you actually qualify for, and ranks which loan to pay down first.
+    
+    Open Loan Desk →
+    ← Retake the quiz
+    
+    These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation."
+
+      130 | test('MONEY-09 consolidation copy does not claim progress resets to zero', async ({ page }) => {
+      131 |   await openResults(page, {});
+    > 132 |   expect(await pageText(page)).not.toMatch(/resets your forgiveness progress to zero/i);
+          |                                    ^
+      133 | });
+      134 |
+      135 | test('MONEY-11 PSLF copy does not require 10 straight or unbroken years', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:132:36
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-09-consolidati-83c57-aim-progress-resets-to-zero-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-09-consolidati-83c57-aim-progress-resets-to-zero-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-09-consolidati-83c57-aim-progress-resets-to-zero-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-09-consolidati-83c57-aim-progress-resets-to-zero-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  12) [chromium] › tests/money.spec.mjs:135:1 › MONEY-11 PSLF copy does not require 10 straight or unbroken years 
+
+    Error: expect(received).not.toMatch(expected)
+
+    Expected pattern: not /10 straight years|for the entire 10 years/i
+    Received string:      "C
+    Cense
+    /
+    Loan Lab
+    No data stored. All calculations run locally.
+    Your repayment options
+    
+    Based on a $60,000 federal balance at 6.52% interest on a $30,000 income.
+    
+    Copy shareable link
+    Our top pick: PSLF
+    •
+    PSLF costs the least overall at $9,661
+    •
+    Next closest is IBR at $33,661, a difference of $24,001
+    •
+    PSLF forgiveness is tax-free, so the $60,000 cancelled is not taxed
+    
+    WHAT YOU GIVE UP
+    
+    Requires 10 straight years of full-time qualifying public-service work. If you leave early, nothing is forgiven and you have been paying the minimum the whole time.
+    
+    This is a starting point rather than an answer. Read the advantages and disadvantages on each card below, since the right plan depends on what you value most.
+    
+    PSLF
+    TOP PICK
+    
+    Full forgiveness after 10 years of public service
+    
+    WHAT IS THIS?
+    
+    Cancels 100% of your remaining federal balance after 10 years of payments while working for the government or a qualifying nonprofit. The forgiven amount is completely tax-free.
+    
+    Monthly payment
+    $50
+    
+    That's 2% of your estimated monthly take-home
+    
+    Total paid
+    $9,661
+    Total interest
+    $9,661
+    Payoff timeline
+    10 years
+    Amount forgiven
+    $60,000
+    
+    ✓ Public Service Loan Forgiveness is completely tax-free
+    
+    ADVANTAGES
+    
+    +
+    Your entire remaining balance is cancelled after 10 years
+    +
+    The forgiven amount is completely tax-free, unlike IBR or RAP forgiveness
+    +
+    Your balance size barely matters, since what is left is wiped
+    +
+    You make small income-driven payments the whole time
+    
+    DISADVANTAGES
+    
+    −
+    Requires full-time work for a government agency or qualifying nonprofit for the entire 10 years
+    −
+    You must stay on a qualifying plan the whole time, so Tiered Standard, Graduated, and Extended break it
+    −
+    All or nothing, since leaving public service at year 8 forgives nothing
+    −
+    Only worth pursuing if you would still owe a balance at year 10
+    IBR
+    Pre-July 2026 loans only
+    
+    Payments tied to your income
+    
+    WHAT IS THIS?
+    
+    Caps your payment at 10% of discretionary income (what you earn above 150% of the poverty line). Payments drop to $0 if income is very low, and $0 still counts as a qualifying payment. Remaining balance forgiven after 20 years. Unpaid interest is added to your balance, so your balance can grow. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $54
+    
+    That's 3% of your estimated monthly take-home
+    
+    Total paid
+    $33,661
+    Total interest
+    $33,661
+    Payoff timeline
+    20 years
+    Amount forgiven
+    $60,000
+    
+    The forgiven amount counts as taxable income in the year it is cancelled, and nothing is withheld for it. Setting aside roughly $13,200 covers the estimated bill at a 22% rate.
+    
+    ADVANTAGES
+    
+    +
+    Usually the lowest monthly payment, since it only counts income above the poverty floor
+    +
+    A $0 payment is possible and still counts as a qualifying payment
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Balance forgiven after 20 years, which is 10 years sooner than RAP
+    
+    DISADVANTAGES
+    
+    −
+    Unpaid interest is added to your balance, so your balance can grow for years
+    −
+    Forgiveness after 20 years counts as taxable income
+    −
+    You have to recertify your income every year or the payment jumps
+    −
+    Closed to you if any loan was disbursed on or after July 1, 2026
+    RAP
+    New plan
+    
+    Income-driven, with interest protection
+    
+    WHAT IS THIS?
+    
+    The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.
+    
+    Monthly payment
+    $50
+    
+    That's 2% of your estimated monthly take-home
+    
+    Total paid
+    $65,251
+    Total interest
+    $43,173
+    Payoff timeline
+    30 years
+    Amount forgiven
+    $37,922
+    
+    The forgiven amount counts as taxable income in the year it is cancelled, and nothing is withheld for it. Setting aside roughly $8,343 covers the estimated bill at a 22% rate.
+    
+    ADVANTAGES
+    
+    +
+    Unpaid interest is waived rather than added to your balance
+    +
+    The government puts at least $50/month toward your principal, so the balance always shrinks
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Available even if you borrowed on or after July 1, 2026
+    
+    DISADVANTAGES
+    
+    −
+    Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR
+    −
+    Forgiveness takes 30 years, 10 longer than IBR
+    −
+    The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan
+    −
+    Forgiveness after 30 years counts as taxable income
+    
+    RAP guarantees at least $50/month goes toward your principal (the government covers the difference). Your balance shrinks every month.
+    
+    Standard 10-Year
+    Pre-July 2026 loans only
+    
+    Fixed payments, out in a decade
+    
+    WHAT IS THIS?
+    
+    Fixed payments spread evenly over exactly 10 years. Same payment every month regardless of income. Counts toward Public Service Loan Forgiveness (PSLF). Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $682
+    
+    That's 33% of your estimated monthly take-home
+    
+    Total paid
+    $81,828
+    Total interest
+    $21,828
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Lowest total interest of any plan, since the term is the shortest
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Fixed payment that never changes and no annual paperwork
+    
+    DISADVANTAGES
+    
+    −
+    Highest monthly payment of any plan available to you
+    −
+    No forgiveness at the end unless you are pursuing PSLF
+    −
+    The payment does not drop if your income drops
+    Graduated
+    Pre-July 2026 loans only
+    
+    Start low, payments rise over time
+    
+    The Graduated Plan is closed to anyone holding a loan disbursed on or after July 1, 2026. Payments on it also do not count toward Public Service Loan Forgiveness.
+    
+    WHAT IS THIS?
+    
+    Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $392
+    
+    That's 19% of your estimated monthly take-home
+    
+    Total paid
+    $87,785
+    Total interest
+    $27,785
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Starts at roughly half the Standard payment
+    +
+    Still finishes in 10 years, and the schedule is predictable
+    
+    DISADVANTAGES
+    
+    −
+    Payments do NOT count toward Public Service Loan Forgiveness
+    −
+    You pay more total interest than Standard
+    −
+    Payments step up every 2 years whether your income did or not
+    Total cost comparison
+    PSLF
+    $9,661
+    IBR
+    $33,661
+    RAP
+    $65,251
+    Standard 10-Year
+    $81,828
+    Graduated
+    $87,785
+    Recommended
+    Total paid
+    Forgiven
+    Things to know
+    
+    ⚠️ Payments under the Tiered Standard Plan do not count toward Public Service Loan Forgiveness, and that is true for every tier including the 10-year one. Since you work in public service, choosing this plan means making on-time payments that move you zero months closer to forgiveness. RAP, which is income-driven, is the alternative that keeps PSLF on the table.
+    
+    ⚠️ Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.
+    
+    💡 Thinking about refinancing federal loans to private? It's worth understanding the trade-off first. Refinancing converts your federal loans to private, which permanently removes access to income-driven plans (IBR, RAP) and Public Service Loan Forgiveness (PSLF). For some borrowers with high incomes and no interest in forgiveness, refinancing to a lower rate can make sense. For most, keeping your federal protections is the safer choice.
+    
+    ⚠️ The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.
+    
+    💡 Forgiveness under IBR or RAP counts as taxable income. The temporary rule that shielded it expired on December 31, 2025 and was not renewed, so a balance forgiven in year 20 or 30 lands on your tax return as income that year with nothing withheld. Public Service Loan Forgiveness stays permanently tax-free under its own section of the tax code.
+    
+    Ready to act on this?
+    
+    1. See your exact loans
+    
+    Log in with your FSA ID to see every federal loan, balance, rate, and servicer
+    
+    2. Enroll in an income-driven plan
+    
+    Official IDR application — takes about 10 minutes
+    
+    3. Check PSLF eligibility
+    
+    If you work in public service, submit an Employment Certification Form now — don't wait
+    
+    Want to see all your loans in one place?
+    
+    Cense Loan Desk puts every federal loan on one screen, shows which repayment plans you actually qualify for, and ranks which loan to pay down first.
+    
+    Open Loan Desk →
+    ← Retake the quiz
+    
+    These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation."
+
+      136 |   await openResults(page, { employment: 'nonprofit', income: 30000, federalBalance: 60000, priority: 'least_total' });
+      137 |   const text = await pageText(page);
+    > 138 |   expect(text).not.toMatch(/10 straight years|for the entire 10 years/i);
+          |                    ^
+      139 |   expect(text).toMatch(/120/);
+      140 | });
+      141 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:138:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-11-PSLF-copy-d-ce3a5--straight-or-unbroken-years-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-11-PSLF-copy-d-ce3a5--straight-or-unbroken-years-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-11-PSLF-copy-d-ce3a5--straight-or-unbroken-years-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-11-PSLF-copy-d-ce3a5--straight-or-unbroken-years-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[16/18] [chromium] › tests/money.spec.mjs:142:1 › MONEY-14 a $0 income is not described as $0 on every income-driven plan
+[17/18] [chromium] › tests/money.spec.mjs:148:1 › MONEY-16 the Graduated card does not say none of its payments count toward PSLF
+  13) [chromium] › tests/money.spec.mjs:122:1 › MONEY-08 Teacher Loan Forgiveness copy says the same years cannot count toward PSLF 
+
+    Error: expect(received).not.toMatch(expected)
+
+    Expected pattern: not /continue toward PSLF forgiveness at year 10/i
+    Received string:      "C
+    Cense
+    /
+    Loan Lab
+    No data stored. All calculations run locally.
+    Your repayment options
+    
+    Based on a $27,000 federal balance at 6.52% interest on a $45,000 income.
+    
+    Copy shareable link
+    Our top pick: RAP
+    •
+    RAP has the lowest monthly payment available to you at $150
+    •
+    That is $157 a month less than Standard 10-Year
+    •
+    Payments on this plan count toward PSLF, which would cancel $19,222 at year 10
+    
+    WHAT YOU GIVE UP
+    
+    A lower payment costs more overall. You would pay $6,762 more in total than on Standard 10-Year, and finish 6 years later.
+    
+    This is a starting point rather than an answer. Read the advantages and disadvantages on each card below, since the right plan depends on what you value most.
+    
+    RAP
+    New plan
+    TOP PICK
+    
+    Income-driven, with interest protection
+    
+    WHAT IS THIS?
+    
+    The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.
+    
+    Monthly payment
+    $150
+    
+    That's 5% of your estimated monthly take-home
+    
+    Total paid
+    $43,585
+    Total interest
+    $16,585
+    Payoff timeline
+    16 years
+    
+    ADVANTAGES
+    
+    +
+    Unpaid interest is waived rather than added to your balance
+    +
+    The government puts at least $50/month toward your principal, so the balance always shrinks
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Available even if you borrowed on or after July 1, 2026
+    
+    DISADVANTAGES
+    
+    −
+    Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR
+    −
+    Forgiveness takes 30 years, 10 longer than IBR
+    −
+    The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan
+    −
+    Forgiveness after 30 years counts as taxable income
+    
+    RAP guarantees at least $50/month goes toward your principal (the government covers the difference). Your balance shrinks every month.
+    
+    PSLF
+    
+    Full forgiveness after 10 years of public service
+    
+    WHAT IS THIS?
+    
+    Cancels 100% of your remaining federal balance after 10 years of payments while working for the government or a qualifying nonprofit. The forgiven amount is completely tax-free.
+    
+    Monthly payment
+    $150
+    
+    That's 5% of your estimated monthly take-home
+    
+    Total paid
+    $23,911
+    Total interest
+    $16,133
+    Payoff timeline
+    10 years
+    Amount forgiven
+    $19,222
+    
+    ✓ Public Service Loan Forgiveness is completely tax-free
+    
+    ADVANTAGES
+    
+    +
+    Your entire remaining balance is cancelled after 10 years
+    +
+    The forgiven amount is completely tax-free, unlike IBR or RAP forgiveness
+    +
+    Your balance size barely matters, since what is left is wiped
+    +
+    You make small income-driven payments the whole time
+    
+    DISADVANTAGES
+    
+    −
+    Requires full-time work for a government agency or qualifying nonprofit for the entire 10 years
+    −
+    You must stay on a qualifying plan the whole time, so Tiered Standard, Graduated, and Extended break it
+    −
+    All or nothing, since leaving public service at year 8 forgives nothing
+    −
+    Only worth pursuing if you would still owe a balance at year 10
+    Standard 10-Year
+    Pre-July 2026 loans only
+    
+    Fixed payments, out in a decade
+    
+    WHAT IS THIS?
+    
+    Fixed payments spread evenly over exactly 10 years. Same payment every month regardless of income. Counts toward Public Service Loan Forgiveness (PSLF). Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $307
+    
+    That's 10% of your estimated monthly take-home
+    
+    Total paid
+    $36,823
+    Total interest
+    $9,823
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Lowest total interest of any plan, since the term is the shortest
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Fixed payment that never changes and no annual paperwork
+    
+    DISADVANTAGES
+    
+    −
+    Highest monthly payment of any plan available to you
+    −
+    No forgiveness at the end unless you are pursuing PSLF
+    −
+    The payment does not drop if your income drops
+    Graduated
+    Pre-July 2026 loans only
+    
+    Start low, payments rise over time
+    
+    The Graduated Plan is closed to anyone holding a loan disbursed on or after July 1, 2026. Payments on it also do not count toward Public Service Loan Forgiveness.
+    
+    WHAT IS THIS?
+    
+    Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $176
+    
+    That's 6% of your estimated monthly take-home
+    
+    Total paid
+    $39,503
+    Total interest
+    $12,503
+    Payoff timeline
+    10 years
+    
+    ADVANTAGES
+    
+    +
+    Starts at roughly half the Standard payment
+    +
+    Still finishes in 10 years, and the schedule is predictable
+    
+    DISADVANTAGES
+    
+    −
+    Payments do NOT count toward Public Service Loan Forgiveness
+    −
+    You pay more total interest than Standard
+    −
+    Payments step up every 2 years whether your income did or not
+    IBR
+    Pre-July 2026 loans only
+    
+    Payments tied to your income
+    
+    WHAT IS THIS?
+    
+    Caps your payment at 10% of discretionary income (what you earn above 150% of the poverty line). Payments drop to $0 if income is very low, and $0 still counts as a qualifying payment. Remaining balance forgiven after 20 years. Unpaid interest is added to your balance, so your balance can grow. Only available if all of your loans were disbursed before July 1, 2026.
+    
+    Monthly payment
+    $179
+    
+    That's 6% of your estimated monthly take-home
+    
+    Total paid
+    $43,455
+    Total interest
+    $16,455
+    Payoff timeline
+    15 years
+    
+    ADVANTAGES
+    
+    +
+    Usually the lowest monthly payment, since it only counts income above the poverty floor
+    +
+    A $0 payment is possible and still counts as a qualifying payment
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Balance forgiven after 20 years, which is 10 years sooner than RAP
+    
+    DISADVANTAGES
+    
+    −
+    Unpaid interest is added to your balance, so your balance can grow for years
+    −
+    Forgiveness after 20 years counts as taxable income
+    −
+    You have to recertify your income every year or the payment jumps
+    −
+    Closed to you if any loan was disbursed on or after July 1, 2026
+    Total cost comparison
+    PSLF
+    $23,911
+    Standard 10-Year
+    $36,823
+    Graduated
+    $39,503
+    IBR
+    $43,455
+    RAP
+    $43,585
+    Recommended
+    Total paid
+    Forgiven
+    Things to know
+    
+    ⚠️ Payments under the Tiered Standard Plan do not count toward Public Service Loan Forgiveness, and that is true for every tier including the 10-year one. Since you work in public service, choosing this plan means making on-time payments that move you zero months closer to forgiveness. RAP, which is income-driven, is the alternative that keeps PSLF on the table.
+    
+    ⚠️ Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.
+    
+    💡 Thinking about refinancing federal loans to private? It's worth understanding the trade-off first. Refinancing converts your federal loans to private, which permanently removes access to income-driven plans (IBR, RAP) and Public Service Loan Forgiveness (PSLF). For some borrowers with high incomes and no interest in forgiveness, refinancing to a lower rate can make sense. For most, keeping your federal protections is the safer choice.
+    
+    💡 You may qualify for Public Service Loan Forgiveness (PSLF). Since you work in the public sector, you could have your remaining balance forgiven tax-free after 10 years. If that changes your thinking, retake the quiz and select \"Explore forgiveness\" to see how PSLF compares.
+    
+    ⚠️ The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.
+    
+    💡 Teacher Loan Forgiveness: If you teach full-time for 5 consecutive years at a low-income school, you may qualify for up to $17,500 in loan forgiveness — separate from PSLF. Unlike PSLF, Teacher Loan Forgiveness applies after just 5 years, but the forgiven amount is capped. Many teachers pursue both: get Teacher Loan Forgiveness at year 5, then continue toward PSLF forgiveness at year 10. Learn more at studentaid.gov/teach-forgiveness.
+    
+    Ready to act on this?
+    
+    1. See your exact loans
+    
+    Log in with your FSA ID to see every federal loan, balance, rate, and servicer
+    
+    2. Enroll in an income-driven plan
+    
+    Official IDR application — takes about 10 minutes
+    
+    3. Check PSLF eligibility
+    
+    If you work in public service, submit an Employment Certification Form now — don't wait
+    
+    Want to see all your loans in one place?
+    
+    Cense Loan Desk puts every federal loan on one screen, shows which repayment plans you actually qualify for, and ranks which loan to pay down first.
+    
+    Open Loan Desk →
+    ← Retake the quiz
+    
+    These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation."
+
+      123 |   await openResults(page, { employment: 'education' });
+      124 |   const text = await pageText(page);
+    > 125 |   expect(text).not.toMatch(/continue toward PSLF forgiveness at year 10/i);
+          |                    ^
+      126 |   expect(text).toMatch(/same (years|period)/i);
+      127 |   expect(text).toMatch(/\$5,000/);
+      128 | });
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:125:20
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-08-Teacher-Loa-e8380-rs-cannot-count-toward-PSLF-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-08-Teacher-Loa-e8380-rs-cannot-count-toward-PSLF-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-08-Teacher-Loa-e8380-rs-cannot-count-toward-PSLF-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-08-Teacher-Loa-e8380-rs-cannot-count-toward-PSLF-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+[18/18] [chromium] › tests/money.spec.mjs:154:1 › MONEY-19 the SAVE note names the final 30-day notice and PSLF buyback
+  14) [chromium] › tests/money.spec.mjs:148:1 › MONEY-16 the Graduated card does not say none of its payments count toward PSLF 
+
+    Error: expect(received).not.toMatch(expected)
+
+    Expected pattern: not /Payments do NOT count toward Public Service Loan Forgiveness/
+    Received string:      "Graduated Pre-July 2026 loans only Start low, payments rise over time The Graduated Plan is closed to anyone holding a loan disbursed on or after July 1, 2026. Payments on it also do not count toward Public Service Loan Forgiveness. WHAT IS THIS? Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026. Monthly payment $176 That's 6% of your estimated monthly take-home Total paid $39,503 Total interest $12,503 Payoff timeline 10 years ADVANTAGES + Starts at roughly half the Standard payment + Still finishes in 10 years, and the schedule is predictable DISADVANTAGES − Payments do NOT count toward Public Service Loan Forgiveness − You pay more total interest than Standard − Payments step up every 2 years whether your income did or not"
+
+      149 |   await openResults(page, { employment: 'government' });
+      150 |   const g = (await cardLines(page, 'Graduated')).join(' ');
+    > 151 |   expect(g).not.toMatch(/Payments do NOT count toward Public Service Loan Forgiveness/);
+          |                 ^
+      152 | });
+      153 |
+      154 | test('MONEY-19 the SAVE note names the final 30-day notice and PSLF buyback', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:151:17
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-16-the-Graduat-87840--payments-count-toward-PSLF-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-16-the-Graduat-87840--payments-count-toward-PSLF-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-16-the-Graduat-87840--payments-count-toward-PSLF-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-16-the-Graduat-87840--payments-count-toward-PSLF-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  15) [chromium] › tests/money.spec.mjs:142:1 › MONEY-14 a $0 income is not described as $0 on every income-driven plan 
+
+    Error: expect(received).not.toMatch(expected)
+
+    Expected pattern: not /income-driven plans show \$0 monthly payments/i
+    Received string:      "C
+    Cense
+    /
+    Loan Lab
+    No data stored. All calculations run locally.
+    Your repayment options
+    
+    Based on a $27,000 federal balance at 6.52% interest on a $0 income.
+    
+    Copy shareable link
+    
+    These results reflect a $0 income
+    
+    With little or no income, income-driven plans show $0 monthly payments — which is accurate for right now. But once you start earning, your payments will adjust based on your salary. For a more realistic picture of what you'll actually pay, try re-running with your expected starting salary.
+    
+    ← Re-run with expected salary
+    Our top pick: RAP
+    •
+    RAP has the lowest monthly payment available to you at $10
+    •
+    That is $225 a month less than Tiered Standard
+    •
+    Your payment moves with your income, so it drops if your income drops
+    
+    This is a starting point rather than an answer. Read the advantages and disadvantages on each card below, since the right plan depends on what you value most.
+    
+    RAP
+    New plan
+    TOP PICK
+    
+    Income-driven, with interest protection
+    
+    WHAT IS THIS?
+    
+    The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.
+    
+    Monthly payment
+    $10
+    Total paid
+    $3,600
+    Total interest
+    $0
+    Payoff timeline
+    30 years
+    Amount forgiven
+    $9,000
+    
+    The forgiven amount counts as taxable income in the year it is cancelled, and nothing is withheld for it. Setting aside roughly $1,980 covers the estimated bill at a 22% rate.
+    
+    ADVANTAGES
+    
+    +
+    Unpaid interest is waived rather than added to your balance
+    +
+    The government puts at least $50/month toward your principal, so the balance always shrinks
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Available even if you borrowed on or after July 1, 2026
+    
+    DISADVANTAGES
+    
+    −
+    Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR
+    −
+    Forgiveness takes 30 years, 10 longer than IBR
+    −
+    The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan
+    −
+    Forgiveness after 30 years counts as taxable income
+    
+    RAP guarantees at least $50/month goes toward your principal (the government covers the difference). Your balance shrinks every month.
+    
+    Tiered Standard
+    New plan
+    
+    Fixed payments, term set by your balance
+    
+    This is the plan you are enrolled in automatically if you never choose one. It has no forgiveness at the end and does not count toward Public Service Loan Forgiveness.
+    
+    WHAT IS THIS?
+    
+    A fixed-payment plan launched July 1, 2026, available only if at least one of your loans was disbursed on or after that date. Your term is set by your balance rather than your income: 10 years under $25,000, 15 years to $50,000, 20 years to $100,000, and 25 years above that. There is no forgiveness at the end, and payments do NOT count toward Public Service Loan Forgiveness in any tier. This is the plan you get automatically if you never pick one.
+    
+    Monthly payment
+    $235
+    Total paid
+    $42,389
+    Total interest
+    $15,389
+    Payoff timeline
+    15 years
+    
+    ADVANTAGES
+    
+    +
+    Predictable fixed payment with no annual income paperwork
+    +
+    Lower monthly payment than the 10-year Standard plan if your balance is large
+    +
+    One of only two plans open to you once any loan is disbursed on or after July 1, 2026
+    
+    DISADVANTAGES
+    
+    −
+    Payments do NOT count toward Public Service Loan Forgiveness, in any tier
+    −
+    No forgiveness at the end, ever
+    −
+    A longer term means more total interest paid
+    −
+    This is the plan you are placed in automatically if you ignore your notice
+    Total cost comparison
+    RAP
+    $3,600
+    Tiered Standard
+    $42,389
+    Recommended
+    Total paid
+    Forgiven
+    Things to know
+    
+    ⚠️ Because at least one of your loans was disbursed on or after July 1, 2026, Standard, Graduated, Extended, and IBR are closed to you across your entire portfolio, even for the loans you took out earlier. RAP and Tiered Standard are your only two options.
+    
+    ⚠️ Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.
+    
+    💡 Thinking about refinancing federal loans to private? It's worth understanding the trade-off first. Refinancing converts your federal loans to private, which permanently removes access to income-driven plans (IBR, RAP) and Public Service Loan Forgiveness (PSLF). For some borrowers with high incomes and no interest in forgiveness, refinancing to a lower rate can make sense. For most, keeping your federal protections is the safer choice.
+    
+    ⚠️ The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.
+    
+    💡 Forgiveness under IBR or RAP counts as taxable income. The temporary rule that shielded it expired on December 31, 2025 and was not renewed, so a balance forgiven in year 20 or 30 lands on your tax return as income that year with nothing withheld. Public Service Loan Forgiveness stays permanently tax-free under its own section of the tax code.
+    
+    Ready to act on this?
+    
+    1. See your exact loans
+    
+    Log in with your FSA ID to see every federal loan, balance, rate, and servicer
+    
+    2. Enroll in an income-driven plan
+    
+    Official IDR application — takes about 10 minutes
+    
+    3. Check PSLF eligibility
+    
+    If you work in public service, submit an Employment Certification Form now — don't wait
+    
+    Want to see all your loans in one place?
+    
+    Cense Loan Desk puts every federal loan on one screen, shows which repayment plans you actually qualify for, and ranks which loan to pay down first.
+    
+    Open Loan Desk →
+    ← Retake the quiz
+    
+    These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation."
+
+      143 |   await openResults(page, { income: 0, disbursement: 'on_or_after_july_2026' });
+      144 |   expect(figure(await cardLines(page, 'RAP'), 'Monthly payment')).toBe(10);
+    > 145 |   expect(await pageText(page)).not.toMatch(/income-driven plans show \$0 monthly payments/i);
+          |                                    ^
+      146 | });
+      147 |
+      148 | test('MONEY-16 the Graduated card does not say none of its payments count toward PSLF', async ({ page }) => {
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:145:36
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-14-a-0-income--f264e-on-every-income-driven-plan-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-14-a-0-income--f264e-on-every-income-driven-plan-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-14-a-0-income--f264e-on-every-income-driven-plan-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-14-a-0-income--f264e-on-every-income-driven-plan-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  16) [chromium] › tests/money.spec.mjs:154:1 › MONEY-19 the SAVE note names the final 30-day notice and PSLF buyback 
+
+    Error: expect(received).toMatch(expected)
+
+    Expected pattern: /30-day/
+    Received string:  "C
+    Cense
+    /
+    Loan Lab
+    No data stored. All calculations run locally.
+    Your repayment options·
+    Based on a $27,000 federal balance at 6.52% interest on a $45,000 income.·
+    Copy shareable link
+    Our top pick: RAP
+    •
+    RAP has the lowest monthly payment available to you at $150
+    •
+    That is $157 a month less than Standard 10-Year
+    •
+    Your payment moves with your income, so it drops if your income drops·
+    WHAT YOU GIVE UP·
+    A lower payment costs more overall. You would pay $6,762 more in total than on Standard 10-Year, and finish 6 years later.·
+    This is a starting point rather than an answer. Read the advantages and disadvantages on each card below, since the right plan depends on what you value most.·
+    RAP
+    New plan
+    TOP PICK·
+    Income-driven, with interest protection·
+    WHAT IS THIS?·
+    The Repayment Assistance Plan, launched July 1, 2026. Payment is a percentage of your total income (1–10% depending on what you earn) rather than your discretionary income, with a $10/month minimum and $50 off per dependent. Any interest your payment doesn’t cover is waived instead of added to your balance, and the government makes sure at least $50/month goes toward your principal. Forgiveness after 30 years, and payments count toward Public Service Loan Forgiveness.·
+    Monthly payment
+    $150·
+    That's 5% of your estimated monthly take-home·
+    Total paid
+    $43,585
+    Total interest
+    $16,585
+    Payoff timeline
+    16 years·
+    ADVANTAGES·
+    +
+    Unpaid interest is waived rather than added to your balance
+    +
+    The government puts at least $50/month toward your principal, so the balance always shrinks
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Available even if you borrowed on or after July 1, 2026·
+    DISADVANTAGES·
+    −
+    Charges a percentage of your total income rather than income above the poverty floor, so it often costs more per month than IBR
+    −
+    Forgiveness takes 30 years, 10 longer than IBR
+    −
+    The payment is not capped at the Standard amount, so high earners can pay more than they would on a fixed plan
+    −
+    Forgiveness after 30 years counts as taxable income·
+    RAP guarantees at least $50/month goes toward your principal (the government covers the difference). Your balance shrinks every month.·
+    Standard 10-Year
+    Pre-July 2026 loans only·
+    Fixed payments, out in a decade·
+    WHAT IS THIS?·
+    Fixed payments spread evenly over exactly 10 years. Same payment every month regardless of income. Counts toward Public Service Loan Forgiveness (PSLF). Only available if all of your loans were disbursed before July 1, 2026.·
+    Monthly payment
+    $307·
+    That's 10% of your estimated monthly take-home·
+    Total paid
+    $36,823
+    Total interest
+    $9,823
+    Payoff timeline
+    10 years·
+    ADVANTAGES·
+    +
+    Lowest total interest of any plan, since the term is the shortest
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Fixed payment that never changes and no annual paperwork·
+    DISADVANTAGES·
+    −
+    Highest monthly payment of any plan available to you
+    −
+    No forgiveness at the end unless you are pursuing PSLF
+    −
+    The payment does not drop if your income drops
+    Graduated
+    Pre-July 2026 loans only·
+    Start low, payments rise over time·
+    The Graduated Plan is closed to anyone holding a loan disbursed on or after July 1, 2026. Payments on it also do not count toward Public Service Loan Forgiveness.·
+    WHAT IS THIS?·
+    Payments start lower and increase every 2 years over 10 years. Good if your income is growing and you want predictable payments that aren’t tied to income. You’ll pay more total interest than Standard. Only available if all of your loans were disbursed before July 1, 2026.·
+    Monthly payment
+    $176·
+    That's 6% of your estimated monthly take-home·
+    Total paid
+    $39,503
+    Total interest
+    $12,503
+    Payoff timeline
+    10 years·
+    ADVANTAGES·
+    +
+    Starts at roughly half the Standard payment
+    +
+    Still finishes in 10 years, and the schedule is predictable·
+    DISADVANTAGES·
+    −
+    Payments do NOT count toward Public Service Loan Forgiveness
+    −
+    You pay more total interest than Standard
+    −
+    Payments step up every 2 years whether your income did or not
+    IBR
+    Pre-July 2026 loans only·
+    Payments tied to your income·
+    WHAT IS THIS?·
+    Caps your payment at 10% of discretionary income (what you earn above 150% of the poverty line). Payments drop to $0 if income is very low, and $0 still counts as a qualifying payment. Remaining balance forgiven after 20 years. Unpaid interest is added to your balance, so your balance can grow. Only available if all of your loans were disbursed before July 1, 2026.·
+    Monthly payment
+    $179·
+    That's 6% of your estimated monthly take-home·
+    Total paid
+    $43,455
+    Total interest
+    $16,455
+    Payoff timeline
+    15 years·
+    ADVANTAGES·
+    +
+    Usually the lowest monthly payment, since it only counts income above the poverty floor
+    +
+    A $0 payment is possible and still counts as a qualifying payment
+    +
+    Payments count toward Public Service Loan Forgiveness
+    +
+    Balance forgiven after 20 years, which is 10 years sooner than RAP·
+    DISADVANTAGES·
+    −
+    Unpaid interest is added to your balance, so your balance can grow for years
+    −
+    Forgiveness after 20 years counts as taxable income
+    −
+    You have to recertify your income every year or the payment jumps
+    −
+    Closed to you if any loan was disbursed on or after July 1, 2026
+    Total cost comparison
+    Standard 10-Year
+    $36,823
+    Graduated
+    $39,503
+    IBR
+    $43,455
+    RAP
+    $43,585
+    Recommended
+    Total paid
+    Forgiven
+    Things to know·
+    ⚠️ Avoid consolidating right now unless someone has confirmed you need to. A Direct Consolidation Loan is legally a brand new loan, so consolidating today disburses after July 1, 2026 and permanently closes IBR for every loan you own. It also resets your forgiveness progress to zero and never lowers your rate, since the new rate is the weighted average of the old ones rounded up. Older FFEL and Perkins loans are the real exception, because those often must be consolidated to qualify for income-driven plans or PSLF at all.·
+    💡 Thinking about refinancing federal loans to private? It's worth understanding the trade-off first. Refinancing converts your federal loans to private, which permanently removes access to income-driven plans (IBR, RAP) and Public Service Loan Forgiveness (PSLF). For some borrowers with high incomes and no interest in forgiveness, refinancing to a lower rate can make sense. For most, keeping your federal protections is the safer choice.·
+    ⚠️ The SAVE Plan has ended and is no longer an option. If you were enrolled, your servicer started mailing a notice on or after July 1, 2026 giving you 90 days to pick a new plan. That deadline is personal, so check the date on your own notice. Miss it and you get enrolled automatically in the Standard or Tiered Standard plan, and Tiered Standard does not count toward Public Service Loan Forgiveness. Interest also resumed on SAVE balances on August 1, 2025, and months spent in that forbearance earned no forgiveness credit.·
+    Ready to act on this?·
+    1. See your exact loans·
+    Log in with your FSA ID to see every federal loan, balance, rate, and servicer·
+    2. Enroll in an income-driven plan·
+    Official IDR application — takes about 10 minutes·
+    3. Check PSLF eligibility·
+    If you work in public service, submit an Employment Certification Form now — don't wait·
+    Want to see all your loans in one place?·
+    Cense Loan Desk puts every federal loan on one screen, shows which repayment plans you actually qualify for, and ranks which loan to pay down first.·
+    Open Loan Desk →
+    ← Retake the quiz·
+    These calculations are estimates for educational purposes and do not constitute financial advice. Actual payment amounts are determined by your loan servicer. Loan forgiveness amounts may be subject to income tax depending on the program and year. Consult studentaid.gov or a financial advisor for decisions specific to your situation."
+
+      155 |   await openResults(page, {});
+      156 |   const text = await pageText(page);
+    > 157 |   expect(text).toMatch(/30-day/);
+          |                ^
+      158 |   expect(text).toMatch(/buy back|buyback/i);
+      159 | });
+      160 |
+        at /Users/benjaminbrosnahan/Desktop/dev/loan-lab/audits/tests/money.spec.mjs:157:16
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/money-MONEY-19-the-SAVE-no-f554e-day-notice-and-PSLF-buyback-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/money-MONEY-19-the-SAVE-no-f554e-day-notice-and-PSLF-buyback-chromium/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/money-MONEY-19-the-SAVE-no-f554e-day-notice-and-PSLF-buyback-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/money-MONEY-19-the-SAVE-no-f554e-day-notice-and-PSLF-buyback-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+
+  16 failed
+    [chromium] › tests/money.spec.mjs:11:1 › MONEY-01 RAP at the $10 minimum moves principal by $10 a month, not $50 
+    [chromium] › tests/money.spec.mjs:21:1 › MONEY-02 IBR keeps unpaid interest owed, so the forgiven balance includes it 
+    [chromium] › tests/money.spec.mjs:32:1 › MONEY-03 the tax on a forgiven IBR balance uses 2026 brackets, not a flat 22% 
+    [chromium] › tests/money.spec.mjs:41:1 › MONEY-03 "pay the least overall" counts the tax on a forgiven balance 
+    [chromium] › tests/money.spec.mjs:58:1 › MONEY-04 IBR uses the 2026 poverty guideline ($15,960 for one person) 
+    [chromium] › tests/money.spec.mjs:64:1 › MONEY-05 income is held flat, so IBR total paid matches a flat-income path 
+    [chromium] › tests/money.spec.mjs:72:1 › MONEY-06 Standard charges at least $50 a month on a small balance 
+    [chromium] › tests/money.spec.mjs:80:1 › MONEY-10 PSLF on RAP counts the matching principal payment 
+    [chromium] › tests/money.spec.mjs:89:1 › MONEY-13 a married joint filer with no children gets no RAP dependent credit, and IBR counts the spouse 
+    [chromium] › tests/money.spec.mjs:97:1 › MONEY-15 IBR under $5 is $0 and from $5 to $10 is $10 ─
+    [chromium] › tests/money.spec.mjs:122:1 › MONEY-08 Teacher Loan Forgiveness copy says the same years cannot count toward PSLF 
+    [chromium] › tests/money.spec.mjs:130:1 › MONEY-09 consolidation copy does not claim progress resets to zero 
+    [chromium] › tests/money.spec.mjs:135:1 › MONEY-11 PSLF copy does not require 10 straight or unbroken years 
+    [chromium] › tests/money.spec.mjs:142:1 › MONEY-14 a $0 income is not described as $0 on every income-driven plan 
+    [chromium] › tests/money.spec.mjs:148:1 › MONEY-16 the Graduated card does not say none of its payments count toward PSLF 
+    [chromium] › tests/money.spec.mjs:154:1 › MONEY-19 the SAVE note names the final 30-day notice and PSLF buyback 
+  2 passed (7.9s)

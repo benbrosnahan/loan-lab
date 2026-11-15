@@ -1,0 +1,1439 @@
+{
+ "state": "empty",
+ "formFactor": "desktop",
+ "pageContext": {
+  "indexable": true,
+  "siteType": "saas"
+ },
+ "report": {
+  "uxScore": null,
+  "typographyScore": null,
+  "contrastScore": null,
+  "layoutScore": null,
+  "responsiveScore": null,
+  "navigationScore": null,
+  "contentScore": null,
+  "totalIssues": 9,
+  "p1Count": 3,
+  "p2Count": 6,
+  "p3Count": 0,
+  "findings": [
+   {
+    "id": "cea6b446-dc19-429b-838d-4c6f1d4d0055",
+    "severity": "P1",
+    "category": "Color/Contrast",
+    "device": "desktop",
+    "title": "7 text node(s) below WCAG contrast (4.5:1 normal / 3:1 large).",
+    "description": "7 text node(s) below WCAG contrast (4.5:1 normal / 3:1 large). Examples: span.text-slate-300 \"/\" (1.44:1); span.text-slate-500.text-sm \"Loan Lab\" (4.38:1); span.text-xs.text-slate-400 \"No data stored. All calculations run loc\" (2.49:1).",
+    "recommendation": "Darken the text or lighten the background until the ratio reaches 4.5:1 (3:1 for large text).",
+    "source": "engine",
+    "themeId": "eng:contrast-fail",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "wcagCriterion": "1.4.3",
+    "evidence": {
+     "measured": "1.44:1",
+     "required": "≥4.5:1 (3:1 large)",
+     "selector": "span.text-slate-300",
+     "sample": "/",
+     "count": 7
+    }
+   },
+   {
+    "id": "484a4563-88fa-4b7d-9aba-a8247b54cb25",
+    "severity": "P2",
+    "category": "Accessibility",
+    "device": "desktop",
+    "title": "1 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide",
+    "description": "1 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide — they clear the WCAG 2.5.8 24px minimum. Examples: a.flex.items-center \"CCense\" (85×28px). Measured at the 1440×900px desktop viewport.",
+    "recommendation": "Fix it once in the shared style or component that produces it, so every instance changes together.",
+    "source": "engine",
+    "themeId": "eng:tap-target-comfort",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "wcagCriterion": "2.5.8",
+    "evidence": {
+     "measured": "85×28px",
+     "required": "≥48×48px",
+     "selector": "a.flex.items-center",
+     "sample": "CCense",
+     "count": 1
+    }
+   },
+   {
+    "id": "2be917bc-49ee-419b-9df0-e0e49d88796a",
+    "severity": "P2",
+    "category": "Visual Hierarchy",
+    "device": "desktop",
+    "title": "No <h1> found",
+    "description": "No <h1> found — every page should have exactly one top-level heading.",
+    "recommendation": "Keep heading levels sequential and use exactly one h1 per page.",
+    "source": "engine",
+    "themeId": "eng:no-h1",
+    "scope": "page",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "0 matches for h1",
+     "contributors": [
+      {
+       "selector": "h1",
+       "value": "no matching element"
+      }
+     ]
+    }
+   },
+   {
+    "id": "c4d4a7a7-b847-4cb4-9f12-06f359626aa1",
+    "severity": "P2",
+    "category": "Accessibility",
+    "device": "desktop",
+    "title": "Missing landmark(s): main, nav, contentinfo.",
+    "description": "Missing landmark(s): main, nav, contentinfo.",
+    "recommendation": "Add the missing landmark elements (main, nav, header, footer) so assistive tech can navigate the page.",
+    "source": "engine",
+    "themeId": "eng:missing-landmarks",
+    "scope": "page",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "0 matches for main, [role=\"main\"]",
+     "contributors": [
+      {
+       "selector": "main, [role=\"main\"]",
+       "value": "no matching element"
+      },
+      {
+       "selector": "nav, [role=\"navigation\"]",
+       "value": "no matching element"
+      },
+      {
+       "selector": "footer, [role=\"contentinfo\"]",
+       "value": "no matching element"
+      }
+     ]
+    }
+   },
+   {
+    "id": "a02595ca-c73e-4653-907c-ce173441a62e",
+    "severity": "P2",
+    "category": "Typography",
+    "device": "desktop",
+    "title": "6 reading-copy text node(s) below 16px (or any text below 11px).",
+    "description": "6 reading-copy text node(s) below 16px (or any text below 11px). Examples: p.text-sm.text-slate-500 \"This determines which repayment options \" (14px); p.text-xs.text-slate-400 \"Selecting an option will advance to the \" (12px); p.text-xs.text-slate-500 \"Stafford, Direct, or PLUS loans — from t\" (12px). Measured at the 1440×900px desktop viewport.",
+    "recommendation": "Raise reading copy to at least 16px (12px absolute minimum for any text).",
+    "source": "engine",
+    "themeId": "eng:small-body-text",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "12px",
+     "required": "≥16px (≥11px absolute)",
+     "selector": "p.text-xs.text-slate-400",
+     "sample": "Selecting an option will advance to the ",
+     "count": 6
+    }
+   },
+   {
+    "id": "d3ac4e41-5ea2-4f5f-8885-585c7b8e8628",
+    "severity": "P1",
+    "category": "Motion",
+    "device": "desktop",
+    "title": "No @media (prefers-reduced-motion: reduce) rule found",
+    "description": "No @media (prefers-reduced-motion: reduce) rule found — motion is not gated for reduced-motion users.",
+    "recommendation": "Add an @media (prefers-reduced-motion: reduce) block that disables non-essential animation.",
+    "source": "engine",
+    "themeId": "eng:reduced-motion-missing",
+    "scope": "page",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "wcagCriterion": "2.3.3",
+    "evidence": {
+     "measured": "0 matches for @media (prefers-reduced-motion: reduce)",
+     "contributors": [
+      {
+       "selector": "@media (prefers-reduced-motion: reduce)",
+       "value": "no rule found"
+      }
+     ]
+    }
+   },
+   {
+    "id": "ffe07cee-06c4-4727-af69-25a068b44804",
+    "severity": "P2",
+    "category": "Motion",
+    "device": "desktop",
+    "title": "1 movement animation(s) using linear easing",
+    "description": "1 movement animation(s) using linear easing — use an emphasized/spring curve. Examples: .animate-spin.",
+    "recommendation": "Use decelerating (ease-out/emphasized) curves for entrances and movement; avoid linear and ease-in.",
+    "source": "engine",
+    "themeId": "eng:linear-movement",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "1 occurrence(s)",
+     "selector": ".animate-spin",
+     "count": 1
+    }
+   },
+   {
+    "id": "da2db422-3de2-481b-89cb-a0dc3cd167fe",
+    "severity": "P1",
+    "category": "Motion",
+    "device": "desktop",
+    "title": "1 transition(s) animate layout props (width/height/top/left/margin)",
+    "description": "1 transition(s) animate layout props (width/height/top/left/margin) — animate transform/opacity instead (jank). Examples: .transition-all.",
+    "recommendation": "Animate transform/opacity instead of layout properties (width/height/top/left/margin) to avoid jank.",
+    "source": "engine",
+    "themeId": "eng:layout-animated",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "1 transition(s) animating layout properties",
+     "selector": ".transition-all",
+     "count": 1
+    }
+   },
+   {
+    "id": "bfbb660c-7be9-4c52-8f63-7c52a9048810",
+    "severity": "P2",
+    "category": "Motion",
+    "device": "desktop",
+    "title": "1 infinite decorative loop(s)",
+    "description": "1 infinite decorative loop(s) — reserve infinite motion for progress indicators. Examples: .animate-spin.",
+    "recommendation": "Reserve infinite animation for progress indicators; give decorative loops a finite iteration count.",
+    "source": "engine",
+    "themeId": "eng:infinite-loop",
+    "scope": "element",
+    "renderContext": "dom",
+    "observedOn": 1,
+    "sampleSize": 1,
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false
+    },
+    "evidence": {
+     "measured": "1 occurrence(s)",
+     "selector": ".animate-spin",
+     "count": 1
+    }
+   }
+  ],
+  "pageContext": {
+   "indexable": true,
+   "siteType": "saas"
+  },
+  "scanData": {
+   "domContext": {
+    "textElements": [
+     {
+      "tag": "a",
+      "text": "CCense",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 296,
+      "y": 14,
+      "width": 85,
+      "height": 28
+     },
+     {
+      "tag": "span",
+      "text": "C",
+      "fontSize": "12px",
+      "fontWeight": "700",
+      "lineHeight": "16px",
+      "color": "rgb(255, 255, 255)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 21,
+      "x": 306,
+      "y": 20,
+      "width": 9,
+      "height": 16
+     },
+     {
+      "tag": "span",
+      "text": "Cense",
+      "fontSize": "16px",
+      "fontWeight": "600",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 332,
+      "y": 16,
+      "width": 49,
+      "height": 24
+     },
+     {
+      "tag": "span",
+      "text": "/",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(191, 220, 184)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 14.14,
+      "x": 389,
+      "y": 16,
+      "width": 6,
+      "height": 24
+     },
+     {
+      "tag": "span",
+      "text": "Loan Lab",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 403,
+      "y": 18,
+      "width": 61,
+      "height": 20
+     },
+     {
+      "tag": "span",
+      "text": "No data stored. All calculations run locally.",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16px",
+      "color": "rgb(140, 169, 142)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 8.18,
+      "x": 903,
+      "y": 20,
+      "width": 241,
+      "height": 16
+     },
+     {
+      "tag": "span",
+      "text": "Step 1 of 6",
+      "fontSize": "12px",
+      "fontWeight": "500",
+      "lineHeight": "16px",
+      "color": "rgb(140, 169, 142)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 8.18,
+      "x": 432,
+      "y": 89,
+      "width": 60,
+      "height": 16
+     },
+     {
+      "tag": "h2",
+      "text": "What kind of student loans do you have?",
+      "fontSize": "30px",
+      "fontWeight": "700",
+      "lineHeight": "36px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 432,
+      "y": 151,
+      "width": 576,
+      "height": 72
+     },
+     {
+      "tag": "p",
+      "text": "This determines which repayment options are availa",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 432,
+      "y": 231,
+      "width": 576,
+      "height": 20
+     },
+     {
+      "tag": "p",
+      "text": "Federal loans come directly from the U.S. governme",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "19.5px",
+      "color": "rgb(140, 169, 142)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 8.18,
+      "x": 445,
+      "y": 280,
+      "width": 550,
+      "height": 59
+     },
+     {
+      "tag": "p",
+      "text": "Selecting an option will advance to the next step.",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16px",
+      "color": "rgb(140, 169, 142)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 8.18,
+      "x": 432,
+      "y": 372,
+      "width": 576,
+      "height": 16
+     },
+     {
+      "tag": "button",
+      "text": "Federal loans onlyStafford, Direct, or PLUS loans ",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 432,
+      "y": 396,
+      "width": 576,
+      "height": 71
+     },
+     {
+      "tag": "p",
+      "text": "Federal loans only",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 450,
+      "y": 412,
+      "width": 540,
+      "height": 20
+     },
+     {
+      "tag": "p",
+      "text": "Stafford, Direct, or PLUS loans — from the governm",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16.5px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 450,
+      "y": 434,
+      "width": 540,
+      "height": 17
+     },
+     {
+      "tag": "button",
+      "text": "Private loans onlyFrom a bank, credit union, or le",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 432,
+      "y": 476,
+      "width": 576,
+      "height": 71
+     },
+     {
+      "tag": "p",
+      "text": "Private loans only",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 450,
+      "y": 492,
+      "width": 540,
+      "height": 20
+     },
+     {
+      "tag": "p",
+      "text": "From a bank, credit union, or lender like Sallie M",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16.5px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 450,
+      "y": 514,
+      "width": 540,
+      "height": 17
+     },
+     {
+      "tag": "button",
+      "text": "I have bothA mix of federal and private loans",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 432,
+      "y": 557,
+      "width": 576,
+      "height": 71
+     },
+     {
+      "tag": "p",
+      "text": "I have both",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 450,
+      "y": 573,
+      "width": 540,
+      "height": 20
+     },
+     {
+      "tag": "p",
+      "text": "A mix of federal and private loans",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16.5px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 450,
+      "y": 595,
+      "width": 540,
+      "height": 17
+     },
+     {
+      "tag": "button",
+      "text": "Not sureI'll look it up at studentaid.gov",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgb(255, 255, 255)",
+      "contrastRatio": 8.01,
+      "x": 432,
+      "y": 637,
+      "width": 576,
+      "height": 71
+     },
+     {
+      "tag": "p",
+      "text": "Not sure",
+      "fontSize": "14px",
+      "fontWeight": "600",
+      "lineHeight": "20px",
+      "color": "rgb(39, 91, 45)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 2.62,
+      "x": 450,
+      "y": 653,
+      "width": 540,
+      "height": 20
+     },
+     {
+      "tag": "p",
+      "text": "I'll look it up at studentaid.gov",
+      "fontSize": "12px",
+      "fontWeight": "400",
+      "lineHeight": "16.5px",
+      "color": "rgb(92, 127, 95)",
+      "backgroundColor": "rgba(0, 0, 0, 0)",
+      "contrastRatio": 4.66,
+      "x": 450,
+      "y": 675,
+      "width": 540,
+      "height": 17
+     }
+    ],
+    "interactiveElements": [
+     {
+      "tag": "a",
+      "text": "CCense",
+      "width": 85,
+      "height": 28,
+      "x": 296,
+      "y": 14
+     },
+     {
+      "tag": "button",
+      "text": "Federal loans onlyStafford, Direct, or PLUS loans ",
+      "width": 576,
+      "height": 71,
+      "x": 432,
+      "y": 396
+     },
+     {
+      "tag": "button",
+      "text": "Private loans onlyFrom a bank, credit union, or le",
+      "width": 576,
+      "height": 71,
+      "x": 432,
+      "y": 476
+     },
+     {
+      "tag": "button",
+      "text": "I have bothA mix of federal and private loans",
+      "width": 576,
+      "height": 71,
+      "x": 432,
+      "y": 557
+     },
+     {
+      "tag": "button",
+      "text": "Not sureI'll look it up at studentaid.gov",
+      "width": 576,
+      "height": 71,
+      "x": 432,
+      "y": 637
+     }
+    ],
+    "images": [],
+    "headings": [
+     {
+      "tag": "h2",
+      "text": "What kind of student loans do you have?",
+      "fontSize": "30px",
+      "x": 432,
+      "y": 151,
+      "width": 576,
+      "height": 72
+     }
+    ],
+    "overflowElements": [],
+    "stickyElements": [
+     "header.sticky (sticky)"
+    ],
+    "documentDimensions": {
+     "scrollHeight": 901,
+     "clientHeight": 900,
+     "scrollWidth": 1440,
+     "clientWidth": 1440
+    }
+   }
+  }
+ },
+ "design": {
+  "report": {
+   "score": 42.1,
+   "grade": "F",
+   "buckets": {
+    "accessibility": {
+     "score": 9,
+     "max": 30,
+     "findings": [
+      {
+       "severity": "error",
+       "ruleId": "contrast-fail",
+       "message": "7 text node(s) below WCAG contrast (4.5:1 normal / 3:1 large).",
+       "count": 7,
+       "examples": [
+        {
+         "sig": "span.text-slate-300",
+         "ratio": 1.44,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(191, 220, 184)",
+         "sample": "/"
+        },
+        {
+         "sig": "span.text-slate-500.text-sm",
+         "ratio": 4.38,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(92, 127, 95)",
+         "sample": "Loan Lab"
+        },
+        {
+         "sig": "span.text-xs.text-slate-400",
+         "ratio": 2.49,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(140, 169, 142)",
+         "sample": "No data stored. All calculations run loc"
+        },
+        {
+         "sig": "span.text-xs.font-medium",
+         "ratio": 2.49,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(140, 169, 142)",
+         "sample": "Step 1 of 6"
+        },
+        {
+         "sig": "p.text-sm.text-slate-500",
+         "ratio": 4.38,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(92, 127, 95)",
+         "sample": "This determines which repayment options "
+        },
+        {
+         "sig": "em",
+         "ratio": 2.3,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(140, 169, 142)",
+         "sample": "Federal loans come directly from the U.S"
+        },
+        {
+         "sig": "p.text-xs.text-slate-400",
+         "ratio": 2.49,
+         "threshold": 4.5,
+         "large": false,
+         "fg": "rgb(140, 169, 142)",
+         "sample": "Selecting an option will advance to the "
+        }
+       ],
+       "scope": "element",
+       "renderContext": "dom",
+       "wcagCriterion": "1.4.3",
+       "required": "≥4.5:1 (3:1 large)"
+      },
+      {
+       "severity": "warn",
+       "ruleId": "tap-target-comfort",
+       "message": "1 pointer target(s) smaller than M3's comfortable 48×48px at 1440px wide — they clear the WCAG 2.5.8 24px minimum.",
+       "count": 1,
+       "examples": [
+        {
+         "sig": "a.flex.items-center",
+         "tag": "a",
+         "w": 85,
+         "h": 28,
+         "sample": "CCense",
+         "viewport": {
+          "width": 1440,
+          "height": 900,
+          "dpr": 1,
+          "isMobile": false,
+          "w": 1440,
+          "h": 900
+         }
+        }
+       ],
+       "scope": "element",
+       "required": "≥48×48px",
+       "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "isMobile": false,
+        "w": 1440,
+        "h": 900
+       },
+       "wcagCriterion": "2.5.8"
+      },
+      {
+       "severity": "warn",
+       "ruleId": "no-h1",
+       "message": "No <h1> found — every page should have exactly one top-level heading.",
+       "scope": "page",
+       "contributors": [
+        {
+         "selector": "h1",
+         "value": "no matching element"
+        }
+       ]
+      },
+      {
+       "severity": "warn",
+       "ruleId": "missing-landmarks",
+       "message": "Missing landmark(s): main, nav, contentinfo.",
+       "landmarks": [
+        "main",
+        "nav",
+        "contentinfo"
+       ],
+       "scope": "page",
+       "contributors": [
+        {
+         "selector": "main, [role=\"main\"]",
+         "value": "no matching element"
+        },
+        {
+         "selector": "nav, [role=\"navigation\"]",
+         "value": "no matching element"
+        },
+        {
+         "selector": "footer, [role=\"contentinfo\"]",
+         "value": "no matching element"
+        }
+       ]
+      }
+     ]
+    },
+    "consistency": {
+     "score": 17.6,
+     "max": 20,
+     "findings": [
+      {
+       "severity": "warn",
+       "ruleId": "small-body-text",
+       "message": "6 reading-copy text node(s) below 16px (or any text below 11px).",
+       "count": 6,
+       "examples": [
+        {
+         "sig": "p.text-sm.text-slate-500",
+         "px": 14,
+         "sample": "This determines which repayment options "
+        },
+        {
+         "sig": "p.text-xs.text-slate-400",
+         "px": 12,
+         "sample": "Selecting an option will advance to the "
+        },
+        {
+         "sig": "p.text-xs.text-slate-500",
+         "px": 12,
+         "sample": "Stafford, Direct, or PLUS loans — from t"
+        },
+        {
+         "sig": "p.text-xs.text-slate-500",
+         "px": 12,
+         "sample": "From a bank, credit union, or lender lik"
+        },
+        {
+         "sig": "p.text-xs.text-slate-500",
+         "px": 12,
+         "sample": "A mix of federal and private loans"
+        },
+        {
+         "sig": "p.text-xs.text-slate-500",
+         "px": 12,
+         "sample": "I'll look it up at studentaid.gov"
+        }
+       ],
+       "scope": "element",
+       "renderContext": "dom",
+       "required": "≥16px (≥11px absolute)",
+       "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "isMobile": false,
+        "w": 1440,
+        "h": 900
+       }
+      },
+      {
+       "severity": "info",
+       "ruleId": "small-ui-labels",
+       "message": "9 UI label(s) at 12-15.9px — legitimate M3 label roles (not scored); verify their tap targets meet 48px.",
+       "count": 9,
+       "examples": [
+        {
+         "sig": "span.text-white.text-xs",
+         "px": 12,
+         "sample": "C"
+        },
+        {
+         "sig": "span.text-slate-500.text-sm",
+         "px": 14,
+         "sample": "Loan Lab"
+        },
+        {
+         "sig": "span.text-xs.text-slate-400",
+         "px": 12,
+         "sample": "No data stored. All calculations run loc"
+        },
+        {
+         "sig": "span.text-xs.font-medium",
+         "px": 12,
+         "sample": "Step 1 of 6"
+        },
+        {
+         "sig": "em",
+         "px": 12,
+         "sample": "Federal loans come directly from the U.S"
+        },
+        {
+         "sig": "p.text-sm.font-semibold",
+         "px": 14,
+         "sample": "Federal loans only"
+        }
+       ],
+       "scope": "element",
+       "renderContext": "dom",
+       "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "isMobile": false,
+        "w": 1440,
+        "h": 900
+       }
+      }
+     ]
+    },
+    "motion": {
+     "score": 2,
+     "max": 25,
+     "findings": [
+      {
+       "severity": "error",
+       "ruleId": "reduced-motion-missing",
+       "message": "No @media (prefers-reduced-motion: reduce) rule found — motion is not gated for reduced-motion users.",
+       "scope": "page",
+       "wcagCriterion": "2.3.3",
+       "contributors": [
+        {
+         "selector": "@media (prefers-reduced-motion: reduce)",
+         "value": "no rule found"
+        }
+       ]
+      },
+      {
+       "severity": "warn",
+       "ruleId": "linear-movement",
+       "message": "1 movement animation(s) using linear easing — use an emphasized/spring curve.",
+       "examples": [
+        {
+         "selector": ".animate-spin",
+         "sig": ".animate-spin",
+         "easing": "linear",
+         "kind": "animation"
+        }
+       ],
+       "scope": "element"
+      },
+      {
+       "severity": "error",
+       "ruleId": "layout-animated",
+       "message": "1 transition(s) animate layout props (width/height/top/left/margin) — animate transform/opacity instead (jank).",
+       "examples": [
+        {
+         "selector": ".transition-all",
+         "sig": ".transition-all",
+         "props": [
+          "all (may hit layout props)"
+         ],
+         "kind": "transition"
+        }
+       ],
+       "scope": "element"
+      },
+      {
+       "severity": "warn",
+       "ruleId": "infinite-loop",
+       "message": "1 infinite decorative loop(s) — reserve infinite motion for progress indicators.",
+       "examples": [
+        {
+         "selector": ".animate-spin",
+         "sig": ".animate-spin"
+        }
+       ],
+       "scope": "element"
+      }
+     ]
+    },
+    "performance": {
+     "score": 13.5,
+     "max": 25,
+     "findings": [
+      {
+       "severity": "error",
+       "ruleId": "layout-animated",
+       "message": "1 transition(s) animate layout props (width/height/top/left/margin) — animate transform/opacity instead (jank).",
+       "examples": [
+        {
+         "selector": ".transition-all",
+         "sig": ".transition-all",
+         "props": [
+          "all (may hit layout props)"
+         ],
+         "kind": "transition"
+        }
+       ],
+       "scope": "element",
+       "reusedFrom": "motion"
+      },
+      {
+       "severity": "warn",
+       "ruleId": "infinite-loop",
+       "message": "1 infinite decorative loop(s) — reserve infinite motion for progress indicators.",
+       "examples": [
+        {
+         "selector": ".animate-spin",
+         "sig": ".animate-spin"
+        }
+       ],
+       "scope": "element",
+       "reusedFrom": "motion"
+      }
+     ]
+    }
+   },
+   "sections": {
+    "color": {
+     "sampled": 18,
+     "skippedUnknownBg": 0,
+     "skippedUnparseable": 0,
+     "skippedRenderContext": 0,
+     "distinctTextColors": 5,
+     "failureCount": 7,
+     "failures": [
+      {
+       "sig": "span.text-slate-300",
+       "ratio": 1.44,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(191, 220, 184)",
+       "sample": "/"
+      },
+      {
+       "sig": "span.text-slate-500.text-sm",
+       "ratio": 4.38,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(92, 127, 95)",
+       "sample": "Loan Lab"
+      },
+      {
+       "sig": "span.text-xs.text-slate-400",
+       "ratio": 2.49,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(140, 169, 142)",
+       "sample": "No data stored. All calculations run loc"
+      },
+      {
+       "sig": "span.text-xs.font-medium",
+       "ratio": 2.49,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(140, 169, 142)",
+       "sample": "Step 1 of 6"
+      },
+      {
+       "sig": "p.text-sm.text-slate-500",
+       "ratio": 4.38,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(92, 127, 95)",
+       "sample": "This determines which repayment options "
+      },
+      {
+       "sig": "em",
+       "ratio": 2.3,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(140, 169, 142)",
+       "sample": "Federal loans come directly from the U.S"
+      },
+      {
+       "sig": "p.text-xs.text-slate-400",
+       "ratio": 2.49,
+       "threshold": 4.5,
+       "large": false,
+       "fg": "rgb(140, 169, 142)",
+       "sample": "Selecting an option will advance to the "
+      }
+     ]
+    },
+    "typography": {
+     "distinctFamilies": 1,
+     "families": [
+      "__Inter_f367f3, __Inter_Fallback_f367f3"
+     ],
+     "distinctSizes": 4,
+     "sizes": [
+      12,
+      14,
+      16,
+      30
+     ],
+     "distinctLineHeights": 6,
+     "smallBodyCount": 6,
+     "smallBody": [
+      {
+       "sig": "p.text-sm.text-slate-500",
+       "px": 14,
+       "sample": "This determines which repayment options "
+      },
+      {
+       "sig": "p.text-xs.text-slate-400",
+       "px": 12,
+       "sample": "Selecting an option will advance to the "
+      },
+      {
+       "sig": "p.text-xs.text-slate-500",
+       "px": 12,
+       "sample": "Stafford, Direct, or PLUS loans — from t"
+      },
+      {
+       "sig": "p.text-xs.text-slate-500",
+       "px": 12,
+       "sample": "From a bank, credit union, or lender lik"
+      },
+      {
+       "sig": "p.text-xs.text-slate-500",
+       "px": 12,
+       "sample": "A mix of federal and private loans"
+      },
+      {
+       "sig": "p.text-xs.text-slate-500",
+       "px": 12,
+       "sample": "I'll look it up at studentaid.gov"
+      }
+     ],
+     "smallLabelCount": 9,
+     "smallLabels": [
+      {
+       "sig": "span.text-white.text-xs",
+       "px": 12,
+       "sample": "C"
+      },
+      {
+       "sig": "span.text-slate-500.text-sm",
+       "px": 14,
+       "sample": "Loan Lab"
+      },
+      {
+       "sig": "span.text-xs.text-slate-400",
+       "px": 12,
+       "sample": "No data stored. All calculations run loc"
+      },
+      {
+       "sig": "span.text-xs.font-medium",
+       "px": 12,
+       "sample": "Step 1 of 6"
+      },
+      {
+       "sig": "em",
+       "px": 12,
+       "sample": "Federal loans come directly from the U.S"
+      },
+      {
+       "sig": "p.text-sm.font-semibold",
+       "px": 14,
+       "sample": "Federal loans only"
+      },
+      {
+       "sig": "p.text-sm.font-semibold",
+       "px": 14,
+       "sample": "Private loans only"
+      },
+      {
+       "sig": "p.text-sm.font-semibold",
+       "px": 14,
+       "sample": "I have both"
+      },
+      {
+       "sig": "p.text-sm.font-semibold",
+       "px": 14,
+       "sample": "Not sure"
+      }
+     ],
+     "tightLeadingCount": 0,
+     "tightLeading": [],
+     "displayLeadingRelaxed": 0,
+     "formattedBlocksSkipped": 0,
+     "distinctHeadingSizes": 1,
+     "headingCount": 1,
+     "skippedRenderContext": 0
+    },
+    "shape": {
+     "distinctRadii": 3,
+     "radii": [
+      8,
+      12,
+      9999
+     ],
+     "scale": [
+      0,
+      4,
+      8,
+      12,
+      16,
+      28,
+      9999
+     ],
+     "offScaleValues": []
+    },
+    "elevation": {
+     "distinctShadows": 0,
+     "levels": 6,
+     "recipes": []
+    },
+    "states": {
+     "interactiveCount": 5,
+     "hasHoverRules": true,
+     "hasFocusVisibleRules": true,
+     "stylesheetsReachable": true,
+     "sheetsSkipped": 0,
+     "noVisibleFocusCount": 0,
+     "noVisibleFocusExamples": []
+    },
+    "motion": {
+     "hasReducedMotionQuery": false,
+     "reducedMotionStatus": "missing",
+     "activeAnimations": 0,
+     "tooShort": [],
+     "tooLong": [],
+     "linearMovement": [
+      {
+       "selector": ".animate-spin",
+       "sig": ".animate-spin",
+       "easing": "linear",
+       "kind": "animation"
+      }
+     ],
+     "easeInEntrance": [],
+     "layoutAnimated": [
+      {
+       "selector": ".transition-all",
+       "sig": ".transition-all",
+       "props": [
+        "all (may hit layout props)"
+       ],
+       "kind": "transition"
+      }
+     ],
+     "infiniteLoops": [
+      {
+       "selector": ".animate-spin",
+       "sig": ".animate-spin"
+      }
+     ],
+     "sheetsSkipped": 0
+    },
+    "a11yLayout": {
+     "smallTargetCount": 1,
+     "smallTargets": [
+      {
+       "sig": "a.flex.items-center",
+       "tag": "a",
+       "w": 85,
+       "h": 28,
+       "sample": "CCense",
+       "viewport": {
+        "width": 1440,
+        "height": 900,
+        "dpr": 1,
+        "isMobile": false,
+        "w": 1440,
+        "h": 900
+       }
+      }
+     ],
+     "undersizedCount": 0,
+     "belowComfortCount": 1,
+     "spacingExceptionChecked": true,
+     "spacingExceptionSkipReason": null,
+     "targetCount": 5,
+     "missingAltCount": 0,
+     "missingAlt": [],
+     "headingJumpCount": 0,
+     "headingJumps": [],
+     "h1Count": 0,
+     "missingLandmarks": [
+      "main",
+      "nav",
+      "contentinfo"
+     ]
+    }
+   },
+   "notAutoDetectable": [
+    "Spatial coherence — whether elements enter/exit from where they logically belong (a menu growing from its anchor, a sheet rising from the edge it docks to). The audit sees durations and easings, not spatial origin.",
+    "Clean fades — whether opacity transitions are free of mid-fade color shifts, banding, or double-compositing. Only a human eye (or pixel diff) can judge fade quality.",
+    "Jump cuts — abrupt state changes with no transition where one is expected (content swaps, route changes). Absence of animation is not itself in the DOM.",
+    "Unified direction — whether a group of elements animates along a consistent axis/choreography rather than each doing its own thing.",
+    "Perceived hierarchy / emphasis — whether motion draws the eye to the right thing at the right time.",
+    "Content-appropriate personality — expressive vs. standard scheme being the right call for the brand and context.",
+    "Interruptibility & continuity — whether in-flight animations respond gracefully to new input rather than snapping.",
+    "Real contrast under imagery/gradients — text over photos or gradient backgrounds (the audit samples solid computed backgrounds only).",
+    "Closed shadow roots — their internals are structurally unreachable from script and are not scanned."
+   ],
+   "meta": {
+    "url": "https://loan-lab.vercel.app/",
+    "title": "Loan Lab by Cense — Student Loan Repayment Quiz",
+    "timestamp": "2026-11-15T18:26:42.419Z",
+    "contentFingerprint": "1rs7123",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+     "width": 1440,
+     "height": 900,
+     "dpr": 1,
+     "isMobile": false,
+     "w": 1440,
+     "h": 900
+    },
+    "siteType": "saas",
+    "elementsScanned": 49,
+    "elementsTotal": 55,
+    "sampleCap": 1500,
+    "sampleCapped": false,
+    "sheetsSkipped": 0,
+    "openShadowRoots": 1,
+    "notes": [
+     "1 open shadow root(s) traversed. Closed shadow roots (if any) cannot be scanned."
+    ],
+    "durationMs": 6.5
+   }
+  },
+  "probes": {
+   "animationsAtLoad": {
+    "count": 0,
+    "running": 0,
+    "anims": []
+   },
+   "animationsAfterScroll": {
+    "count": 0,
+    "running": 0,
+    "anims": []
+   },
+   "hoverProbe": [
+    {
+     "label": "CCense",
+     "selector": "a.flex",
+     "changes": false
+    },
+    {
+     "label": "Federal loans onlyStafford, Di",
+     "selector": "button.w-full",
+     "changes": false
+    },
+    {
+     "label": "Private loans onlyFrom a bank,",
+     "selector": "button.w-full",
+     "changes": false
+    },
+    {
+     "label": "I have bothA mix of federal an",
+     "selector": "button.w-full",
+     "changes": false
+    },
+    {
+     "label": "Not sureI'll look it up at stu",
+     "selector": "button.w-full",
+     "changes": false
+    }
+   ],
+   "reducedMotion": {
+    "emulated": true,
+    "snapshot": {
+     "count": 0,
+     "running": 0,
+     "anims": []
+    },
+    "ungatedCount": 0
+   }
+  },
+  "durationMs": 2237
+ },
+ "extras": [
+  {
+   "id": "496668a1-f36e-4d13-91e6-99e3c8463c77",
+   "severity": "P3",
+   "category": "Accessibility",
+   "device": "desktop",
+   "title": "Primary controls show no hover feedback",
+   "description": "5 of 5 sampled primary controls showed no visual change on hover (CCense, Federal loans onlyStafford, Di, Private loans onlyFrom a bank,).",
+   "recommendation": "Add :hover feedback (background, color, or elevation change) to interactive elements.",
+   "source": "engine",
+   "scope": "page",
+   "renderContext": "dom",
+   "observedOn": 1,
+   "sampleSize": 1,
+   "viewport": {
+    "width": 1440,
+    "height": 900,
+    "dpr": 1,
+    "isMobile": false
+   },
+   "themeId": "eng:hover-no-feedback",
+   "evidence": {
+    "measured": "5/5 unresponsive",
+    "contributors": [
+     {
+      "selector": "a.flex",
+      "value": "CCense"
+     },
+     {
+      "selector": "button.w-full",
+      "value": "Federal loans onlyStafford, Di"
+     },
+     {
+      "selector": "button.w-full",
+      "value": "Private loans onlyFrom a bank,"
+     },
+     {
+      "selector": "button.w-full",
+      "value": "I have bothA mix of federal an"
+     },
+     {
+      "selector": "button.w-full",
+      "value": "Not sureI'll look it up at stu"
+     }
+    ]
+   }
+  }
+ ]
+}

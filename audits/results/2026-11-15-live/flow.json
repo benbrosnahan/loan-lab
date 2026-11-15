@@ -1,0 +1,12 @@
+{
+ "url": "https://loan-lab.vercel.app/",
+ "journey": "Loan Desk core journey",
+ "formFactors": {
+  "mobile": {
+   "error": "clickText: no visible control \"Look around with example loans\""
+  },
+  "desktop": {
+   "error": "clickText: no visible control \"Look around with example loans\""
+  }
+ }
+}

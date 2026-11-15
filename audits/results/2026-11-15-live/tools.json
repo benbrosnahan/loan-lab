@@ -1,0 +1,457 @@
+{
+ "url": "https://loan-lab.vercel.app/",
+ "results": {
+  "header-check": {
+   "url": "https://loan-lab.vercel.app/",
+   "statusCode": 200,
+   "allHeaders": {
+    "accept-ranges": "bytes",
+    "access-control-allow-origin": "*",
+    "age": "1549863",
+    "cache-control": "public, max-age=0, must-revalidate",
+    "connection": "close",
+    "content-disposition": "inline",
+    "content-length": "6917",
+    "content-type": "text/html; charset=utf-8",
+    "date": "Sun, 15 Nov 2026 18:27:27 GMT",
+    "etag": "\"7b06900ff3a0cfb4a363d37647633359\"",
+    "server": "Vercel",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
+    "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+    "x-matched-path": "/",
+    "x-vercel-cache": "HIT",
+    "x-vercel-id": "iad1::fgmsv-1794767247548-00136ef7edfc"
+   },
+   "analysis": [
+    {
+     "name": "Cache-Control",
+     "value": "public, max-age=0, must-revalidate",
+     "status": "good",
+     "recommendation": "Cache-Control is configured."
+    },
+    {
+     "name": "Content-Encoding",
+     "value": null,
+     "status": "warning",
+     "recommendation": "Enable gzip or Brotli compression to reduce transfer sizes by 60-80%."
+    },
+    {
+     "name": "Strict-Transport-Security",
+     "value": "max-age=63072000; includeSubDomains; preload",
+     "status": "good",
+     "recommendation": "Strict-Transport-Security is set."
+    },
+    {
+     "name": "X-Content-Type-Options",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add \"X-Content-Type-Options: nosniff\" to prevent MIME sniffing."
+    },
+    {
+     "name": "X-Frame-Options",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add \"X-Frame-Options: DENY\" or \"SAMEORIGIN\" to prevent clickjacking."
+    },
+    {
+     "name": "Content-Security-Policy",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add a Content-Security-Policy to prevent XSS and data injection."
+    },
+    {
+     "name": "Referrer-Policy",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add \"Referrer-Policy: strict-origin-when-cross-origin\" for privacy."
+    },
+    {
+     "name": "Permissions-Policy",
+     "value": null,
+     "status": "missing",
+     "recommendation": "Add Permissions-Policy to control browser features (camera, geolocation, etc.)."
+    },
+    {
+     "name": "ETag",
+     "value": "\"7b06900ff3a0cfb4a363d37647633359\"",
+     "status": "good",
+     "recommendation": "ETag is set for conditional requests."
+    },
+    {
+     "name": "Vary",
+     "value": "RSC, Next-Router-State-Tree, Next-Router-Prefetch",
+     "status": "good",
+     "recommendation": "Vary header set: RSC, Next-Router-State-Tree, Next-Router-Prefetch"
+    }
+   ],
+   "summary": {
+    "good": 4,
+    "warnings": 1,
+    "missing": 5,
+    "total": 10
+   },
+   "score": 40
+  },
+  "meta-validate": {
+   "url": "https://loan-lab.vercel.app/",
+   "tags": [
+    {
+     "name": "title",
+     "content": "Loan Lab by Cense — Student Loan Repayment Quiz",
+     "status": "good",
+     "recommendation": "Title is 47 chars. Good length."
+    },
+    {
+     "name": "meta description",
+     "content": "Answer 6 quick questions and get a personalized student loan repayment recommendation. Compare Standard, Graduated, IBR, RAP, Tiered Standard, and PSLF plans side by side, updated for the July 2026 rules.",
+     "status": "warning",
+     "recommendation": "Description is 204 chars. Keep under 160."
+    },
+    {
+     "name": "viewport",
+     "content": "width=device-width, initial-scale=1",
+     "status": "good",
+     "recommendation": "Viewport is set."
+    },
+    {
+     "name": "canonical",
+     "content": null,
+     "status": "warning",
+     "recommendation": "Add a canonical URL to prevent duplicate content issues."
+    },
+    {
+     "name": "og:title",
+     "content": "Loan Lab by Cense — Student Loan Repayment Quiz",
+     "status": "good",
+     "recommendation": "Set to: Loan Lab by Cense — Student Loan Repayment Quiz"
+    },
+    {
+     "name": "og:description",
+     "content": "Find the best repayment plan for your student loans in under 3 minutes.",
+     "status": "good",
+     "recommendation": "Set to: Find the best repayment plan for your student loans in under 3 minutes."
+    },
+    {
+     "name": "og:image",
+     "content": null,
+     "status": "missing",
+     "recommendation": "Add og:image for better social media sharing."
+    },
+    {
+     "name": "og:url",
+     "content": null,
+     "status": "missing",
+     "recommendation": "Add og:url for better social media sharing."
+    },
+    {
+     "name": "og:type",
+     "content": "website",
+     "status": "good",
+     "recommendation": "Set to: website"
+    },
+    {
+     "name": "twitter:card",
+     "content": "summary_large_image",
+     "status": "good",
+     "recommendation": "Set to: summary_large_image"
+    },
+    {
+     "name": "twitter:title",
+     "content": "Loan Lab by Cense",
+     "status": "good",
+     "recommendation": "Set to: Loan Lab by Cense"
+    },
+    {
+     "name": "twitter:description",
+     "content": "Find the best repayment plan for your student loans in under 3 minutes.",
+     "status": "good",
+     "recommendation": "Set to: Find the best repayment plan for your student loans in under 3 minutes."
+    },
+    {
+     "name": "twitter:image",
+     "content": null,
+     "status": "warning",
+     "recommendation": "Add twitter:image for Twitter card previews."
+    },
+    {
+     "name": "lang attribute",
+     "content": "en",
+     "status": "good",
+     "recommendation": "Language: en"
+    },
+    {
+     "name": "favicon",
+     "content": "/favicon.ico",
+     "status": "good",
+     "recommendation": "Favicon found: /favicon.ico"
+    }
+   ],
+   "preview": {
+    "title": "Loan Lab by Cense — Student Loan Repayment Quiz",
+    "description": "Find the best repayment plan for your student loans in under 3 minutes.",
+    "image": null,
+    "url": "https://loan-lab.vercel.app/",
+    "siteName": "loan-lab.vercel.app"
+   },
+   "summary": {
+    "good": 10,
+    "warnings": 3,
+    "missing": 2,
+    "total": 15
+   },
+   "score": 67
+  },
+  "structured-data": {
+   "url": "https://loan-lab.vercel.app/",
+   "totalSchemas": 0,
+   "items": [],
+   "summary": {
+    "total": 0,
+    "valid": 0,
+    "withErrors": 0,
+    "totalErrors": 0,
+    "totalWarnings": 0,
+    "jsonLd": 0,
+    "microdata": 0
+   },
+   "richResultEligibility": {
+    "eligible": false,
+    "types": []
+   }
+  },
+  "sitemap-validate": {
+   "sitemapUrl": "https://loan-lab.vercel.app/sitemap.xml",
+   "found": false,
+   "urls": [],
+   "issues": [
+    "Sitemap not found. Try providing a direct URL to your sitemap.xml."
+   ],
+   "summary": {
+    "total": 0,
+    "ok": 0,
+    "redirects": 0,
+    "errors": 0,
+    "dead": 0,
+    "slow": 0
+   },
+   "error": "Sitemap not found at https://loan-lab.vercel.app/sitemap.xml. HTTP 404"
+  },
+  "redirect-check": {
+   "url": "https://loan-lab.vercel.app/",
+   "finalUrl": "https://loan-lab.vercel.app/",
+   "finalStatus": 200,
+   "hops": [
+    {
+     "url": "https://loan-lab.vercel.app/",
+     "statusCode": 200,
+     "location": null,
+     "timeMs": 155
+    }
+   ],
+   "redirectCount": 0,
+   "totalTimeMs": 155,
+   "status": "good",
+   "message": "No redirects detected. URL resolves directly."
+  },
+  "broken-links": {
+   "url": "https://loan-lab.vercel.app/",
+   "depth": "page",
+   "pagesScanned": 1,
+   "pagesScannedList": [
+    "https://loan-lab.vercel.app/"
+   ],
+   "totalLinks": 11,
+   "totalDiscoveredLinks": 11,
+   "links": [
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/fd9d1056-39be68405fea66af.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 24,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/117-12ea3800246c4c4d.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 83,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/main-app-2dcde4753ea0d175.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 75,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/759-8d5b2a22c57c0354.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 75,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/175-3ffeb3949dcd853b.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 77,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/app/page-89c3d2f33960ac2e.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 77,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/polyfills-42372ed130431b0a.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 166,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/chunks/webpack-56d088442ba9ae75.js",
+     "anchorText": "",
+     "linkType": "script",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 76,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/media/e4af272ccee01ff0-s.p.woff2",
+     "anchorText": "preload",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 82,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/_next/static/css/dfae6a57e980c50d.css",
+     "anchorText": "stylesheet",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 80,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    },
+    {
+     "sourceUrl": "https://loan-lab.vercel.app/",
+     "targetUrl": "https://loan-lab.vercel.app/favicon.ico",
+     "anchorText": "icon",
+     "linkType": "link",
+     "isInternal": true,
+     "statusCode": 200,
+     "statusText": "ok",
+     "responseTimeMs": 99,
+     "sources": [
+      "https://loan-lab.vercel.app/"
+     ]
+    }
+   ],
+   "summary": {
+    "total": 11,
+    "ok": 11,
+    "broken": 0,
+    "redirects": 0,
+    "errors": 0,
+    "timeouts": 0
+   }
+  },
+  "webmcp-check": {
+   "url": "https://loan-lab.vercel.app/",
+   "aiReadinessScore": 0,
+   "mcpDiscovery": {
+    "score": 0,
+    "found": false,
+    "valid": false,
+    "hasAuth": false,
+    "data": null,
+    "errors": [
+     "HTTP 404 response from https://loan-lab.vercel.app/.well-known/mcp.json."
+    ]
+   },
+   "webmcpDeclarative": {
+    "score": 0,
+    "toolCount": 0,
+    "tools": [],
+    "findings": [
+     "No declarative WebMCP tools found (no toolname attributes in HTML)."
+    ]
+   },
+   "webmcpImperative": {
+    "score": 0,
+    "detected": false,
+    "registerToolCalls": 0,
+    "findings": [
+     "No imperative WebMCP tool registration detected in inline scripts.",
+     "Note: This check cannot detect tools registered via external JavaScript files."
+    ]
+   },
+   "recommendations": [
+    "Add a .well-known/mcp.json file to enable MCP server discovery. This lets AI agents find and connect to your API endpoints automatically.",
+    "Add WebMCP declarative tools to your HTML using toolname attributes on <form> elements. Example: <form toolname=\"search\" tooldescription=\"Search products\"> to expose functionality to AI agents.",
+    "Consider implementing imperative WebMCP tools using navigator.modelContext.registerTool() for dynamic tool registration that depends on runtime state.",
+    "This page has no AI/MCP integration. Start with .well-known/mcp.json for server discovery or add toolname attributes to existing forms for quick wins."
+   ]
+  }
+ }
+}

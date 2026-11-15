@@ -1,0 +1,480 @@
+{
+ "generatedAt": "2026-11-15T18:25:42.004Z",
+ "url": "https://loan-lab.vercel.app/",
+ "target": "url",
+ "command": "node run.mjs --url https://loan-lab.vercel.app/ --runs 1",
+ "runs": 1,
+ "steps": {
+  "lighthouse": {
+   "status": "ok",
+   "seconds": 27.3
+  },
+  "flow": {
+   "status": "failed",
+   "seconds": 16.3,
+   "errors": [
+    "mobile: clickText: no visible control \"Look around with example loans\"",
+    "desktop: clickText: no visible control \"Look around with example loans\""
+   ]
+  },
+  "security": {
+   "status": "ok",
+   "seconds": 0.1
+  },
+  "geo": {
+   "status": "ok",
+   "seconds": 11.4
+  },
+  "design": {
+   "status": "partial",
+   "seconds": 50.3,
+   "errors": [
+    "form-errors-desktop: clickText: no visible control \"Add my first loan\"",
+    "form-errors-mobile: clickText: no visible control \"Add my first loan\"",
+    "plans-desktop: clickTab: no section button for plans",
+    "plans-mobile: clickTab: no section button for plans",
+    "payoff-desktop: clickTab: no section button for payoff",
+    "payoff-mobile: clickTab: no section button for payoff",
+    "records-desktop: clickTab: no section button for records",
+    "records-mobile: clickTab: no section button for records"
+   ]
+  },
+  "ux": {
+   "status": "partial",
+   "seconds": 0,
+   "errors": [
+    "form-errors-desktop: clickText: no visible control \"Add my first loan\"",
+    "form-errors-mobile: clickText: no visible control \"Add my first loan\"",
+    "plans-desktop: clickTab: no section button for plans",
+    "plans-mobile: clickTab: no section button for plans",
+    "payoff-desktop: clickTab: no section button for payoff",
+    "payoff-mobile: clickTab: no section button for payoff",
+    "records-desktop: clickTab: no section button for records",
+    "records-mobile: clickTab: no section button for records"
+   ]
+  },
+  "tools": {
+   "status": "ok",
+   "seconds": 0.9
+  },
+  "responsive": {
+   "status": "partial",
+   "seconds": 55.9,
+   "errors": [
+    "form-errors@320: clickText: no visible control \"Add my first loan\"",
+    "form-errors@375: clickText: no visible control \"Add my first loan\"",
+    "form-errors@768: clickText: no visible control \"Add my first loan\"",
+    "form-errors@1024: clickText: no visible control \"Add my first loan\"",
+    "form-errors@1440: clickText: no visible control \"Add my first loan\"",
+    "plans@320: clickTab: no section button for plans",
+    "plans@375: clickTab: no section button for plans",
+    "plans@768: clickTab: no section button for plans",
+    "plans@1024: clickTab: no section button for plans",
+    "plans@1440: clickTab: no section button for plans",
+    "payoff@320: clickTab: no section button for payoff",
+    "payoff@375: clickTab: no section button for payoff",
+    "payoff@768: clickTab: no section button for payoff",
+    "payoff@1024: clickTab: no section button for payoff",
+    "payoff@1440: clickTab: no section button for payoff",
+    "records@320: clickTab: no section button for records",
+    "records@375: clickTab: no section button for records",
+    "records@768: clickTab: no section button for records",
+    "records@1024: clickTab: no section button for records",
+    "records@1440: clickTab: no section button for records"
+   ]
+  },
+  "inp": {
+   "status": "failed",
+   "seconds": 25.8,
+   "errors": [
+    "cpu1x loans=8 run1: clickTab: no section button for plans",
+    "cpu1x loans=8 run2: clickTab: no section button for plans",
+    "cpu1x loans=25 run1: clickTab: no section button for plans",
+    "cpu1x loans=25 run2: clickTab: no section button for plans",
+    "cpu1x loans=60 run1: clickTab: no section button for plans",
+    "cpu1x loans=60 run2: clickTab: no section button for plans",
+    "cpu4x loans=8 run1: clickTab: no section button for plans",
+    "cpu4x loans=8 run2: clickTab: no section button for plans",
+    "cpu4x loans=25 run1: clickTab: no section button for plans",
+    "cpu4x loans=25 run2: clickTab: no section button for plans",
+    "cpu4x loans=60 run1: clickTab: no section button for plans",
+    "cpu4x loans=60 run2: clickTab: no section button for plans"
+   ]
+  },
+  "readable": {
+   "status": "failed",
+   "seconds": 68.6,
+   "errors": [
+    "first run1: not readable within 30 s of the load event",
+    "returning run1: not readable within 30 s of the load event"
+   ]
+  }
+ },
+ "budgets": [
+  {
+   "id": "lighthouse.empty-mobile.performance",
+   "label": "Performance, empty, mobile",
+   "measured": 100,
+   "limit": 90,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.accessibility",
+   "label": "Accessibility, empty, mobile",
+   "measured": 93,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "fail"
+  },
+  {
+   "id": "lighthouse.empty-mobile.bestPractices",
+   "label": "Best practices, empty, mobile",
+   "measured": 100,
+   "limit": 95,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.seo",
+   "label": "SEO, empty, mobile",
+   "measured": 100,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.lcp",
+   "label": "LCP, empty, mobile",
+   "measured": 1832.318,
+   "limit": 2500,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.fcp",
+   "label": "FCP, empty, mobile",
+   "measured": 784.318,
+   "limit": 1800,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.cls",
+   "label": "CLS, empty, mobile",
+   "measured": 0,
+   "limit": 0.1,
+   "op": "<=",
+   "unit": "cls",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-mobile.tbt",
+   "label": "TBT, empty, mobile",
+   "measured": 7,
+   "limit": 200,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-desktop.performance",
+   "label": "Performance, empty, desktop",
+   "measured": 100,
+   "limit": 90,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-desktop.accessibility",
+   "label": "Accessibility, empty, desktop",
+   "measured": 93,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "fail"
+  },
+  {
+   "id": "lighthouse.empty-desktop.bestPractices",
+   "label": "Best practices, empty, desktop",
+   "measured": 100,
+   "limit": 95,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.empty-desktop.seo",
+   "label": "SEO, empty, desktop",
+   "measured": 100,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.performance",
+   "label": "Performance, seeded, mobile",
+   "measured": 100,
+   "limit": 90,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.accessibility",
+   "label": "Accessibility, seeded, mobile",
+   "measured": 93,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "fail"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.bestPractices",
+   "label": "Best practices, seeded, mobile",
+   "measured": 100,
+   "limit": 95,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.seo",
+   "label": "SEO, seeded, mobile",
+   "measured": 100,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.lcp",
+   "label": "LCP, seeded, mobile",
+   "measured": 1835.199,
+   "limit": 2500,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.fcp",
+   "label": "FCP, seeded, mobile",
+   "measured": 787.199,
+   "limit": 1800,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.cls",
+   "label": "CLS, seeded, mobile",
+   "measured": 0,
+   "limit": 0.1,
+   "op": "<=",
+   "unit": "cls",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-mobile.tbt",
+   "label": "TBT, seeded, mobile",
+   "measured": 40.5,
+   "limit": 200,
+   "op": "<=",
+   "unit": "ms",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-desktop.performance",
+   "label": "Performance, seeded, desktop",
+   "measured": 100,
+   "limit": 90,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-desktop.accessibility",
+   "label": "Accessibility, seeded, desktop",
+   "measured": 93,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "fail"
+  },
+  {
+   "id": "lighthouse.seeded-desktop.bestPractices",
+   "label": "Best practices, seeded, desktop",
+   "measured": 100,
+   "limit": 95,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "lighthouse.seeded-desktop.seo",
+   "label": "SEO, seeded, desktop",
+   "measured": 100,
+   "limit": 100,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "flow.mobile.inp",
+   "label": "Flow INP (worst timespan), mobile",
+   "measured": null,
+   "limit": 200,
+   "op": "<=",
+   "unit": "ms",
+   "status": "unmeasured",
+   "note": "the flow failed: clickText: no visible control \"Look around with example loans\""
+  },
+  {
+   "id": "flow.desktop.inp",
+   "label": "Flow INP (worst timespan), desktop",
+   "measured": null,
+   "limit": 200,
+   "op": "<=",
+   "unit": "ms",
+   "status": "unmeasured",
+   "note": "the flow failed: clickText: no visible control \"Look around with example loans\""
+  },
+  {
+   "id": "floor.geo",
+   "label": "GEO score (floor)",
+   "measured": 44,
+   "limit": 44,
+   "op": ">=",
+   "unit": "score",
+   "status": "pass"
+  },
+  {
+   "id": "floor.readableFirstMs",
+   "label": "Readable, first visit (floor)",
+   "measured": null,
+   "limit": 3500,
+   "op": "<=",
+   "unit": "ms",
+   "status": "unmeasured",
+   "note": "every load failed"
+  }
+ ],
+ "budgetsFailed": 4,
+ "targets": [
+  {
+   "op": ">=",
+   "unit": "score",
+   "label": "GEO score",
+   "measured": 44,
+   "goal": 80,
+   "met": false
+  }
+ ],
+ "scores": {
+  "lighthouse.empty-mobile.performance": 100,
+  "lighthouse.empty-mobile.accessibility": 93,
+  "lighthouse.empty-mobile.bestPractices": 100,
+  "lighthouse.empty-mobile.seo": 100,
+  "lighthouse.empty-mobile.lcp": 1832.318,
+  "lighthouse.empty-mobile.fcp": 784.318,
+  "lighthouse.empty-mobile.cls": 0,
+  "lighthouse.empty-mobile.tbt": 7,
+  "lighthouse.empty-mobile.si": 848.449,
+  "lighthouse.empty-mobile.tti": 1832.318,
+  "lighthouse.empty-desktop.performance": 100,
+  "lighthouse.empty-desktop.accessibility": 93,
+  "lighthouse.empty-desktop.bestPractices": 100,
+  "lighthouse.empty-desktop.seo": 100,
+  "lighthouse.empty-desktop.lcp": 445.813,
+  "lighthouse.empty-desktop.fcp": 245.813,
+  "lighthouse.empty-desktop.cls": 0,
+  "lighthouse.empty-desktop.tbt": 0,
+  "lighthouse.empty-desktop.si": 245.813,
+  "lighthouse.empty-desktop.tti": 445.813,
+  "lighthouse.seeded-mobile.performance": 100,
+  "lighthouse.seeded-mobile.accessibility": 93,
+  "lighthouse.seeded-mobile.bestPractices": 100,
+  "lighthouse.seeded-mobile.seo": 100,
+  "lighthouse.seeded-mobile.lcp": 1835.199,
+  "lighthouse.seeded-mobile.fcp": 787.199,
+  "lighthouse.seeded-mobile.cls": 0,
+  "lighthouse.seeded-mobile.tbt": 40.5,
+  "lighthouse.seeded-mobile.si": 787.199,
+  "lighthouse.seeded-mobile.tti": 1863.249,
+  "lighthouse.seeded-desktop.performance": 100,
+  "lighthouse.seeded-desktop.accessibility": 93,
+  "lighthouse.seeded-desktop.bestPractices": 100,
+  "lighthouse.seeded-desktop.seo": 100,
+  "lighthouse.seeded-desktop.lcp": 505.51,
+  "lighthouse.seeded-desktop.fcp": 305.51,
+  "lighthouse.seeded-desktop.cls": 0,
+  "lighthouse.seeded-desktop.tbt": 0,
+  "lighthouse.seeded-desktop.si": 394.555,
+  "lighthouse.seeded-desktop.tti": 505.51,
+  "security.score": 71,
+  "security.https": 100,
+  "security.headers": 27,
+  "security.cookies": 100,
+  "security.content": 80,
+  "geo.score": 44,
+  "geo.crawlAccess": 20,
+  "geo.serverContent": 12,
+  "geo.structuredData": 0,
+  "geo.socialMeta": 7,
+  "geo.discovery": 0,
+  "geo.indexability": 5,
+  "geo.contentParity": 0,
+  "design.empty.desktop": 42.1,
+  "design.empty.mobile": 42.1,
+  "design.empty.merged": 42,
+  "design.loans.desktop": 42.1,
+  "design.loans.mobile": 42.1,
+  "design.loans.merged": 42,
+  "ux.empty-desktop.findings": 9,
+  "ux.empty-desktop.p1": 3,
+  "ux.empty-desktop.p2": 6,
+  "ux.empty-desktop.p3": 0,
+  "ux.empty-desktop.extras": 1,
+  "ux.empty-mobile.findings": 9,
+  "ux.empty-mobile.p1": 3,
+  "ux.empty-mobile.p2": 6,
+  "ux.empty-mobile.p3": 0,
+  "ux.empty-mobile.extras": 0,
+  "ux.loans-desktop.findings": 9,
+  "ux.loans-desktop.p1": 3,
+  "ux.loans-desktop.p2": 6,
+  "ux.loans-desktop.p3": 0,
+  "ux.loans-desktop.extras": 1,
+  "ux.loans-mobile.findings": 9,
+  "ux.loans-mobile.p1": 3,
+  "ux.loans-mobile.p2": 6,
+  "ux.loans-mobile.p3": 0,
+  "ux.loans-mobile.extras": 0,
+  "responsive.overflowing": 0,
+  "responsive.empty-320.overflowPx": 0,
+  "responsive.empty-375.overflowPx": 0,
+  "responsive.empty-768.overflowPx": 0,
+  "responsive.empty-1024.overflowPx": 0,
+  "responsive.empty-1440.overflowPx": 0,
+  "responsive.loans-320.overflowPx": 0,
+  "responsive.loans-375.overflowPx": 0,
+  "responsive.loans-768.overflowPx": 0,
+  "responsive.loans-1024.overflowPx": 0,
+  "responsive.loans-1440.overflowPx": 0,
+  "tools.header-check.score": 40,
+  "tools.meta-validate.score": 67,
+  "tools.structured-data.totalSchemas": 0,
+  "tools.sitemap-validate.found": 0,
+  "tools.redirect-check.redirectCount": 0,
+  "tools.broken-links.broken": 0,
+  "tools.webmcp-check.aiReadinessScore": 0
+ }
+}

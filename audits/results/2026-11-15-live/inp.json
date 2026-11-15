@@ -1,0 +1,79 @@
+{
+ "url": "https://loan-lab.vercel.app/",
+ "quick": false,
+ "method": "Trusted input at a 412x823 viewport. Event Timing entries of 16 ms or more are bucketed by startTime into each step; main-thread time comes from CDP Performance.getMetrics. The page stops scrolling before every step, and each field is centred before it is typed into.",
+ "rows": [
+  {
+   "cpuThrottle": 1,
+   "loans": 8,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 1,
+   "loans": 8,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 1,
+   "loans": 25,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 1,
+   "loans": 25,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 1,
+   "loans": 60,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 1,
+   "loans": 60,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 8,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 8,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 25,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 25,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 60,
+   "run": 1,
+   "error": "clickTab: no section button for plans"
+  },
+  {
+   "cpuThrottle": 4,
+   "loans": 60,
+   "run": 2,
+   "error": "clickTab: no section button for plans"
+  }
+ ]
+}
