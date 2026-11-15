@@ -3,6 +3,7 @@ import {
   PLAN_META,
   TIERED_STANDARD_DEFAULT_WARNING,
   TIERED_STANDARD_PSLF_WARNING,
+  FLAT_INCOME_CARD_NOTE,
 } from "@/data/plans";
 import { formatCurrencyFull, cn } from "@/lib/utils";
 
@@ -75,6 +76,11 @@ export default function PlanCard({ plan, isRecommended, pslfEligible }: Props) {
       {plan.id === "pslf" && (
         <p className="mt-2 text-sm leading-relaxed text-slate-700">
           Priced on {plan.via === "ibr" ? "IBR" : "RAP"}, your lower qualifying payment.
+        </p>
+      )}
+      {(plan.id === "ibr" || plan.id === "rap" || plan.id === "pslf") && (
+        <p data-flat-income-card className="mt-2 text-sm leading-relaxed text-slate-700">
+          {FLAT_INCOME_CARD_NOTE}
         </p>
       )}
       {plan.monthlyPaymentAsPercentOfTakeHome > 0 && (

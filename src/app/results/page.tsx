@@ -200,7 +200,7 @@ export default function ResultsPage() {
         )}
 
         <div className="mt-14 border-t border-line pt-10">
-          <YearsRuler plans={result.plans} recommendedId={result.recommendedId} />
+          <YearsRuler plans={result.plans} recommendedId={result.recommendedId} income={result.quizAnswers.income} />
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-slate-600">{ASSUMPTIONS}</p>
         </div>
 

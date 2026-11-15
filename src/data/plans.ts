@@ -251,6 +251,17 @@ export const TEACHER_FORGIVENESS_INFO =
 export const LOAN_SCOPE_NOTE =
   "This prices Direct Loans you borrowed for your own education. Parent PLUS, FFEL and Perkins loans follow different rules: check studentaid.gov, or use Loan Desk, which handles Parent PLUS.";
 
+/**
+ * MONEY-05: projections hold income flat (Ben confirmed 2026-11-15). Said in plain words next to the numbers,
+ * not only in the fine print, because a student whose pay will rise sees payments too low and forgiveness too high.
+ */
+export function flatIncomeNote(income: number): string {
+  const amount = `$${Math.round(income).toLocaleString("en-US")}`;
+  return `These numbers assume your income stays at ${amount} a year the whole time. If you earn more later, IBR, RAP and PSLF payments rise with it, so you would pay more and have less forgiven than shown.`;
+}
+
+export const FLAT_INCOME_CARD_NOTE = "Assumes your income never changes. A raise means a higher payment.";
+
 export const ASSUMPTIONS =
   "Estimates. Income is held flat for the whole term, so if it rises, IBR and RAP cost more and forgive less. Payments start this month. Tax on forgiveness is federal only, at 2026 brackets. Poverty lines are the 2026 figures for the 48 states and DC.";
 

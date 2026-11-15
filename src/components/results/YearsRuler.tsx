@@ -1,9 +1,12 @@
 import { PlanResult } from "@/types";
 import { formatCurrencyFull, cn } from "@/lib/utils";
+import { flatIncomeNote } from "@/data/plans";
 
 interface Props {
   plans: PlanResult[];
   recommendedId: string;
+  /** The AGI the projections hold flat. */
+  income: number;
 }
 
 /**
@@ -12,7 +15,7 @@ interface Props {
  * taxed forgiveness at the end) is visible at a glance. The lanes are
  * decoration over a plain list: every number is in the text.
  */
-export default function YearsRuler({ plans, recommendedId }: Props) {
+export default function YearsRuler({ plans, recommendedId, income }: Props) {
   const longest = Math.max(10, ...plans.map((p) => p.payoffYears));
   const span = Math.ceil(longest / 10) * 10;
   const ticks = Array.from({ length: span / 5 + 1 }, (_, i) => i * 5);
@@ -27,6 +30,9 @@ export default function YearsRuler({ plans, recommendedId }: Props) {
       </h2>
       <p className="mt-2 max-w-2xl text-base text-slate-700">
         A lower payment usually means more years. An orange end means a balance is left and forgiven.
+      </p>
+      <p data-flat-income className="mt-4 max-w-2xl rounded-2xl bg-selected px-4 py-3 text-sm leading-relaxed text-slate-800">
+        {flatIncomeNote(income)}
       </p>
 
       <div className="mt-6">

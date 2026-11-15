@@ -76,7 +76,7 @@ export default function Verdict({ plan, reasons, tradeoff, answers }: Props) {
         <ShareButton answers={answers} />
       </div>
       <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600">
-        A starting point, not an answer. The right plan depends on what you value most, so compare the plans below.
+        A starting point, not an answer. It assumes your income stays the same every year. The right plan depends on what you value most, so compare the plans below.
       </p>
     </section>
   );

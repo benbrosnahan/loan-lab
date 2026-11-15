@@ -155,3 +155,23 @@ test('MONEY-19 the SAVE note names the final 30-day notice and PSLF buyback', as
   expect(text).toMatch(/30-day/);
   expect(text).toMatch(/buy back|buyback/i);
 });
+
+test('MONEY-05 the flat-income assumption is stated in plain words next to the projections', async ({ page }) => {
+  await openResults(page, { income: 45000 });
+  const note = page.locator('[data-flat-income]');
+  await expect(note).toBeVisible();
+  await expect(note).toContainText('assume your income stays at $45,000 a year the whole time');
+  await expect(note).toContainText('you would pay more and have less forgiven');
+  // It sits in the projections section, before the ruler's lanes, not only in the fine print below.
+  const ruler = page.locator('section[aria-labelledby="ruler-title"]');
+  await expect(ruler.locator('[data-flat-income]')).toHaveCount(1);
+  for (const id of ['ibr', 'rap']) {
+    await expect(page.locator(`article[data-plan="${id}"] [data-flat-income-card]`)).toContainText('Assumes your income never changes');
+  }
+  await expect(page.locator('article[data-plan="standard"] [data-flat-income-card]')).toHaveCount(0);
+});
+
+test('MONEY-05 the verdict, the first projection a student reads, also says income is held the same', async ({ page }) => {
+  await openResults(page, { income: 45000 });
+  await expect(page.getByText('It assumes your income stays the same every year.')).toBeVisible();
+});
