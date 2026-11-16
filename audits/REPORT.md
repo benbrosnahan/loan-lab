@@ -115,3 +115,11 @@ Direction: a calm one-question-per-screen quiz in large Bricolage type on Cense 
 ## How to check
 
 From `audits/`: `npm ci && npm run setup`, build the app (`npm --prefix .. run build`), then `npx playwright test` (it starts the app on port 3206). For the scans, start the app and run `node run.mjs --url http://localhost:3206/ --runs 1`. `AUDIT_URL=https://loan-lab.vercel.app npx playwright test tests/money.spec.mjs` reproduces the live failures recorded in `results/2026-11-15-live/money-before.txt`.
+
+## Follow-ups, 2026-11-15 (deployed the same day)
+
+**MONEY-05: income held flat, now stated where projections are shown.** Ben confirmed flat income. Three places say it in plain words: the verdict ("It assumes your income stays the same every year."); a note at the top of "How long each plan lasts", using the student's own AGI ("These numbers assume your income stays at $45,000 a year the whole time. If you earn more later, IBR, RAP and PSLF payments rise with it, so you would pay more and have less forgiven than shown."); and a line on each IBR, RAP and PSLF card. Tests: two MONEY-05 tests in `money.spec.mjs`.
+
+**SEC-03: upgraded to a supported Next.js.** next 14.2.35 to 16.4.6; react and react-dom 18 to 19.3.1; eslint 8 to 9 with a flat `eslint.config.mjs`; versions pinned exactly. `npm run lint` is now `eslint` (Next 16 removed `next lint`). Two React 19 `set-state-in-effect` findings are deliberate post-hydration reads on prerendered pages and carry a one-line suppression with the reason. Security headers unchanged and passing on the production build. `npm audit --omit=dev`: 0 vulnerabilities; 7 moderate advisories remain in lint-only tooling.
+
+Playwright: 51 of 51 pass locally and on the production build.
